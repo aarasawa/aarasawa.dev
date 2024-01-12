@@ -49,7 +49,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={strip.className}>{children}</body>
+      <body className={ibm_ega.className}>{children}</body>
     </html>
   )
 }

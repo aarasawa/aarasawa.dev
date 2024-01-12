@@ -10,10 +10,10 @@ export default function Home() {
   return (
     <div className="bg-gradient-to-tr from-black via-purple-600/10 to-black scroll-p-5">
       <div className="flex"></div>
-      <h1 className="text-center my-5 text-4xl text-transparent duration-1000 bg-white cursor-default animate-title font-display sm:text-6xl md:text-9xl whitespace-nowrap bg-clip-text">
+      <h1 className="text-center mt-5 text-4xl text-transparent duration-1000 bg-white cursor-default animate-title font-display sm:text-6xl md:text-6xl whitespace-nowrap bg-clip-text">
           Alexander Arasawa
       </h1>
-      <nav className="my-5 animate-fade-in">
+      <nav className="my-3 animate-fade-in">
           <ul className="flex items-center justify-center gap-4">
             {navigation.map((item) => (
               <Link
@@ -25,7 +25,7 @@ export default function Home() {
               </Link>
             ))}
           </ul>
-        </nav>
+      </nav>
       <div className=" flex flex-col justify-center w-screen h-screen overflow-hidden">
         <div className="flex flex-row">
           <div className="basis-1/4 text-center">
