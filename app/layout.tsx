@@ -1,11 +1,46 @@
-import type { Metadata } from 'next';
-import { ibm, vt323, start_2p } from './ui/fonts';
+import { Metadata } from 'next';
+import localFont from 'next/font/local';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Alex Arasawa\'s website',
-  description: 'Hobbies, projects, and designs by Alex Arasawa',
-}
+  title: {
+    default: "Home",
+    template: "%s | aarasawa.dev",
+  },
+  description: "A new engineer trying to learn how to use some tools.",
+  openGraph: {
+    title: "aarasawa.dev",
+    description: "A new engineer trying to learn how to use some tools.",
+    url: "https://aarasawa.dev",
+    siteName: "aarasawa.dev",
+  },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
+    twitter: {
+      title: "Alex Arasawa",
+      card: "summary_large_image",
+    },
+    icons: {
+      shortcut: "/favicon.png",
+    },
+};
+
+const ibm_ega = localFont({
+  src: '../public/fonts/dos_vga_437.ttf'
+});
+
+const strip = localFont({
+  src: '../public/fonts/Strippy-Regular.ttf'
+ });
 
 export default function RootLayout({
   children,
@@ -14,7 +49,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={ibm.className}>{children}</body>
+      <body className={strip.className}>{children}</body>
     </html>
   )
 }
