@@ -32,6 +32,7 @@ export const metadata: Metadata = {
     icons: {
       shortcut: "/favicon.png",
     },
+    metadataBase: new URL('https://aarasawa.dev')
 };
 
 const ibm_ega = localFont({
