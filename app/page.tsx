@@ -8,7 +8,7 @@ const navigation = [
 
 export default function Home() {
   return (
-    <div className="bg-gradient-to-tr from-black via-blue-500/10 to-black scroll-p-5">
+    <div className="bg-gradient-to-tr from-black via-emerald-700/10 to-black scroll-p-5">
       <div className="flex"></div>
       <h1 className="text-center mt-5 text-4xl text-transparent duration-1000 bg-white cursor-default animate-title font-display sm:text-6xl md:text-6xl whitespace-nowrap bg-clip-text">
           Alexander Arasawa
