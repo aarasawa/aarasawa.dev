@@ -26,16 +26,6 @@ export default function Home() {
             ))}
           </ul>
       </nav>
-      <div className=" flex flex-col justify-center w-screen h-screen overflow-hidden">
-        <div className="flex flex-row">
-          <div className="basis-1/4 text-center">
-            01
-          </div>
-          <div className="basis-3/4">
-            Rest
-          </div>
-        </div>
-      </div>
     </div>
   )
 }
