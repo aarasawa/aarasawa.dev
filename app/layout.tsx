@@ -40,8 +40,12 @@ const ibm_ega = localFont({
 });
 
 const strip = localFont({
-  src: '../public/fonts/Strippy-Regular.ttf'
+  src: '../public/fonts/lores.ttf'
  });
+
+const loRes28 = localFont({
+  src: '../public/fonts/LoRes12OTNarrow.ttf'
+})
 
 export default function RootLayout({
   children,
@@ -50,7 +54,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={ibm_ega.className}>{children}</body>
+      <body className={loRes28.className}>{children}</body>
     </html>
   )
 }
