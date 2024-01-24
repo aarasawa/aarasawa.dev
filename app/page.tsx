@@ -8,7 +8,7 @@ const navigation = [
 
 export default function Home() {
   return (
-    <div className="bg-gradient-to-tr from-black via-emerald-700/10 to-black scroll-p-5">
+    <div className="bg-gradient-to-tr from-black via-emerald-900/50 to-black">
       <div className="flex"></div>
       <h1 className="text-center mt-5 text-4xl text-transparent duration-1000 bg-white cursor-default animate-title font-display sm:text-6xl md:text-6xl whitespace-nowrap bg-clip-text">
           Alexander Arasawa
@@ -27,7 +27,7 @@ export default function Home() {
           </ul>
       </nav>
       <div className=" flex flex-col justify-center w-screen h-screen overflow-hidden">
-        <div className="flex flex-row">
+        <div className="flex flex-row overflow-hidden">
           <div className="basis-1/4 text-center">
             01
           </div>
