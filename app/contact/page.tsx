@@ -37,14 +37,14 @@ export default function Example() {
 								href={s.href}
 								target="_blank"
 								className="p-2 relative flex flex-col items-center gap-4 md:gap-8 md:py-24  lg:pb-48  md:p-16">
-								<span className="relative z-10 flex items-center justify-center w-12 h-12 text-sm duration-1000 border rounded-md text-zinc-200 group-hover:text-white group-hover:bg-zinc-900 border-zinc-500 bg-zinc-900 group-hover:border-zinc-200">
+								<span className="relative z-10 flex items-center justify-center w-12 h-12 text-sm border rounded-md text-zinc-200 group-hover:text-white group-hover:bg-zinc-900 border-zinc-500 bg-zinc-900 group-hover:border-zinc-200">
 									{s.icon}
 								</span>{" "}
 								<div className="z-10 flex flex-col items-center">
-									<span className="lg:text-xl font-medium duration-150 xl:text-3xl text-zinc-200 group-hover:text-white font-display">
+									<span className="lg:text-xl font-medium xl:text-xl text-zinc-200 group-hover:text-white font-display">
 										{s.handle}
 									</span>
-									<span className="mt-4 z-50 text-sm text-center duration-1000 text-zinc-400 group-hover:text-zinc-200">
+									<span className="mt-4 z-50 text-sm text-center text-zinc-400 group-hover:text-zinc-200">
 										{s.label}
 									</span>
 								</div>

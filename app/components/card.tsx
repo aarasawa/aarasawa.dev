@@ -2,7 +2,7 @@ import { PropsWithChildren } from "react";
 
 export const Card: React.FC<PropsWithChildren> = ({ children }) => {
 	return (
-		<div className="overflow-hidden relative w-[300px] h-[300px]">
+		<div className="justify-self-center overflow-hidden relative w-[300px] h-[300px]">
 			<div className="pointer-events-none">
 				{children}
 				<div className="">
