@@ -27,12 +27,12 @@ const socials = [
 
 export default function Example() {
 	return (
-		<div className="bg-black scroll-p-5 h-screen">
+		<div className="bg-black scroll-p-5">
 			<Navigation />
 			<div className="container flex items-center justify-center min-h-screen px-4 mx-auto">
-				<div className="grid w-full grid-cols-1 gap-8 mx-auto mt-32 sm:mt-0 sm:grid-cols-3 lg:gap-16">
+				<div className="grid w-full grid-cols-1 gap-8 mx-auto lg:grid-cols-3 lg:gap-16">
 					{socials.map((s) => (
-						<Card key="">
+						<Card key={s.label}>
 							<Link
 								href={s.href}
 								target="_blank"
