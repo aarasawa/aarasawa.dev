@@ -36,7 +36,7 @@ export default function Example() {
 							<Link
 								href={s.href}
 								target="_blank"
-								className="p-2 relative flex flex-col items-center gap-4 md:gap-8 md:py-24 lg:pb-48">
+								className="p-2 relative flex flex-col items-center gap-4 py-24 lg:pb-48">
 								<span className="relative z-10 flex items-center justify-center w-12 h-12 text-sm border rounded-md text-zinc-200 group-hover:text-white group-hover:bg-zinc-900 border-zinc-500 bg-zinc-900 group-hover:border-zinc-200">
 									{s.icon}
 								</span>{" "}
