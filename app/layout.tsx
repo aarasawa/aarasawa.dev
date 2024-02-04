@@ -35,14 +35,6 @@ export const metadata: Metadata = {
     metadataBase: new URL('https://aarasawa.dev')
 };
 
-const ibm_ega = localFont({
-  src: '../public/fonts/dos_vga_437.ttf'
-});
-
-const strip = localFont({
-  src: '../public/fonts/lores.ttf'
- });
-
 const loRes28 = localFont({
   src: '../public/fonts/LoRes12OTNarrow.ttf'
 })

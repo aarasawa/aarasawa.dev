@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 
 const navigation = [
-  { name: "Projects", href:"https://github.com/aarasawa"},
+  { name: "Projects", href:"/projects"},
   { name: "Contact", href:"/contact"},
 ];
 
