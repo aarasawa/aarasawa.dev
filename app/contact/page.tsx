@@ -29,7 +29,7 @@ export default function Example() {
 	return (
 		<div className="bg-black scroll-p-5">
 			<Navigation />
-			<div className="container flex items-center justify-center min-h-screen px-4 mx-auto">
+			<div className="container flex items-center justify-center min-h-screen px-4 py-16 mx-auto">
 				<div className="grid w-full grid-cols-1 gap-8 mx-auto lg:grid-cols-3 ">
 					{socials.map((s) => (
 						<Card key={s.label}>
