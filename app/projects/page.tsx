@@ -1,7 +1,6 @@
-"use client";
 import { Navigation } from "../components/nav";
 
-export default function Example() {
+export default function Projects() {
 	return (
 		<div className="bg-black scroll-p-5">
 			<Navigation />
