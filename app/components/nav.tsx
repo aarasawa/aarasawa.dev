@@ -1,5 +1,5 @@
 "use client";
-import { ChevronLeft } from "lucide-react";
+import { Home } from "lucide-react";
 import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react';
 
@@ -30,7 +30,7 @@ export const Navigation: React.FC = () => {
 					<div className="flex justify-between gap-8">
 						<Link
 							href="/boot"
-							className="duration-200 text-zinc-400 hover-text-zinc-100"
+							className="duration-200 text-zinc-400 hover:text-zinc-100"
 						>
 							Boot
 						</Link>
@@ -49,9 +49,9 @@ export const Navigation: React.FC = () => {
 					</div>
 					<Link
 						href="/"
-						className="duration-200 text-zinc-300 hover:text-zinc-100"
+						className="duration-200 text-zinc-400 hover:text-zinc-100"
 					>
-						<ChevronLeft className="w-6 h-6 " />
+						<Home className="w-6 h-6 " />
 					</Link>
 				</div>
 			</div>
