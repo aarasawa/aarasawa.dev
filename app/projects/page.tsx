@@ -6,7 +6,7 @@ import { Projects_Card } from '../components/projects_card';
 const projects = [
 	{
 		icon: <Tractor size={20} />,
-		href: "https://www.pesticidenoi.netlify.app",
+		href: "https://pesticidenoi.netlify.app/",
 		label: "Pesticide Notification System",
 		handle: "Pesticide System"
 	}
@@ -17,7 +17,7 @@ export default function Projects() {
 		<div className="bg-black scroll-p-5">
 			<Navigation/>
 			<div className="container flex items-center min-h-screen py-16 mx-auto">
-				<div className="grid w-full grid-cols-1 gap-8">
+				<div className="grid w-full grid-cols-1 gap-8 py-6">
 					{projects.map((p) => (
 						<Projects_Card key={p.label}>
 							<Link
