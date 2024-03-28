@@ -6,7 +6,7 @@ import { Contact_Card } from "../components/contact_card";
 const socials = [
   {
     icon: <Linkedin size={20} />,
-    href:"https://linkedin.com/in/alexander-arasawa",
+    href:"https://linkedin.com/in/alexarasawa",
     label: "LinkedIn",
     handle: "Alexander Arasawa",
   },
