@@ -1,37 +1,11 @@
-import React from 'react';
+'use client';
+import React, { PropsWithChildren } from "react";
 
-const MultiCardCarousel: React.FC = () => {
+const MultiCardCarousel: React.FC<PropsWithChildren> = ({children}) => {
   const [currentIndex, setCurrentIndex] = React.useState(0);
-  const cards = [
-    {
-      image: 'https://source.unsplash.com/random',
-      title: 'Card 1',
-      description: 'Info which directs to the other page.',
-    },
-    {
-      image: 'https://source.unsplash.com/random',
-      title: 'Card 2',
-      description: 'Info which directs to the other page.',
-    },
-    {
-      image: 'https://source.unsplash.com/random',
-      title: 'Card 3',
-      description: 'Info which directs to the other page.',
-    },
-    {
-      image: 'https://source.unsplash.com/random',
-      title: 'Card 4',
-      description: 'Info which directs to the other page.',
-    },
-    {
-      image: 'https://source.unsplash.com/random',
-      title: 'Card 5',
-      description: 'Info which directs to the other page.',
-    },
-  ];
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % cards.length);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % {children}.length);
   };
 
   const handlePrev = () => {
