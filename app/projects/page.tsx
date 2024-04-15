@@ -4,13 +4,6 @@ import { Tractor, Loader } from "lucide-react";
 import Link from 'next/link';
 import { Projects_Card } from '../components/projects_card';
 
-interface Card {
-	icon: JSX.Element,
-	href: string,
-	label: string,
-	handle: string,
-};
-
 const projects = [
 	{
 		icon: <Tractor size={20} />,
@@ -26,8 +19,6 @@ export default function Projects() {
 			<Navigation/>
 			<div className="container flex items-center min-h-screen py-16 mx-auto">
 				<div className="grid w-full grid-cols-1 gap-8 py-6">
-					<MultiCardCarousel
-						Card p_cards = projects
 						{projects.map((p) => (
 							<Projects_Card key={p.label}>
 								<Link
@@ -48,7 +39,6 @@ export default function Projects() {
 								</Link>
 							</Projects_Card>
 						))}
-					/>
 				</div>
 			</div>
 		</div>

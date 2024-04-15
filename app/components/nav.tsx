@@ -32,7 +32,7 @@ export const Navigation: React.FC = () => {
 							href="/boot"
 							className="duration-200 text-zinc-400 hover-text-zinc-100"
 						>
-							Boot
+							Preloader Testing Module
 						</Link>
 						<Link
 							href="/projects"
