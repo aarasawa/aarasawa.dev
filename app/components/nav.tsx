@@ -1,7 +1,13 @@
 "use client";
-import { ChevronLeft } from "lucide-react";
+import { Home } from "lucide-react";
 import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react';
+
+const navigation = [
+	{ name: "Preloader Testing Module", href: "/boot"},
+	{ name: "Projects", href: "/projects"},
+	{ name: "Contact", href: "/contact"},
+];
 
 export const Navigation: React.FC = () => {
   const ref = useRef<HTMLElement>(null);
@@ -28,30 +34,21 @@ export const Navigation: React.FC = () => {
 			>
 				<div className="container flex flex-row-reverse items-center justify-between p-6 mx-auto text-xl">
 					<div className="flex justify-between gap-8">
-						<Link
-							href="/boot"
-							className="duration-200 text-zinc-400 hover-text-zinc-100"
-						>
-							Preloader Testing Module
-						</Link>
-						<Link
-							href="/projects"
-							className="duration-200 text-zinc-400 hover:text-zinc-100"
-						>
-							Projects
-						</Link>
-						<Link
-							href="/contact"
-							className="duration-200 text-zinc-400 hover:text-zinc-100"
-						>
-							Contact
-						</Link>
+						{navigation.map((item) => (
+							<Link
+								key={item.href}
+								href={item.href}
+								className="text-zinc-400 hover:text-zinc-100"
+							>
+								{item.name}
+							</Link>
+						))}
 					</div>
 					<Link
 						href="/"
 						className="duration-200 text-zinc-300 hover:text-zinc-100"
 					>
-						<ChevronLeft className="w-6 h-6 "/>
+						<Home className="w-6 h-6 "/>
 					</Link>
 				</div>
 			</div>
