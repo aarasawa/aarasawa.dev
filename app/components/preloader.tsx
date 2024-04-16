@@ -195,8 +195,8 @@ const Preloader = (): JSX.Element => {
   };
 
   return (
-    <div id="preloader">
-      {/* Your preloader content goes here */}
+    <div id="preloader"
+      className="text-xl">
     </div>
   );
 };
