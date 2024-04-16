@@ -12,8 +12,3 @@ export const Projects_Card: React.FC<PropsWithChildren> = ({children}) => {
     </div>
   )
 }
-
-// 331 x 170
-// 329 x 168 
-// 329 x 168
-// 323 x 162
