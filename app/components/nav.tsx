@@ -14,6 +14,7 @@ export const Navigation: React.FC = () => {
 	const [isIntersecting, setIntersecting] = useState(true);
 	const [isMobile, setIsMobile] = useState(false);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const [activeTab, setActiveTab] = useState<string | null>(null);
 
 	useEffect(() => {
 		if (!ref.current) return;
@@ -42,9 +43,16 @@ export const Navigation: React.FC = () => {
 		setIsMenuOpen(!isMenuOpen);
 	};
 
+	const handleTabClick = (href: string) => {
+		if (href === activeTab) {
+				setIsMenuOpen(false); 
+		}
+		setActiveTab(href);
+};
+
 	return (
 		<header ref={ref}>
-			{isMenuOpen && <div className="fixed inset-0 backdrop-blur-xl z-50"></div>}
+			{isMenuOpen && <div className="fixed inset-0 backdrop-blur-xl z-40"></div>}
 			<div
 				className={`fixed inset-x-0 top-0 z-50 border-b ${
 					isIntersecting
@@ -56,19 +64,20 @@ export const Navigation: React.FC = () => {
 					{isMobile ? (
 						<>
 							<button 
-								className="text-zinc-300 hover:text-zinc-100"
+								className="text-zinc-300 hover:text-zinc-100 z-50"
 								onClick={toggleMenu}
 							>
-								{isMenuOpen ? <X/> : <Menu/>}
+								{isMenuOpen ? <X onClick={toggleMenu}/> : <Menu onClick={toggleMenu}/>}
 							</button>
 							{isMenuOpen && (
-								<div className="fixed inset-0 flex justify-center items-center z-50">
+								<div className="fixed inset-0 flex justify-center items-center z-40">
 									<div className="flex flex-col items-center gap-4 bg-zinc-900/500 p-4">
 										{navigation.map((item, index) => (
 											<React.Fragment key={item.href}>
 												<Link
 													href={item.href}
-													className="text-zinc-400 hover:text-zinc-100"
+													className={`text-zinc-400 hover:text-zinc-100 ${activeTab === item.href ? 'font-bold' : ''}`}
+                          onClick={() => handleTabClick(item.href)}
 												>
 													{item.name}
 												</Link>
@@ -96,7 +105,7 @@ export const Navigation: React.FC = () => {
 					)}
 					<Link
 						href="/"
-						className="text-zinc-300 hover:text-zinc-100"
+						className="text-zinc-300 hover:text-zinc-100 z-50"
 					>
 						<Home/>
 					</Link>
