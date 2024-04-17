@@ -5,19 +5,19 @@ import { Contact_Card } from "../components/contact_card";
 
 const socials = [
   {
-    icon: <Linkedin size={20} />,
+    icon: <Linkedin size={30} />,
     href:"https://linkedin.com/in/alexarasawa",
     label: "LinkedIn",
     handle: "Alexander Arasawa",
   },
 	{
-		icon: <Mail size={20} />,
+		icon: <Mail size={30} />,
 		href: "mailto:aarasawa@gmail.com",
 		label: "Email",
 		handle: "aarasawa@gmail.com",
 	},
 	{
-		icon: <Github size={20} />,
+		icon: <Github size={30} />,
 		href: "https://www.github.com/aarasawa",
 		label: "Github",
 		handle: "aarasawa",
@@ -36,14 +36,14 @@ export default function Contact() {
 								href={s.href}
 								className="overflow-hidden relative flex flex-col items-center gap-4 py-24 group"
 							>
-								<span className="relative z-10 flex items-center justify-center w-12 h-12 text-sm border group-hover:text-white group-hover:border-white text-zinc-400 border-zinc-500">
+								<span className="relative z-10 flex items-center justify-center w-12 h-12 text-sm border-2 group-hover:text-white group-hover:border-white text-zinc-400 border-zinc-500">
 									{s.icon}
 								</span>
 								<div className="z-10 flex flex-col items-center">
-									<span className="font-medium xl:text-xl text-zinc-400 group-hover:text-white">
+									<span className="font-medium text-xl text-zinc-400 group-hover:text-white">
 										{s.handle}
 									</span>
-									<span className="z-50 text-sm text-center text-zinc-400 group-hover:text-zinc-200">
+									<span className="z-50 text-md text-center text-zinc-400 group-hover:text-zinc-200">
 										{s.label}
 									</span>
 								</div>
