@@ -54,7 +54,7 @@ export const Navigation: React.FC = () => {
 		<header ref={ref}>
 			{isMenuOpen && <div className="fixed inset-0 backdrop-blur-xl z-40"></div>}
 			<div
-				className={`fixed inset-x-0 top-0 z-50 border-b ${
+				className={`fixed inset-x-0 top-0 backdrop-blur z-50 border-b ${
 					isIntersecting
 						? "bg-zinc-900/0 border-transparent"
 						: "bg-zinc-900/500  border-zinc-800"
