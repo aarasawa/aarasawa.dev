@@ -84,6 +84,12 @@ const Preloader = (): JSX.Element => {
   }, []);
 
   useEffect(() => {
+    if (count === strings.length) {
+      setTimeout(() => {
+        window.location.href = '/';
+      }, 2000);
+    }
+
     if (count < strings.length) {
       const timeout = setTimeout(() => {
         addLog();
