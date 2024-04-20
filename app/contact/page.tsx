@@ -1,9 +1,17 @@
+'use client'
 import { Github, Mail, Linkedin } from "lucide-react";
-import Link from "next/link";
 import { Navigation } from "../components/nav";
-import { Contact_Card } from "../components/contact_card";
+import { Contact_Card_Unpressed, Contact_Card_Pressed } from "../components/contact_card";
+import React from 'react';
 
-const socials = [
+interface Social {
+	icon: React.ReactNode;
+	href: string;
+	label: string;
+	handle: string;
+}
+
+const socials: Social[] = [
   {
     icon: <Linkedin size={30} />,
     href:"https://linkedin.com/in/alexarasawa",
@@ -24,34 +32,58 @@ const socials = [
 	},
 ];
 
-export default function Contact() {
+const Contact: React.FC = () => {
+	const [pressedIndex, setPressedIndex] = React.useState<number | null>(null);
+
+	const handleMouseDown = (index: number) => {
+		setPressedIndex(index);
+	};
+
+	const handleMouseUp = (href: string) => {
+		if (pressedIndex !== null) {
+			setPressedIndex(null);
+			window.location.href = href;
+		}
+	};
+
+	const emptyFunc = () => {}
+
 	return (
 		<div className="bg-black scroll-p-5">
+			
 			<Navigation/>
+
 			<div className="container flex items-center min-h-screen py-16 mx-auto">
 				<div className="grid w-full grid-cols-1 gap-8 mx-auto lg:grid-cols-3 p-8">
-					{socials.map((s) => (
-						<Contact_Card key={s.label}>
-							<Link
+
+					{socials.map((s, index) => (
+						pressedIndex === index ? (
+							<Contact_Card_Unpressed
+								key={index}
+								icon={s.icon}
 								href={s.href}
-								className="overflow-hidden relative flex flex-col items-center gap-4 py-24 group"
-							>
-								<span className="relative z-10 flex items-center justify-center w-12 h-12 text-sm border-2 group-hover:text-white group-hover:border-white text-zinc-400 border-zinc-500">
-									{s.icon}
-								</span>
-								<div className="z-10 flex flex-col items-center">
-									<span className="font-medium text-xl text-zinc-400 group-hover:text-white">
-										{s.handle}
-									</span>
-									<span className="z-50 text-md text-center text-zinc-400 group-hover:text-zinc-200">
-										{s.label}
-									</span>
-								</div>
-							</Link>
-						</Contact_Card>
+								label={s.label}
+								handle={s.handle}
+								onMouseDown={() => emptyFunc}
+								onMouseUp={() => emptyFunc}
+							/>
+						) : (
+							<Contact_Card_Pressed
+								key={index}
+								icon={s.icon}
+								href={s.href}
+								label={s.label}
+								handle={s.handle}
+								onMouseDown={() => handleMouseDown(index)}
+								onMouseUp={() => handleMouseUp(s.href)}
+							/>
+						)
 					))}
+
 				</div>
 			</div>
 		</div>
 	);
 }
+
+export default Contact;
