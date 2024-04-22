@@ -57,7 +57,7 @@ const Contact_Card: React.FC<ContactCardProps> = ({
 
                   {/* Solid backdrop behind concentric square frames */}
                   <div 
-                    className={`absolute bg-zinc-400
+                    className={`absolute bg-zinc-400 group-hover:bg-zinc-300
                       w-[300px] h-[300px] 
                       left-[5px] top-[5px]`}></div>
                       

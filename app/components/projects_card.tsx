@@ -1,16 +1,40 @@
+import React, { useState } from 'react';
 
 interface ProjectCardProps {
   icon: React.ReactNode;
-  href: string | undefined;
+  href: string;
   label: string;
   handle: string;
   isActive: boolean;
+  index: number;
+  handleMouseDown: (index: number) => void;
+  handleMouseUp: (href: string) => void;
 }
 
-export const Projects_Card: React.FC<ProjectCardProps> = ({ icon, href, label, handle, isActive }) => {
+export const Projects_Card: React.FC<ProjectCardProps> = ({ 
+  icon, href, label, handle, isActive, index, handleMouseDown, handleMouseUp
+}) => {
+  const [pressed, setPressed] = React.useState(false);
+
+  const onMouseDown = () => {
+    setPressed(true);
+    handleMouseDown(index);
+  };
+
+  const onMouseUp = () => {
+    setPressed(false);
+    handleMouseUp(href);
+  };
+
+  const onMouseLeave = () => {
+    if (pressed) {
+      setPressed(false);
+    };
+  }
+
   return (
     <a 
-      href={isActive ? href : undefined} 
+      href={isActive ? href : ''} 
       className={`block justify-self-center overflow-hidden relative group
         pointer-events-${isActive ? 'auto' : 'max-h-none'}
         w-[335px] h-[473px] 

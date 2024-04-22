@@ -55,6 +55,7 @@ const Contact: React.FC = () => {
 				<div className="grid w-full grid-cols-1 gap-8 mx-auto lg:grid-cols-3 p-8">
 
 					{socials.map((s, index) => (
+
 						<Contact_Card
 							key={index}
 							icon={s.icon}
@@ -65,6 +66,7 @@ const Contact: React.FC = () => {
 							handleMouseDown={handleMouseDown}
 							handleMouseUp={handleMouseUp}
 						/>
+						
 					))}
 
 				</div>

@@ -14,20 +14,31 @@ const projects = [
 	},
 	{
 		icon: <Activity size={30} />,
-		href: "",
+		href: "https://pesticidenoi.netlify.app/",
 		label: "Example",
 		handle: "Example"
 	},
 	{
 		icon: <Atom size={30} />,
-		href: "",
+		href: "https://pesticidenoi.netlify.app/",
 		label: "Example",
 		handle: "Example"
 	},
 ];
 
 export default function Projects() {
-	const [currentIndex, setCurrentIndex] = React.useState(0);
+	const [currentIndex, setCurrentIndex] = React.useState<number | null>(null);
+
+	const handleMouseDown = (index: number) => {
+		setCurrentIndex(index);
+	};
+
+	const handleMouseUp = (href: string) => {
+		if (currentIndex !== null) {
+			setCurrentIndex(null);
+			window.location.href = href;
+		}
+	}
 
 	return (
 		<div className="bg-black scroll-p-5">
@@ -51,6 +62,9 @@ export default function Projects() {
 										label={project.label}
 										handle={project.handle}
 										isActive={index === currentIndex}
+										index={index}
+										handleMouseDown={handleMouseDown}
+										handleMouseUp={handleMouseUp}
 									/>
 								))}
 

@@ -41,10 +41,32 @@ const MultiCardCarousel: React.FC<PropsWithChildren<MultiCardCarouselProps>> = (
         </div>
 
         {/* control buttons */}
-        <div className="flex items-center justify-between relative bottom-0 left-0 right-0 px-4 py-2">
-          <button className="w-auto h-auto px-4 py-2 text-4xl bg-transparent border border-transparent flex items-center justify-center relative" onClick={handlePrev}>&lt;</button>
-          <button className="w-auto h-auto px-4 py-2 text-4xl bg-transparent border border-double flex items-center justify-center relative" onClick={handleRedirect}>SELECT</button>
-          <button className="w-auto h-auto px-4 py-2 text-4xl bg-transparent border border-transparent flex items-center justify-center relative" onClick={handleNext}>&gt;</button>
+        <div 
+          className="flex items-center justify-between relative 
+            bottom-0 left-0 
+            right-0 px-4 py-2"
+        >
+            <button 
+              className="text-4xl bg-transparent border border-transparent flex items-center justify-center relative
+                w-auto h-auto 
+                px-4 py-2" 
+              onClick={handlePrev}
+            >&lt;</button>
+            
+            <button 
+              className="text-4xl bg-transparent border border-double flex items-center justify-center relative
+                w-auto h-auto 
+                px-4 py-2" 
+              onClick={handleRedirect}
+            >SELECT</button>
+            
+            <button 
+              className="text-4xl bg-transparent border border-transparent flex items-center justify-center relative
+                w-auto h-auto 
+                px-4 py-2"
+              onClick={handleNext}
+            >&gt;</button>
+            
         </div>
       </div>
     </div>
