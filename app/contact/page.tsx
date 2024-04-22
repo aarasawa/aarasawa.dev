@@ -1,7 +1,7 @@
 'use client'
 import { Github, Mail, Linkedin } from "lucide-react";
 import { Navigation } from "../components/nav";
-import { Contact_Card_Unpressed, Contact_Card_Pressed } from "../components/contact_card";
+import Contact_Card from "../components/contact_card";
 import React from 'react';
 
 interface Social {
@@ -46,8 +46,6 @@ const Contact: React.FC = () => {
 		}
 	};
 
-	const emptyFunc = () => {}
-
 	return (
 		<div className="bg-black scroll-p-5">
 			
@@ -57,27 +55,16 @@ const Contact: React.FC = () => {
 				<div className="grid w-full grid-cols-1 gap-8 mx-auto lg:grid-cols-3 p-8">
 
 					{socials.map((s, index) => (
-						pressedIndex === index ? (
-							<Contact_Card_Unpressed
-								key={index}
-								icon={s.icon}
-								href={s.href}
-								label={s.label}
-								handle={s.handle}
-								onMouseDown={() => emptyFunc}
-								onMouseUp={() => emptyFunc}
-							/>
-						) : (
-							<Contact_Card_Pressed
-								key={index}
-								icon={s.icon}
-								href={s.href}
-								label={s.label}
-								handle={s.handle}
-								onMouseDown={() => handleMouseDown(index)}
-								onMouseUp={() => handleMouseUp(s.href)}
-							/>
-						)
+						<Contact_Card
+							key={index}
+							icon={s.icon}
+							href={s.href}
+							label={s.label}
+							handle={s.handle}
+							index={index}
+							handleMouseDown={handleMouseDown}
+							handleMouseUp={handleMouseUp}
+						/>
 					))}
 
 				</div>
