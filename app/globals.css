@@ -28,14 +28,10 @@ body {
 
 .project-card {
   transition: transform 0.5s ease;
+  color: red;
+  opacity: 1;
 }
 
 .project-card.active {
   animation: bounce 3s ease-in-out infinite;
-  color: red; 
-  opacity: 1;
-}
-
-.project-card.inactive {
-  opacity: 0.25;
 }

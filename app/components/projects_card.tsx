@@ -5,14 +5,13 @@ interface ProjectCardProps {
   href: string;
   label: string;
   handle: string;
-  isActive: boolean;
   index: number;
   handleMouseDown: (index: number) => void;
   handleMouseUp: (href: string) => void;
 }
 
 export const Projects_Card: React.FC<ProjectCardProps> = ({ 
-  icon, href, label, handle, isActive, index, handleMouseDown, handleMouseUp
+  icon, href, label, handle, index, handleMouseDown, handleMouseUp
 }) => {
   const [pressed, setPressed] = React.useState(false);
 
@@ -33,50 +32,58 @@ export const Projects_Card: React.FC<ProjectCardProps> = ({
   }
 
   return (
-    <a 
-      href={isActive ? href : ''} 
-      className={`block justify-self-center overflow-hidden relative group
-        pointer-events-${isActive ? 'auto' : 'max-h-none'}
-        w-[335px] h-[473px] 
-        lg:w-[435px] lg:h-[573px]`}
-    >
+    // Backdrop layer
+      <div
+      className={`block pointer-events-auto justify-self-center overflow-hidden group relative
+        w-[305px] h-[305px]`}
+      >
+          {/* Clickable layer covering square */}
+          <a 
+            href={href}
+            className="block w-full h-full"
+            onMouseDown={onMouseDown}
+            onMouseUp={onMouseUp}
+            onMouseLeave={onMouseLeave}
+          >
+              {/* Label, Icon, Handle container */}
+              <div 
+                className="flex flex-col items-center justify-center h-full text-center"
+              >
 
-          {/* surrounding frame (invisible) */}
-          <div 
-            className={`absolute bg-neutral-500 left-[3px] top-[3px]
-              ${isActive ? 'group-hover:bg-neutral-400' : ''} 
-              w-[350px] h-[468px] 
-              lg:w-[460px] lg:h-[568px]`}
-          ></div>
+                  <div className="mb-4 z-10">{icon}</div>
+                  <p className="text-white z-10">{label}</p>
+                  <p className="text-white z-10">{handle}</p>
 
-                {/* outer white line frame */}
-                <div 
-                  className={`left-0 top-0 absolute bg-black border border-zinc-400 
-                    ${isActive ? 'group-hover:border-white' : ''} 
-                    w-[330px] h-[466px] 
-                    lg:w-[430px] lg:h-[566px]`}
-                ></div>
+                  {/* Solid backdrop behind concentric square frames */}
+                  <div 
+                    className={`absolute bg-zinc-400 group-hover:bg-zinc-300
+                      w-[300px] h-[300px] 
+                      left-[5px] top-[5px]`}></div>
+                      
+                  <div 
+                    className={`absolute
+                      w-[300px] h-[300px] 
+                      left-0 top-0`}
+                    >
 
-                {/* inner white line frame */}
-                <div 
-                  className={`left-[4px] top-[3px] absolute bg-black border border-zinc-400 
-                    ${isActive ? 'group-hover:border-white' : ''} 
-                    w-[323px] h-[460px] 
-                    lg:w-[423px] lg:h-[560px]`}
-                >
+                        {/* Outer square border frame */}
+                        <div 
+                          className={`absolute bg-black border border-zinc-400 group-hover:border-white
+                            w-[300px] h-[300px] 
+                            ${pressed ? `left-[5px] top-[5px]` : `left-0 top-0`}`}></div>
 
-                      {/* container for icon, label, and handle */}
-                      <div className="flex flex-col items-center justify-center h-full text-center">
+                        {/* Inner square border frame */}
+                        <div 
+                          className={`absolute bg-black border border-zinc-400 group-hover:border-white
+                            w-[290px] h-[290px] 
+                            ${pressed ? `left-[10px] top-[10px]` : `left-[5px] top-[5px]`}`}></div>
 
-                            {/* Icon */}
-                            <div className="mb-4">{icon}</div>
-                            {/* Label */}
-                            <p className="text-white">{label}</p>
-                            {/* Handle */}
-                            <p className="text-white">{handle}</p>
-                        
-                      </div>
-                </div>
-    </a>
+                  </div>
+
+              </div>
+
+          </a>
+
+      </div>
   );
 };

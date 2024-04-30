@@ -7,46 +7,45 @@ import React from 'react';
 
 const projects = [
 	{
-		icon: <Tractor size={30} />,
+		icon: <Tractor size={30}/>,
 		href: "https://pesticidenoi.netlify.app/",
 		label: "Pesticide Notification System",
 		handle: "Pesticide System"
 	},
 	{
-		icon: <Activity size={30} />,
-		href: "https://pesticidenoi.netlify.app/",
+		icon: <Activity size={30}/>,
+		href: "",
 		label: "Example",
 		handle: "Example"
 	},
 	{
-		icon: <Atom size={30} />,
-		href: "https://pesticidenoi.netlify.app/",
+		icon: <Atom size={30}/>,
+		href: "",
 		label: "Example",
 		handle: "Example"
 	},
 ];
 
 export default function Projects() {
-	const [currentIndex, setCurrentIndex] = React.useState<number | null>(null);
+	const [currentIndex, setCurrentIndex] = React.useState<number>(0);
 
 	const handleMouseDown = (index: number) => {
 		setCurrentIndex(index);
 	};
 
 	const handleMouseUp = (href: string) => {
-		if (currentIndex !== null) {
-			setCurrentIndex(null);
-			window.location.href = href;
-		}
-	}
+		window.location.href = href;
+	};
 
 	return (
 		<div className="bg-black scroll-p-5">
 
 			<Navigation/>
 
-			<div className="flex items-center justify-center min-h-screen mx-auto overflow-hidden">
-				<div className="">
+			<div 
+				className="flex items-center justify-center
+					min-h-screen mx-auto overflow-hidden"
+			>
 
 					<MultiCardCarousel 
 						currentIndex={currentIndex} 
@@ -61,7 +60,6 @@ export default function Projects() {
 										href={project.href}
 										label={project.label}
 										handle={project.handle}
-										isActive={index === currentIndex}
 										index={index}
 										handleMouseDown={handleMouseDown}
 										handleMouseUp={handleMouseUp}
@@ -70,7 +68,6 @@ export default function Projects() {
 
 					</MultiCardCarousel>
 
-				</div>
 			</div>
 		</div>
 	);

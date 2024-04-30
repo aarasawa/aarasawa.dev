@@ -40,10 +40,7 @@ const Contact: React.FC = () => {
 	};
 
 	const handleMouseUp = (href: string) => {
-		if (pressedIndex !== null) {
-			setPressedIndex(null);
-			window.location.href = href;
-		}
+		window.location.href = href;
 	};
 
 	return (
