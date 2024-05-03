@@ -1,7 +1,7 @@
 'use client'
 import { Github, Mail, Linkedin } from "lucide-react";
-import { Navigation } from "../components/nav";
-import Contact_Card from "../components/contact_card";
+import Navigation from "../components/Navigation";
+import Contact_Card from "../components/ContactCard";
 import React from 'react';
 
 interface Social {

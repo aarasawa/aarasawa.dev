@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 interface ContactCardProps {
 	icon: React.ReactNode;
@@ -10,7 +10,7 @@ interface ContactCardProps {
   handleMouseUp: (href: string) => void;
 }
 
-const Contact_Card: React.FC<ContactCardProps> = ({ 
+const ContactCard: React.FC<ContactCardProps> = ({ 
   icon, href, label, handle, index, handleMouseDown, handleMouseUp
 }) => {  
   const [pressed, setPressed] = React.useState(false);
@@ -85,4 +85,4 @@ const Contact_Card: React.FC<ContactCardProps> = ({
   );
 };
 
-export default Contact_Card;
+export default ContactCard;
