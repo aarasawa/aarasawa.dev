@@ -1,7 +1,9 @@
 import Preloader from "../components/Preloader";
 
-export default function boot() {
+function boot() {
   return (
 		<Preloader/>
 	);
 }
+
+export default boot;
