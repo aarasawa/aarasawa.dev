@@ -1,3 +1,4 @@
+'use client'
 import Preloader from "../components/Preloader";
 
 function boot() {
