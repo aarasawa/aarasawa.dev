@@ -1,5 +1,4 @@
-'use client'
-import Preloader from "../components/Preloader";
+import Preloader from "../components/preloader";
 
 function boot() {
   return (
