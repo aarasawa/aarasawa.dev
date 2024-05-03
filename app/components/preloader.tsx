@@ -9,7 +9,7 @@ has been modified for TypeScript and Next.JS App Router.
 (https://github.com/ashawe/CTF-Website-Template-2020/blob/master/js/preloader.js
 */
 
-const Preloader = (): JSX.Element => {
+export default function Preloader() {
   const [count, setCount] = React.useState<number>(0);
   const [delay, setDelay] = React.useState<number>(1000);
   const [repeat, setRepeat] = React.useState<number>(0);
@@ -208,5 +208,3 @@ const Preloader = (): JSX.Element => {
     </div>
   );
 };
-
-export default Preloader;
