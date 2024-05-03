@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 interface ContactCardProps {
 	icon: React.ReactNode;
@@ -10,8 +10,14 @@ interface ContactCardProps {
   handleMouseUp: (href: string) => void;
 }
 
-const Contact_Card: React.FC<ContactCardProps> = ({ 
-  icon, href, label, handle, index, handleMouseDown, handleMouseUp
+const ContactCard: React.FC<ContactCardProps> = ({ 
+  icon, 
+  href, 
+  label, 
+  handle, 
+  index, 
+  handleMouseDown, 
+  handleMouseUp
 }) => {  
   const [pressed, setPressed] = React.useState(false);
 
@@ -57,7 +63,7 @@ const Contact_Card: React.FC<ContactCardProps> = ({
 
                   {/* Solid backdrop behind concentric square frames */}
                   <div 
-                    className={`absolute bg-zinc-400
+                    className={`absolute bg-zinc-400 group-hover:bg-zinc-300
                       w-[300px] h-[300px] 
                       left-[5px] top-[5px]`}></div>
                       
@@ -85,4 +91,4 @@ const Contact_Card: React.FC<ContactCardProps> = ({
   );
 };
 
-export default Contact_Card;
+export default ContactCard;

@@ -28,14 +28,22 @@ body {
 
 .project-card {
   transition: transform 0.5s ease;
+  color: red;
+  opacity: 1;
 }
 
 .project-card.active {
   animation: bounce 3s ease-in-out infinite;
-  color: red; 
-  opacity: 1;
 }
 
-.project-card.inactive {
-  opacity: 0.25;
+.btn {
+  background-color: #0094ff;
+  color: #fff;
+  border: none;
+  outline: none;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  padding: 11px 1rem;
+  /* margin: 0 0.5rem ; */
+  width: 7.5rem;
 }

@@ -1,7 +1,7 @@
 'use client'
 import { Github, Mail, Linkedin } from "lucide-react";
-import { Navigation } from "../components/nav";
-import Contact_Card from "../components/contact_card";
+import Navigation from "../components/Navigation";
+import Contact_Card from "../components/ContactCard";
 import React from 'react';
 
 interface Social {
@@ -40,10 +40,7 @@ const Contact: React.FC = () => {
 	};
 
 	const handleMouseUp = (href: string) => {
-		if (pressedIndex !== null) {
-			setPressedIndex(null);
-			window.location.href = href;
-		}
+		window.location.href = href;
 	};
 
 	return (
@@ -55,6 +52,7 @@ const Contact: React.FC = () => {
 				<div className="grid w-full grid-cols-1 gap-8 mx-auto lg:grid-cols-3 p-8">
 
 					{socials.map((s, index) => (
+
 						<Contact_Card
 							key={index}
 							icon={s.icon}
@@ -65,6 +63,7 @@ const Contact: React.FC = () => {
 							handleMouseDown={handleMouseDown}
 							handleMouseUp={handleMouseUp}
 						/>
+						
 					))}
 
 				</div>
