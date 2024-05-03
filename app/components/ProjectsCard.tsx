@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
 import { useSpring, animated } from 'react-spring';
-import { ProjectCardProps } from './interfaces/ProjectCardProps';
 import ProjectsCardBtn from './ProjectsCardBtn';
+
+interface ProjectCardProps {
+  icon: React.ReactNode;
+  href: string;
+  label: string;
+  handle: string;
+  onClick?: () => void;
+}
 
 const ProjectsCard: React.FC<ProjectCardProps> = ({
   icon, href, label, handle

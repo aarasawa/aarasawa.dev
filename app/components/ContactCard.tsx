@@ -11,7 +11,13 @@ interface ContactCardProps {
 }
 
 const ContactCard: React.FC<ContactCardProps> = ({ 
-  icon, href, label, handle, index, handleMouseDown, handleMouseUp
+  icon, 
+  href, 
+  label, 
+  handle, 
+  index, 
+  handleMouseDown, 
+  handleMouseUp
 }) => {  
   const [pressed, setPressed] = React.useState(false);
 

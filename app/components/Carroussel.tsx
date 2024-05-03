@@ -1,8 +1,25 @@
 import React from 'react';
 import Carousel from 'react-spring-3d-carousel';
 import ProjectsCard from './ProjectsCard';
-import { CarrousselProps } from './interfaces/CarrousselProps';
 import { config } from 'react-spring';
+import dynamic from 'next/dynamic';
+
+interface ProjectCardProps {
+  icon: React.ReactNode;
+  href: string;
+  label: string;
+  handle: string;
+  onClick?: () => void;
+}
+
+interface CarrousselProps {
+  cards: ProjectCardProps[];
+  offset: number;
+  showArrows: boolean;
+  width: string;
+  height: string;
+  margin: string;
+}
 
 const Carroussel: React.FC<CarrousselProps> = ({
   cards: initialCards,

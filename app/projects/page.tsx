@@ -1,33 +1,33 @@
 'use client'
 import React from "react";
+import dynamic from 'next/dynamic';
 import Navigation from "../components/Navigation";
-import Carroussel from "../components/Carroussel";
 import { Tractor, Activity, Atom } from "lucide-react";
-import { ProjectCardProps } from "../components/interfaces/ProjectCardProps";
 
 const projects = [
   {
     icon: <Tractor size={30} />,
-    href: "#",
+    href: "",
     label: "Pesticide Notification System",
     handle: "Interactive map of pesticide applications in California",
   },
   {
     icon: <Activity size={30} />,
-    href: "#",
+    href: "",
     label: "Activity Tracker",
     handle: "Track Activities",
   },
   {
     icon: <Atom size={30} />,
-    href: "#",
+    href: "",
     label: "Example",
     handle: "Explore Molecules",
   },
 ];
 
+const Carroussel = dynamic(() => import("../components/Carroussel"), { ssr: false });
 
-function Projects() {
+const Projects: React.FC = () => {
   return (
 		<div className="bg-black scroll-p-5">
 
