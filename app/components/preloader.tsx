@@ -171,6 +171,7 @@ export default function Preloader() {
     const user: string = GetCookie("visited");
     if (user === "1") {
       SetCookie("visited", "1", 30);
+      window.location.href = '/home';
     } else {
       AddLog();
       SetCookie("visited", "1", 30);
@@ -183,7 +184,7 @@ export default function Preloader() {
     const handleCount = () => {
       if (count === strings.length) {
         setTimeout(() => {
-          window.location.href = '/';
+          window.location.href = '/home';
         }, 2000);
       }
       if (count < strings.length) {
