@@ -4,7 +4,6 @@ import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react';
 
 const navigation = [
-	{ name: "Preloader", href: "/boot"},
 	{ name: "Projects", href: "/projects"},
 	{ name: "Contact", href: "/contact"},
 ];
