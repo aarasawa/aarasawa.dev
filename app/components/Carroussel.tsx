@@ -1,8 +1,7 @@
-import React from 'react';
+import { FC, useState, useEffect, SetStateAction } from 'react';
 import Carousel from 'react-spring-3d-carousel';
 import ProjectsCard from './ProjectsCard';
 import { config } from 'react-spring';
-import dynamic from 'next/dynamic';
 
 interface ProjectCardProps {
   icon: React.ReactNode;
@@ -21,7 +20,7 @@ interface CarrousselProps {
   margin: string;
 }
 
-const Carroussel: React.FC<CarrousselProps> = ({
+const Carroussel: FC<CarrousselProps> = ({
   cards: initialCards,
   offset,
   showArrows,
@@ -31,7 +30,7 @@ const Carroussel: React.FC<CarrousselProps> = ({
 }) => {
 
   // Map initial cards
-  const [cards, setCards] = React.useState(initialCards.map((card, index) => ({
+  const [cards, setCards] = useState(initialCards.map((card, index) => ({
     ...card,
     onClick: () => setGoToSlide(index),
     content: (
@@ -46,11 +45,11 @@ const Carroussel: React.FC<CarrousselProps> = ({
   })));
 
   // Declare state
-  const [offsetRadius, setOffsetRadius] = React.useState<number>(offset);
-  const [isShowingArrows, setShowArrows] = React.useState<boolean>(showArrows);
-  const [goToSlide, setGoToSlide] = React.useState<number>(0);
+  const [offsetRadius, setOffsetRadius] = useState<number>(offset);
+  const [isShowingArrows, setShowArrows] = useState<boolean>(showArrows);
+  const [goToSlide, setGoToSlide] = useState<number>(0);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setOffsetRadius(offset);
     setShowArrows(showArrows);
   }, [offset, showArrows]);
@@ -74,5 +73,6 @@ const Carroussel: React.FC<CarrousselProps> = ({
     </div>
   );
 }
+
 
 export default Carroussel;
