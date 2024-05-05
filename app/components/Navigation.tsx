@@ -105,7 +105,7 @@ const Navigation: React.FC = () => {
             </div>
           )}
           <Link
-            href="/"
+            href="/home"
             className="text-zinc-300 hover:text-zinc-100 z-50"
           >
             <Home/>
