@@ -1,5 +1,5 @@
 'use client'
-import React from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 
 /*
 The following code has been referenced from this CTF template. I had an initial vision for how the preloader would look 
@@ -9,11 +9,11 @@ has been modified for TypeScript and Next.JS App Router.
 (https://github.com/ashawe/CTF-Website-Template-2020/blob/master/js/preloader.js
 */
 
-export default function Preloader() {
-  const [count, setCount] = React.useState<number>(0);
-  const [delay, setDelay] = React.useState<number>(1000);
-  const [repeat, setRepeat] = React.useState<number>(0);
-  const strings = React.useMemo(() => [
+function Preloader() {
+  const [count, setCount] = useState<number>(0);
+  const [delay, setDelay] = useState<number>(1000);
+  const [repeat, setRepeat] = useState<number>(0);
+  const strings = useMemo(() => [
     "Initialzing request",
     "Resolving internet address 127.0.0.1",
     "Requesting access to server",
@@ -79,7 +79,7 @@ export default function Preloader() {
     "Initializing..."
   ], []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const CreateRepeatLog = () => {
       if (repeat === 0) {
         if (count > 3) setDelay(250);
@@ -94,7 +94,7 @@ export default function Preloader() {
     CreateRepeatLog();
   }, [count, repeat]);
 
-  const CreateLog = React.useCallback((type: string, index?: number): HTMLDivElement | null => {
+  const CreateLog = useCallback((type: string, index?: number): HTMLDivElement | null => {
     const doc = typeof document !== 'undefined' ? document : null;
     if (!doc) return null;
   
@@ -124,8 +124,8 @@ export default function Preloader() {
     return row;
   }, [strings]);
 
-  const AddLog = React.useCallback(() => {
-    const status = Math.random() > 0.15 ? 'OK' : 'FAIL';
+  const AddLog = useCallback(() => {
+    const status = 'OK';
     const row = CreateLog(status, count);
     if (row) {
       document.getElementById('preloader')?.appendChild(row);
@@ -137,50 +137,20 @@ export default function Preloader() {
   const GetTypeClass = (type: string): string => {
     const TypeColorMap: Record<string, string> = {
       'OK': 'text-green-500',
-      'FAIL': 'text-red-500',
     };
   
     return TypeColorMap[type] || 'text-gray-500';
   };
   
   const GetFormattedStatus = (type: string): string => {
-    if (type === 'OK' || type === 'FAIL') {
-      return `${type.toUpperCase()}`; 
-    } else {
-      return type.toUpperCase();
-    }
+    return `${type.toUpperCase()}`; 
   };
 
   const GoScrollToBottom = (): void => {
     if (typeof window !== 'undefined') window.scrollTo(0, document.body.scrollHeight);
   };
 
-  const SetCookie = (cname: string, cvalue: string, exdays: number): void => {
-    const d = new Date();
-    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-    const expires: string = "expires=" + d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-  };
-
-  const GetCookie = (a: string): string => {
-    const b = document.cookie.match('(^|;)\\s*' + a + '\\s*=\\s*([^;]+)');
-    return b ? b.pop()?.trim() || '' : '';
-  };
-
-  const CheckCookie = React.useCallback(() => {
-    const user: string = GetCookie("visited");
-    if (user === "1") {
-      SetCookie("visited", "1", 30);
-      window.location.href = '/home';
-    } else {
-      AddLog();
-      SetCookie("visited", "1", 30);
-    }
-  }, [AddLog]);
-
-  React.useEffect(() => {
-    CheckCookie();
-
+  useEffect(() => {
     const handleCount = () => {
       if (count === strings.length) {
         setTimeout(() => {
@@ -202,10 +172,12 @@ export default function Preloader() {
     };
 
     handleCount();
-  }, [CheckCookie, count, delay, AddLog, CreateLog, strings.length]);
+  }, [count, delay, AddLog, CreateLog, strings.length]);
 
   return (
     <div id="preloader" className="text-xl">
     </div>
   );
 };
+
+export default Preloader;
