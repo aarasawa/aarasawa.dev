@@ -92,24 +92,36 @@ const Navigation: React.FC = () => {
               </div>
             </>
           ) : (
-            <div className="flex justify-between gap-8">
-              {navigation.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-zinc-400 hover:text-zinc-100"
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </div>
+              <div className="flex justify-between gap-8">
+
+                  {navigation.map((
+                    item
+                  ) => (
+
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className="text-zinc-400 hover:text-zinc-100"
+                      >
+                        {item.name}
+                      </Link>
+
+                  ))}
+
+              </div>
           )}
+
+
           <Link
             href="/home"
             className="text-zinc-300 hover:text-zinc-100 z-50"
           >
-            <Home/>
+
+              <Home size={10}/>
+
           </Link>
+
+
         </div>
       </div>
     </header>
