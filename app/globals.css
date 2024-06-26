@@ -20,51 +20,6 @@ body {
     rgb(var(--background-start-rgb));
 }
 
-@keyframes bounce {
-  0%,
-  100% {transform: translateY(0);}
-  50% {transform: translateY(-10px);}
-}
-
-.project-card {
-  transition: transform 0.5s ease;
-  color: red;
-  opacity: 1;
-}
-
-.project-card.active {
-  animation: bounce 3s ease-in-out infinite;
-}
-
-.btn {
-  background-color: #0094ff;
-  color: #fff;
-  border: none;
-  outline: none;
-  font-size: 1.2rem;
-  border-radius: 10px;
-  padding: 11px 1rem;
-  /* margin: 0 0.5rem ; */
-  width: 7.5rem;
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: gray;
-  width: 16rem;
-  height: fit-content;
-  padding: 0 2rem 2rem 2rem;
-  border-radius: 10px;
-}
-
-.card p {
-  margin: 0;
-  margin-top: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-
 .lucide {
   /* Change this! */
   color: white;
@@ -72,15 +27,4 @@ body {
   height: 56px;
   stroke-width: 1px;
   ;
-}
-
-.card h2 {
-  margin: 0;
-  margin-top: 1rem;
-}
-
-.card .btnn {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }

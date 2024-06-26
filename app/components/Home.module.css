@@ -1,0 +1,21 @@
+/* Home.module.css */
+
+.homeDiv {
+  @apply flex flex-col justify-center w-screen h-screen overflow-hidden;
+}
+
+.homeTitle {
+  @apply text-center mt-5 bg-white cursor-default text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl bg-clip-text;
+}
+
+.homeNav {
+  @apply my-3;
+}
+
+.homeNavUl {
+  @apply flex items-center justify-center gap-4 text-2xl;
+}
+
+.homeLink {
+  @apply text-xl text-zinc-500 hover:text-white;
+}

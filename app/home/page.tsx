@@ -1,38 +1,9 @@
-import React from 'react';
-import Link from 'next/link';
-import styles from './Home.module.css';
+import Home from '../components/Home';
 
-const navigation = [
-  { name: "Projects", href:"/projects"},
-  { name: "Contact", href:"/contact"},
-];
-
-function Home() {
+function HomePage() {
   return (
-    <div className={styles.homeDiv}>
-
-      <h1 className={styles.homeTitle}>
-          Alexander Arasawa
-      </h1>
-      
-      <nav className={styles.homeNav}>
-        <ul className={styles.homeNavUl}>
-
-          {navigation.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={styles.homeLink}
-            >
-              {item.name}
-            </Link>
-          ))}
-
-        </ul>
-      </nav>
-
-    </div>
+    <Home />
   );
 };
 
-export default Home;
+export default HomePage;
