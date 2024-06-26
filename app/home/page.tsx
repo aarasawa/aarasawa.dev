@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import styles from './Home.module.css';
 
 const navigation = [
   { name: "Projects", href:"/projects"},
@@ -8,29 +9,28 @@ const navigation = [
 
 function Home() {
   return (
-    <div className="flex flex-col justify-center w-screen h-screen overflow-hidden">
-      <div className="bg-black">
+    <div className={styles.homeDiv}>
 
-        <h1 className="text-center mt-5 bg-white cursor-default font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl bg-clip-text">
-            Alexander Arasawa
-        </h1>
-        
-        <nav className="my-3">
-          <ul className="flex items-center justify-center gap-4 text-2xl">
+      <h1 className={styles.homeTitle}>
+          Alexander Arasawa
+      </h1>
+      
+      <nav className={styles.homeNav}>
+        <ul className={styles.homeNavUl}>
 
-            {navigation.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-m text-zinc-500 hover:text-white"
-              >
-                {item.name}
-              </Link>
-            ))}
+          {navigation.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={styles.homeLink}
+            >
+              {item.name}
+            </Link>
+          ))}
 
-          </ul>
-        </nav>
-      </div>
+        </ul>
+      </nav>
+
     </div>
   );
 };
