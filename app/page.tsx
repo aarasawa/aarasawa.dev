@@ -1,4 +1,4 @@
-import Preloader from "./components/preloader";
+import Preloader from "./components/Preloader/preloader";
 
 function Startup() {
   return (

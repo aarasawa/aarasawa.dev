@@ -1,7 +1,7 @@
 'use client'
 import { Github, Mail, Linkedin } from "lucide-react";
-import Navigation from "../components/Navigation";
-import Contact_Card from "../components/ContactCard";
+import Navigation from "../components/Navigation/Navigation";
+import Contact_Card from "../components/Contact/ContactCard";
 import React from 'react';
 
 interface Social {
@@ -32,7 +32,7 @@ const socials: Social[] = [
 	},
 ];
 
-const Contact: React.FC = () => {
+const ContactPage: React.FC = () => {
 	const [pressedIndex, setPressedIndex] = React.useState<number | null>(null);
 
 	const handleMouseDown = (index: number) => {
@@ -72,4 +72,4 @@ const Contact: React.FC = () => {
 	);
 }
 
-export default Contact;
+export default ContactPage;

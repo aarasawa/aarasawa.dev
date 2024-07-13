@@ -1,9 +1,7 @@
-import Home from '../components/Home';
+import Home from '../components/Home/Home';
 
-function HomePage() {
-  return (
-    <Home />
-  );
-};
+const HomePage: React.FC = () => (
+  <Home />
+);
 
 export default HomePage;
