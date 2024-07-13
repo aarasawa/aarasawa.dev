@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+  border: 2px solid white;
+  width: 100vh;
+  height: 50vh;
+  box-shadow: 0 0 10px white;
+  margin: auto;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: column;
+  border-right: 2px solid white;
+  padding: 10px;
+  width: 150px;
+  box-shadow: 0 0 10px white;
+  overflow-y: auto; /* Enable vertical scrolling */
+  max-height: 100%; /* Ensure it does not exceed the container's height */
+}
+
+.tabButton {
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  margin: 5px 0;
+  padding: 10px;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 10px white;
+  text-shadow: 0 0 5px white;
+}
+
+.tabButton:hover {
+  background-color: white;
+  color: black;
+  box-shadow: 0 0 15px white;
+}
+
+.tabContent {
+  flex-grow: 1;
+  padding: 20px;
+  color: white;
+  background-color: black;
+  box-shadow: 0 0 10px white;
+  text-shadow: 0 0 5px white;
+  overflow-y: auto; /* Enable vertical scrolling */
+  max-height: 100%; /* Ensure it does not exceed the container's height */
+}

@@ -1,11 +1,12 @@
 'use client'
 import Navigation from '../Navigation/Navigation';
+import DosTabs from './DosTabs';
+import styles from './WebProjects.module.css';
 
 const WebProjects: React.FC = () => (
-  <div>
+  <div className={styles.container}>
     <Navigation />
-    <h1>Web View</h1>
-    <p>This is the web view.</p>
+    <DosTabs />
   </div>
 );
 
