@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import styles from './Home.module.css';
 
-const navigation = [
+const nav = [
   { name: "Projects", href: "/projects" },
   { name: "Contact", href: "/contact" },
 ];
@@ -16,7 +16,7 @@ function Home() {
 
       <nav className={styles.homeNav}>
         <ul className={styles.homeNavUl}>
-          {navigation.map((item) => (
+          {nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
