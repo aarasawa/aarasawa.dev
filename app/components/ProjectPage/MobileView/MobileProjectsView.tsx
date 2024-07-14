@@ -1,6 +1,6 @@
 'use client'
-import Navigation from '../Navigation/Navigation';
-import MobileDosTabs from './MobileDosTabs';
+import Navigation from '../../Navigation/Navigation';
+import MobileDosTabs from '../MobileDosTabs/MobileDosTabs';
 import styles from './MobileProjectsView.module.css';
 
 const MobileProjectsView: React.FC = () => (
