@@ -4,10 +4,9 @@
   flex-direction: column;
   border: 2px solid white;
   width: 100%;
-  height: calc(100vh - 30vh);
+  height: 100%;
   box-shadow: 0 0 10px white;
-  margin: auto;
-  padding-top: 60px; 
+  margin-top: 110px;
 }
 
 .topPane {
@@ -74,7 +73,6 @@
   padding: 20px;
   color: white;
   background-color: black;
-  box-shadow: 0 0 10px white;
   text-shadow: 0 0 5px white;
   overflow-y: auto;
   max-height: calc(100% - 50px);
