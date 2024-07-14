@@ -1,7 +1,7 @@
 'use client'
 import Navigation from '../Navigation/Navigation';
-import DosTabs from './DosTabs';
-import styles from './WebProjects.module.css';
+import DosTabs from './WebDosTabs';
+import styles from './WebProjectsView.module.css';
 
 const WebProjects: React.FC = () => (
   <div className={styles.container}>

@@ -1,0 +1,111 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid white;
+  width: 100vh;
+  height: 50vh;
+  box-shadow: 0 0 10px white;
+  margin: auto;
+}
+
+.topPane {
+  display: flex;
+  font-size: 20px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  border-bottom: 2px solid white;
+  padding: 5px;
+  color: white;
+  box-shadow: 0 0 10px white;
+  text-shadow: 0 0 5px white;
+}
+
+.buttonGroup {
+  display: flex;
+}
+
+.controlButton {
+  width: 20px;
+  height: 20px;
+  margin: 0 2px;
+  border: 1px solid white;
+  background-color: black;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  box-shadow: 0 0 10px white;
+  text-shadow: 0 0 5px white;
+}
+
+.controlButton:hover {
+  background-color: white;
+  color: black;
+  box-shadow: 0 0 15px white;
+}
+
+.content {
+  display: flex;
+  flex-grow: 1;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: column;
+  border-right: 2px solid white;
+  padding: 0;
+  width: 150px;
+  box-shadow: 0 0 10px white;
+  overflow-y: auto;
+  max-height: 100%; 
+}
+
+.tabButton {
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  padding: 10px;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 10px white;
+  text-shadow: 0 0 5px white;
+}
+
+.tabButton:not(:last-child) {
+  border-bottom: none; 
+}
+
+.tabButton:hover {
+  background-color: white;
+  color: black;
+  box-shadow: 0 0 15px white;
+}
+
+.tabContent {
+  flex-grow: 1;
+  padding: 20px;
+  color: white;
+  background-color: black;
+  box-shadow: 0 0 10px white;
+  text-shadow: 0 0 5px white;
+  overflow-y: auto; 
+  max-height: 100%; 
+}
+
+@media (max-height: 768) {
+  .container {
+    height: 100vh;
+  }
+
+  .tabs {
+    max-height: calc(100vh - 50px);
+  }
+
+  .tabContent {
+    max-height: calc(100vh - 50px);
+  }
+}
