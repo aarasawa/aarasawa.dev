@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react';
-import MobileProjectsView from './MobileProjectsView';
-import WebProjectsView from './WebProjectsView';
+import MobileProjectsView from './MobileView/MobileProjectsView';
+import WebProjectsView from './WebView/WebProjectsView';
 
 const ProjectsView: React.FC = () => {
   const [isMobile, setIsMobile] = useState<boolean>(false);

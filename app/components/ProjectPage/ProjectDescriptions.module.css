@@ -1,0 +1,43 @@
+.centered {
+  font-size: 25px;
+  text-align: center;
+}
+
+.descriptionSubtitle {
+  font-size: 20px;
+  color: orange;
+  text-shadow: 0 0 5px orange;
+  margin-top: 2rem;
+}
+
+.contributionSubtitle {
+  font-size: 20px;
+  color: orange;
+  text-shadow: 0 0 5px orange;
+  margin-top: 2rem;
+}
+
+.description {
+  font-size: 20px;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.repo {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 15px;
+  border: 2px solid white;
+  margin-top: 5rem;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 10px white;
+  text-shadow: 0 0 5px white;
+}
+
+.ghicon {
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+}
