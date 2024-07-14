@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react';
-import MobileProjects from './MobileProjectView';
-import WebProjects from './WebProjectView';
+import MobileProjectsView from './MobileProjectsView';
+import WebProjectsView from './WebProjectsView';
 
 const ProjectsView: React.FC = () => {
   const [isMobile, setIsMobile] = useState<boolean>(false);
@@ -21,7 +21,7 @@ const ProjectsView: React.FC = () => {
 
   return (
     <div>
-      {isMobile ? <MobileProjects /> : <WebProjects />}
+      {isMobile ? <MobileProjectsView /> : <WebProjectsView />}
     </div>
   );
 };

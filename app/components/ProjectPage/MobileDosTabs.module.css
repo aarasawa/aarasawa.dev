@@ -1,0 +1,85 @@
+/* Existing CSS */
+.container {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid white;
+  width: 100%;
+  height: calc(100vh - 30vh);
+  box-shadow: 0 0 10px white;
+  margin: auto;
+  padding-top: 60px; 
+}
+
+.topPane {
+  display: flex;
+  font-size: 20px;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  border-bottom: 2px solid white;
+  padding: 5px;
+  color: white;
+  box-shadow: 0 0 10px white;
+  text-shadow: 0 0 5px white;
+  height: 50px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: white;
+  background-color: black;
+  box-shadow: 0 0 10px white;
+  text-shadow: 0 0 5px white;
+  overflow-y: auto;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: row;
+  border-top: 2px solid white;
+  width: 100%;
+  box-shadow: 0 0 10px white;
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-height: calc(100% - 50px);
+}
+
+.tabButton {
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  padding: 10px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 10px white;
+  text-shadow: 0 0 5px white;
+  flex: 1 0 auto;
+}
+
+.tabButton:hover {
+  background-color: white;
+  color: black;
+  box-shadow: 0 0 15px white;
+}
+
+.tabContent {
+  display: none;
+  padding: 20px;
+  color: white;
+  background-color: black;
+  box-shadow: 0 0 10px white;
+  text-shadow: 0 0 5px white;
+  overflow-y: auto;
+  max-height: calc(100% - 50px);
+}
+
+.tabContent.active {
+  display: block;
+}
