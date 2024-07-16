@@ -3,7 +3,7 @@ import { OpenLib, AgriGuard, PhotoFilm, AgriTag, PesticideNOI, ProjectSwampfish 
 import styles from './WebDosTabs.module.css';
 
 const DosTabs: React.FC = () => {
-  const [activeTab, setActiveTab] = useState('home');
+  const [activeTab, setActiveTab] = useState('Open Library');
 
   const openTab = (tabName: string) => {
     setActiveTab(tabName);
