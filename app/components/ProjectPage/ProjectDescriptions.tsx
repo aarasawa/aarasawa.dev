@@ -1,6 +1,5 @@
 import React from 'react';
 import ProjectSection from './ProjectSectionComponent';
-import styles from './ProjectDescriptions.module.css';
 
 export const OpenLib: React.FC = () => {
   return (

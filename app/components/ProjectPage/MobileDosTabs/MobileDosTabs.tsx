@@ -3,7 +3,7 @@ import { OpenLib, AgriGuard, PhotoFilm, AgriTag, PesticideNOI, ProjectSwampfish 
 import styles from './MobileDosTabs.module.css';
 
 const MobileDosTabs: React.FC = () => {
-  const [activeTab, setActiveTab] = useState('home');
+  const [activeTab, setActiveTab] = useState('Open Library');
 
   const openTab = (tabName: string) => {
     setActiveTab(tabName);
@@ -24,9 +24,6 @@ const MobileDosTabs: React.FC = () => {
         <span>PROJECT DESCRIPTIONS</span>
       </div>
       <div className={styles.content} onTouchEnd={handleSwipe}>
-        <div className={`${styles.tabContent} ${activeTab === 'home' ? styles.activeTab : ''}`}>
-          
-        </div>
         <div className={`${styles.tabContent} ${activeTab === 'Open Library' ? styles.active : ''}`}>
           <OpenLib />
         </div>
