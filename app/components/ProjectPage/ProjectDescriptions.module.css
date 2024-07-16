@@ -1,43 +1,52 @@
-.centered {
+.innerTabContent {
+  position: relative;
+  padding-bottom: 60px; 
+}
+
+.centeredTitle {
   font-size: 25px;
   text-align: center;
 }
 
-.descriptionSubtitle {
+.descriptionSubtitle, .contributionSubtitle {
   font-size: 20px;
   color: orange;
   text-shadow: 0 0 5px orange;
   margin-top: 2rem;
 }
 
-.contributionSubtitle {
-  font-size: 20px;
-  color: orange;
-  text-shadow: 0 0 5px orange;
-  margin-top: 2rem;
-}
-
-.description {
+.description, .contributionDescription {
   font-size: 20px;
   text-align: center;
   margin-top: 1rem;
 }
 
-.repo {
-  font-size: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 5px 15px;
-  border: 2px solid white;
-  margin-top: 5rem;
-  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
-  box-shadow: 0 0 10px white;
-  text-shadow: 0 0 5px white;
+.ghicon {
+  display: inline-flex;
+  width: 25px;
+  height: 25px;
+  padding-right: 5px;
+  filter: drop-shadow(0 0 5px white);
+  transition: filter 0.3s;
 }
 
-.ghicon {
-  width: 20px;
-  height: 20px;
-  margin: 5px;
+.buttonContainer {
+  text-align: center;
+  width: 100%;
+  margin-top: 5rem;
+}
+
+.centerButton {
+  font-size: 20px;
+  color: white;
+  border: 2px solid white;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  box-shadow: 0 0 10px white;
+  text-shadow: 0 0 5px white;
+  padding: 10px 20px;
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  margin: 10px auto;
 }
