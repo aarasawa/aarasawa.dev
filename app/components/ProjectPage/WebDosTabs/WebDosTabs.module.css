@@ -60,6 +60,7 @@
   box-shadow: 0 0 10px white;
   overflow-y: auto;
   max-height: 100%; 
+  flex-shrink: 0;
 }
 
 .tabButton {
@@ -87,6 +88,9 @@
 .tabContent {
   flex-grow: 1;
   padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: white;
   background-color: black;
   box-shadow: 0 0 10px white;
