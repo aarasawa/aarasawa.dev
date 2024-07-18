@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { OpenLib, AgriGuard, PhotoFilm, AgriTag, PesticideNOI, ProjectSwampfish } from '../ProjectDescriptions/ProjectDescriptions';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 import styles from './MobileDosTabs.module.css';
 
 const MobileDosTabs: React.FC = () => {
@@ -46,7 +47,7 @@ const MobileDosTabs: React.FC = () => {
         </div>
       </div>
       <button className={styles.floatingButton} onClick={() => setMenuOpen(!menuOpen)}>
-        {menuOpen ? '⮝ MORE' : '⮟ MORE'}
+        {menuOpen ? <ChevronUp className={styles.menuIcon}/> : <ChevronDown className={styles.menuIcon}/>} MORE 
       </button>
       {menuOpen && (
         <div className={styles.menu}>
