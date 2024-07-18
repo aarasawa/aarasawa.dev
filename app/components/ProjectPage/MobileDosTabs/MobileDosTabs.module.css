@@ -34,7 +34,6 @@
   background-color: black;
   box-shadow: 0 0 10px white;
   text-shadow: 0 0 5px white;
-  overflow-y: auto;
 }
 
 .tabContent {
@@ -43,7 +42,6 @@
   color: white;
   background-color: black;
   text-shadow: 0 0 5px white;
-  overflow-y: auto;
   max-height: calc(100% - 50px);
 }
 
