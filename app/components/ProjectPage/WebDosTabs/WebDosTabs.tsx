@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { OpenLib, AgriGuard, PhotoFilm, AgriTag, PesticideNOI, ProjectSwampfish } from '../ProjectDescriptions';
+import { OpenLib, AgriGuard, PhotoFilm, AgriTag, PesticideNOI, ProjectSwampfish } from '../ProjectDescriptions/ProjectDescriptions';
 import styles from './WebDosTabs.module.css';
 
 const DosTabs: React.FC = () => {

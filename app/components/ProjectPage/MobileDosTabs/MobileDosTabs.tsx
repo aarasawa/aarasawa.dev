@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { OpenLib, AgriGuard, PhotoFilm, AgriTag, PesticideNOI, ProjectSwampfish } from '../ProjectDescriptions';
+import { OpenLib, AgriGuard, PhotoFilm, AgriTag, PesticideNOI, ProjectSwampfish } from '../ProjectDescriptions/ProjectDescriptions';
 import styles from './MobileDosTabs.module.css';
 
 const MobileDosTabs: React.FC = () => {
   const [activeTab, setActiveTab] = useState('Open Library');
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const openTab = (tabName: string) => {
     setActiveTab(tabName);
+    setMenuOpen(false);
   };
 
   const handleSwipe = (e: React.TouchEvent<HTMLDivElement>) => {
@@ -43,14 +45,19 @@ const MobileDosTabs: React.FC = () => {
           <ProjectSwampfish />
         </div>
       </div>
-      <div className={styles.tabs}>
-        <button className={styles.tabButton} onClick={() => openTab('Open Library')}>Open Library</button>
-        <button className={styles.tabButton} onClick={() => openTab('AgriGuard Insight')}>AgriGuard Insight</button>
-        <button className={styles.tabButton} onClick={() => openTab('Wix Studio Challenge')}>Wix Studio Challenge</button>
-        <button className={styles.tabButton} onClick={() => openTab('AgriTag')}>AgriTag</button>
-        <button className={styles.tabButton} onClick={() => openTab('Pesticide Notification System')}>Pesticide Notification System</button>
-        <button className={styles.tabButton} onClick={() => openTab('Project SwampFish')}>Project SwampFish</button>
-      </div>
+      <button className={styles.floatingButton} onClick={() => setMenuOpen(!menuOpen)}>
+        {menuOpen ? '⮝ MORE' : '⮟ MORE'}
+      </button>
+      {menuOpen && (
+        <div className={styles.menu}>
+          <button className={styles.menuItem} onClick={() => openTab('Open Library')}>Open Library</button>
+          <button className={styles.menuItem} onClick={() => openTab('AgriGuard Insight')}>AgriGuard Insight</button>
+          <button className={styles.menuItem} onClick={() => openTab('Wix Studio Challenge')}>Wix Studio Challenge</button>
+          <button className={styles.menuItem} onClick={() => openTab('AgriTag')}>AgriTag</button>
+          <button className={styles.menuItem} onClick={() => openTab('Pesticide Notification System')}>Pesticide Notification System</button>
+          <button className={styles.menuItem} onClick={() => openTab('Project SwampFish')}>Project SwampFish</button>
+        </div>
+      )}
     </div>
   );
 };

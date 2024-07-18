@@ -21,30 +21,6 @@
   text-shadow: 0 0 5px white;
 }
 
-.buttonGroup {
-  display: flex;
-}
-
-.controlButton {
-  width: 20px;
-  height: 20px;
-  margin: 0 2px;
-  border: 1px solid white;
-  background-color: black;
-  color: white;
-  text-align: center;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
-  box-shadow: 0 0 10px white;
-  text-shadow: 0 0 5px white;
-}
-
-.controlButton:hover {
-  background-color: white;
-  color: black;
-  box-shadow: 0 0 15px white;
-}
-
 .content {
   display: flex;
   flex-grow: 1;

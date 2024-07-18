@@ -1,4 +1,3 @@
-/* Existing CSS */
 .container {
   display: flex;
   flex-direction: column;
@@ -38,36 +37,6 @@
   overflow-y: auto;
 }
 
-.tabs {
-  display: flex;
-  flex-direction: row;
-  border-top: 2px solid white;
-  width: 100%;
-  box-shadow: 0 0 10px white;
-  overflow-x: auto;
-  overflow-y: hidden;
-  max-height: calc(100% - 50px);
-}
-
-.tabButton {
-  background-color: black;
-  color: white;
-  border: 1px solid white;
-  padding: 10px;
-  cursor: pointer;
-  text-align: center;
-  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
-  box-shadow: 0 0 10px white;
-  text-shadow: 0 0 5px white;
-  flex: 1 0 auto;
-}
-
-.tabButton:hover {
-  background-color: white;
-  color: black;
-  box-shadow: 0 0 15px white;
-}
-
 .tabContent {
   display: none;
   padding: 20px;
@@ -80,4 +49,49 @@
 
 .tabContent.active {
   display: block;
+}
+
+.floatingButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: black;
+  color: white;
+  border: 2px solid white;
+  padding: 5px 10px;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 0 10px white;
+  text-shadow: 0 0 5px white;
+  z-index: 1;
+}
+
+.menu {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 200px;
+  background-color: black;
+  border: 2px solid white;
+  box-shadow: 0 0 10px white;
+  z-index: 1000;
+  overflow-y: auto;
+  max-height: 300px;
+}
+
+.menuItem {
+  width: 100%;
+  padding: 10px;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+  text-shadow: 0 0 5px white;
+}
+
+.menuItem:hover {
+  background-color: white;
+  color: black;
+  box-shadow: 0 0 15px white;
 }
