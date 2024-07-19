@@ -17,8 +17,9 @@
 
 .description, .contributionDescription {
   font-size: 20px;
-  text-align: center;
+  text-align: left;
   margin-top: 1rem;
+  text-indent: 3em;
 }
 
 .ghicon {

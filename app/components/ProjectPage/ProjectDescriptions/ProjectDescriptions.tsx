@@ -7,8 +7,8 @@ export const OpenLib: React.FC = () => {
       title="Internet Archive's Open Library"
       descriptionSubtitle="What is Open Library?"
       contributionSubtitle="Contributions:"
-      description="Open Library is a collaborative open-source initiative for a universal catalog for book metadata. The goal is to create a web page for every book ever published. Anyone can contribute to the Open Library catalog."
-      contribution="I contribute to the project as a volunteer developer. In collaboration with other contributors, I work on issues presented on GitHub. Recently, I redesigned and implemented a sort options dropdown menu under the search page."
+      description="Open Library is an initiative of the Internet Archive, a non-profit library of Internet sites and other cultural artifacts in digital form. This project specially has the mission of providing a universal catalog for book metadata online. The goal is to create a web page for every book ever published for any person to use. The Open Library is a collaborative open-source initiative for anyone to use and contribute to its catalog, with links to discover, borrow, and read from the Internet Archive's collections. "
+      contribution="As a software developer contributing to the OpenLibrary project, I have successfully redesigned and implemented a dropdown menu for sorting search results, enhancing the user experience by providing more intuitive and efficient sorting options. This involved close collaboration with fellow developers, designers, and project leads to ensure seamless integration and alignment with the project's overall design principles. My role required a keen eye for detail and a proactive approach to problem-solving, contributing to a more user-friendly interface and improved functionality within the OpenLibrary platform."
       projectLink="https://openlibrary.org"
       repoLink="https://github.com/aarasawa/openlibrary" 
     />
@@ -19,10 +19,10 @@ export const AgriGuard: React.FC = () => {
   return (
     <ProjectSection
       title="AgriGuard Insight"
-      descriptionSubtitle="Concept"
-      contributionSubtitle="Purpose"
-      description="AgriGuard Insight is a project submitted to the Gemini API development competition hosted by Google. The contest surrounds creating a project with Gemini Generative AI as the driving piece for creating a new idea or project concept."
-      contribution="This project is still under development. The purpose is to use Gemini API to analyze datasets for pesticide applications to alert the general populace about where and when common pesticides are going to be applied in California."
+      descriptionSubtitle="Purpose"
+      contributionSubtitle="Project Description"
+      description="AgriGuard Insight is a project submitted to the Gemini API development competition hosted by Google. Participants are challenged to harness the capabilities of Gemini Generative AI to create projects that address real-world problems and introduce novel concepts. This contest aims to encourage out-of-the-box thinking and utilize Gemini API to push the boundaries of what AI can achieve."
+      contribution="AgriGuard Insight aims to analyze extensive datasets related to pesticide use, including application schedules, locations, and types of pesticides used. By processing this data, the project intends to generate real-time alerts to inform the general populace about where and when common pesticides will be applied. I created this project because it addresses a critical need for public health and safety, particularly for communities living near agricultural areas. Timely and accurate dissemination of pesticide application information can help residents take necessary precautions, thereby reducing potential exposure."
       projectLink="https://google.com"
       repoLink="https://github.com/aarasawa/agriguard-insight"
     />
@@ -34,9 +34,9 @@ export const PhotoFilm: React.FC = () => {
     <ProjectSection
       title="PhotoFilm.dev"
       descriptionSubtitle="Purpose"
-      contributionSubtitle="Opinion on Wix Studio"
-      description="An entry to the Wix Studio development contest on dev.to for creating a concept e-commerce platform, highlighting accessibilty, ingenuity, and utilizing Wix APIs and components."
-      contribution="The website is not a fully-functioning due to some features locked behind a subscription paywall. However, I think that the tools that Wix provides are markedly more sophisticated than they were when I had used it before."
+      contributionSubtitle="Project Description"
+      description="The Wix Studio contest tasked developers with creating a concept e-commerce platform catering to users highlighting accessibility, ingenuity, and utilizing Wix APIs and components."
+      contribution="PhotoFilm.dev is an innovative concept e-commerce platform, aimed at enthusiasts of all things photography with a special emphasis on film photography. This platform seeks to create a vibrant online community, an integrated user ecosystem for promoting interaction between users, and live events. Photography aficionados can explore, purchase, and discuss a wide range of products and services related to both digital and film products. Alongside a curated selection of cameras, film rolls, development kits, and accessories, users can browse educational resources and forums to share tips, techniques, and photos. PhotoFilm.dev aspires to be a one-stop shop for photographers."
       projectLink="https://aarasawa7.wixstudio.io/photofilm"
       repoLink="https://github.com/aarasawa/wix-studio-challenge"
     />
@@ -48,9 +48,9 @@ export const AgriTag: React.FC = () => {
     <ProjectSection
       title="AgriTag"
       descriptionSubtitle="Purpose"
-      contributionSubtitle="Goals"
-      description="Entry into the AWS Amplify Gen 2 development competition. The purpose was to use AWS Amplify Gen 2 workflows and processes to create a typescript application. I chose this concept because after completing my senior design project a professor asked if our endpoints were public. I thought it would be beneficial for the public to have access to it."
-      contribution="Create a public database for historical pesticide data displayed on a map of California. Users can query between a range of dates to see hotspots. This project is still under development."
+      contributionSubtitle="Project Description"
+      description="The AWS Amplify 2024 contest challenges developers to leverage the capabilities of Generation 2 AWS Amplify ecosystem for creating innovative applications. Participants are required to utilize AWS Amplify's workflows and processes, integrating its robust set of tools and services to build applications that demonstrate technical excellence and practical utility."
+      contribution="Inspired by a college professor, I decided to implement a publicly accessible pesticide database user interface aimed at creating an application to democratize and promote access to this information. This project focuses on implementing public endpoints to share valuable data, allowing users to interact with decades of historical pesticide application data provided by the California Department of Pesticide Regulation."
       projectLink="https://main.d2rw2a2tboa74s.amplifyapp.com/"
       repoLink="https://github.com/aarasawa/agritag"
     />
@@ -63,10 +63,9 @@ export const PesticideNOI: React.FC = () => {
     <ProjectSection
       title="Pesticide Notification System"
       descriptionSubtitle="Purpose"
-      contributionSubtitle="Results"
-      description="A proof-of-concept project to present to the California Department of Pesticide Regulation (CDPR) in persuasion for the release of real-time pesticide information. Our focus was a particularly harmful set of pesticides known as Restricted Materials that require applicants to file a Notice of Intent (NOI) to apply.
-                   Our system would track the CDPR database and notify users in real-time. We implemented over web, mobile, and a low-tech SMS text service."
-      contribution="Although our presentation was unfruitful, CDPR has started to create pilot county pesticide systems."
+      contributionSubtitle="Contributions"
+      description="A proof-of-concept project to present to the California Department of Pesticide Regulation (CDPR) in persuasion for the release of real-time pesticide information. Our focus was a particularly harmful set of pesticides known as Restricted Materials that require applicants to file a Notice of Intent (NOI) to apply. Our system would track the CDPR database and notify users in real-time. Our application displays applications of Restricted Materials within a radius around a user's current location. It is available over web, mobile, and a low-tech SMS text service."
+      contribution="My participation on the backend team: drafting system architecture mockups, implementing PSQL stored procedures for finding NOIs and NOI data near a given coordinate, investigating restricted products and product labels, and setting up a Google Cloud SQL database. Coding scripts and processing NOI data, implementing a REST API for finding information by location and county, adjusting query parameters to allow for filtering and sorting information on the frontend, and creating an endpoint for adding new NOIs to the database. Highlight application security by managing vulnerable information using Google Secret Manager. While on the mobile team: implement a settings screen on the mobile application, adding Spanish language functionality, and publishing the application to the App Store. "
       projectLink="https://pesticidenoi.netlify.app"
       repoLink="https://github.com/judyz01/pesticide-notification-system"
     />
@@ -78,9 +77,9 @@ export const ProjectSwampfish: React.FC = () => {
     <ProjectSection
       title="Project SwampFish"
       descriptionSubtitle="Description"
-      contributionSubtitle="Goals"
+      contributionSubtitle="Contents"
       description="A repository of my attempts at various excursions into learning and participating in cybersecurity events."
-      contribution="No goals. For funsies. Always wanted to learn about hacking since I started using computers. May convert into a blog later."
+      contribution="I have always wanted to learn about hacking since I started using computers. These are artifacts and products of my participation in courses, Capture the Flag (CTF) competitions, and notes pertaining to cybersecurity."
       projectLink="#"
       repoLink="https://github.com/aarasawa/Project_SwampFish"
     />
