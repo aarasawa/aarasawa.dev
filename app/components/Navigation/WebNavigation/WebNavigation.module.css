@@ -1,0 +1,28 @@
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid transparent;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.navLinks {
+  display: flex;
+  gap: 2rem;
+}
+
+.navItem {
+  color: #ccc;
+  cursor: pointer;
+}
+
+.navItem:hover {
+  color: #fff;
+}

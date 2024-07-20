@@ -1,0 +1,47 @@
+.header {
+  position: relative;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(4px);
+}
+
+.navContainer {
+  position: fixed;
+  inset: 0 0 auto;
+  top: 0;
+  backdrop-filter: blur(10px);
+  z-index: 2;
+  border-bottom: 1px solid transparent;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.navContainerVisible {
+  background-color: rgba(28, 28, 28, 0.5);
+  border-color: rgba(68, 68, 68, 1);
+}
+
+.navContainerHidden {
+  background-color: rgba(28, 28, 28, 0);
+  border-color: transparent;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  margin: 0 auto;
+  font-size: 1.25rem;
+}
+
+.button {
+  color: rgba(160, 160, 160, 1);
+}
+
+.buttonHover {
+  color: rgba(240, 240, 240, 1);
+}
+
