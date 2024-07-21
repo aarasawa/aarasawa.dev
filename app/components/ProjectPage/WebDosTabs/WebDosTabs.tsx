@@ -13,6 +13,7 @@ const DosTabs: React.FC = () => {
     <div className={styles.container}>
       <div className={styles.topPane}>
         <span>PROJECT DESCRIPTIONS</span>
+        <span className={styles.closeButton}>&times;</span>
       </div>
       <div className={styles.content}>
         <div className={styles.tabs}>

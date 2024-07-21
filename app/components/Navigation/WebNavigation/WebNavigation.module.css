@@ -1,0 +1,43 @@
+.header {
+  position: fixed;
+  font-size: 25px;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid transparent;
+  backdrop-filter: blur(10px);
+  text-shadow: 0 0 5px white;
+  z-index: 1; 
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px 30px;
+  box-sizing: border-box;
+}
+
+.navLinks {
+  display: flex;
+  gap: 2rem;
+}
+
+.homeBtn {
+  margin-left: auto; 
+}
+
+.navItem {
+  color: #ccc;
+  cursor: pointer;
+}
+
+.navItem:hover {
+  color: orange;
+  text-shadow: 0 0 15px orange;
+}
