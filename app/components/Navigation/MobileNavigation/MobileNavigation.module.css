@@ -1,67 +1,82 @@
 .header {
   position: fixed;
+  font-size: 25px;
   top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
   background: rgba(0, 0, 0, 0.5);
   border-bottom: 1px solid transparent;
   backdrop-filter: blur(10px);
-  z-index: 50;
+  text-shadow: 0 0 5px white;
+  z-index: 20;
 }
 
 .container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
+  justify-content: space-between; 
+  align-items: center; 
+  width: 100%; 
+  padding: 1rem; 
+}
+
+.menuButtonContainer {
+  display: flex;
+  align-items: center; 
 }
 
 .menuButton {
-  color: #ccc;
+  color: white;
   cursor: pointer;
+  z-index: 4;
 }
 
-.menuButton:hover {
-  color: #fff;
-}
-
-.menu {
-  position: absolute;
-  font-size: 30px;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background: transparent;
-  padding: 1rem;
+.homeButtonContainer {
+  margin-left: auto; 
   display: flex;
-  flex-direction: column;
   align-items: center;
-  z-index: 50;
-}
-
-.menuItem {
-  color: #ccc;
-  margin: 0.5rem 0;
-  text-align: center;
-}
-
-.menuItem:hover {
-  color: #fff;
-}
-
-.backdrop {
-  position: fixed;
-  inset: 0;
-  backdrop-filter: blur(10px);
-  z-index: 40;
 }
 
 .homeButton {
   color: #ccc;
-  text-decoration: none;
-  margin-right: 1rem;
-  z-index: 100;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 5;
 }
 
-.activeTab {
-  font-weight: bold;
+.menu {
+  position: absolute;
+  font-size: 2rem;
+  top: 100%;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  z-index: 3;
+}
+
+.menuItem {
+  color: white;
+  margin: 0.5rem 0;
+  text-align: center;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  z-index: 3;
 }

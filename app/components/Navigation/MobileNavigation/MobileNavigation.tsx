@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Home } from 'lucide-react';
 import Link from 'next/link';
 import styles from './MobileNavigation.module.css';
 
@@ -8,7 +8,6 @@ const MobileNavigation: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string | null>(null);
 
   const navigation = [
-    { name: 'HOME', href: '/home' },
     { name: 'PROJECTS', href: '/projects' },
     { name: 'CONTACT', href: '/contact' },
   ];
@@ -24,26 +23,35 @@ const MobileNavigation: React.FC = () => {
 
   return (
     <header className={styles.header}>
-      {isMenuOpen && <div className={styles.backdrop}></div>}
+      {isMenuOpen && <div className={styles.backdrop} onClick={toggleMenu}></div>}
       <div className={styles.container}>
-        <button className={styles.menuButton} onClick={toggleMenu}>
-          {isMenuOpen ? <X /> : <Menu />}
-        </button>
-        {isMenuOpen && (
-          <div className={styles.menu}>
-            {navigation.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`${styles.menuItem} ${activeTab === item.href ? styles.activeTab : ''}`}
-                onClick={() => handleTabClick(item.href)}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </div>
-        )}
+        <span className={styles.menuButtonContainer}>
+          <button className={styles.menuButton} onClick={toggleMenu}>
+            {isMenuOpen ? <X /> : <Menu />}
+          </button>
+        </span>
+        <span className={styles.homeButtonContainer}>
+          <Link href="/home">
+            <button className={styles.homeButton}>
+              <Home />
+            </button>
+          </Link>
+        </span>
       </div>
+      {isMenuOpen && (
+        <div className={styles.menu}>
+          {navigation.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`${styles.menuItem} ${activeTab === item.href ? styles.activeTab : ''}`}
+              onClick={() => handleTabClick(item.href)}
+            >
+              {item.name}
+            </Link>
+          ))}
+        </div>
+      )}
     </header>
   );
 };
