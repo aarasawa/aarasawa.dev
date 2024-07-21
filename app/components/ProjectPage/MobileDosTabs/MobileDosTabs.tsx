@@ -47,7 +47,7 @@ const MobileDosTabs: React.FC = () => {
         </div>
       </div>
       <button className={styles.floatingButton} onClick={() => setMenuOpen(!menuOpen)}>
-        {menuOpen ? <ChevronUp className={styles.menuIcon}/> : <ChevronDown className={styles.menuIcon}/>} MORE 
+        {menuOpen ? <ChevronUp className={styles.menuIcon}/> : <ChevronDown className={styles.menuIcon}/>} OTHER PROJECTS 
       </button>
       {menuOpen && (
         <div className={styles.menu}>

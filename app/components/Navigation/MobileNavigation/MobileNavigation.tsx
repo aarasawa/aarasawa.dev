@@ -3,13 +3,7 @@ import { Menu, X, Home } from 'lucide-react';
 import Link from 'next/link';
 import styles from './MobileNavigation.module.css';
 
-interface MobileNavigationProps {
-  onSelectProject: (project: string) => void;
-}
-
-const MobileNavigation: React.FC<MobileNavigationProps> = ({
-  onSelectProject
-}) => {
+const MobileNavigation: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<string | null>(null);
 
