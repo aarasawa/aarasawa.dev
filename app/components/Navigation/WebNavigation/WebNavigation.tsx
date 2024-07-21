@@ -11,16 +11,18 @@ const WebNavigation: React.FC = () => {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <div className={styles.navLinks}>
+        <span className={styles.navLinks}>
           {navigation.map((item) => (
             <Link key={item.href} href={item.href} className={styles.navItem}>
               {item.name}
             </Link>
           ))}
-        </div>
-        <Link href="/home" className={styles.navItem}>
-          HOME
-        </Link>
+        </span>
+        <span className={styles.homeBtn}>
+          <Link href="/home" className={styles.navItem}>
+            HOME
+          </Link>
+        </span>
       </div>
     </header>
   );

@@ -2,13 +2,13 @@
   position: fixed;
   top: 0;
   width: 100%;
+  justify-content: center;
   background: rgba(0, 0, 0, 0.5);
   border-bottom: 1px solid transparent;
 }
 
 .container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 1rem;
 }
@@ -16,6 +16,11 @@
 .navLinks {
   display: flex;
   gap: 2rem;
+}
+
+.homeBtn {
+  position: flex;
+  justify-items:end;
 }
 
 .navItem {
