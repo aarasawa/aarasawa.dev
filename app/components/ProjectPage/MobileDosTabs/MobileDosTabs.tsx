@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, } from 'react';
 import { OpenLib, AgriGuard, PhotoFilm, AgriTag, PesticideNOI, ProjectSwampfish } from '../ProjectDescriptions/ProjectDescriptions';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import styles from './MobileDosTabs.module.css';
