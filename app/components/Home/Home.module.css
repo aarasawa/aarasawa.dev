@@ -7,6 +7,7 @@
   justify-content: center;
   width: 100vw;
   height: 100vh;
+  text-shadow: 0 0 5px white;
 }
 
 .homeTitle {
@@ -20,12 +21,13 @@
   border-right: 1rem solid white;
   white-space: nowrap;
   margin: 0 auto;
-  animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+  animation: typing 2.5s steps(10, end), blink-caret 1s step-end infinite;
+  text-shadow: 0 0 5px white;
 }
 
 @keyframes typing {
   from { width: 0; }
-  to { width: 50%; }
+  to { width: 60%; }
 }
 
 @keyframes blink-caret {
@@ -38,6 +40,11 @@
     font-size: 3rem;
     line-height: 1;
   }
+
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 40%; }
+  }
 }
 
 @media (min-width: 1280px) {
@@ -45,27 +52,40 @@
     font-size: 4rem;
     line-height: 1;
   }
+
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 35%; }
+  }
 }
 
 .homeNav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
+  text-shadow: 0 0 5px white;
 }
 
 .homeNavUl {
+  display: flex;
   align-items: center;
   justify-items: center;
+  list-style: none;
   gap: 1rem;
   font-size: 1.5rem;
+  padding: 0;
+  margin: 0;
 }
 
 .homeLink {
   font-size: 1.25rem;
   color: white;
-  text-shadow: 0 0 2px white;
+  text-shadow: 0 0 5px white;
 }
 
 .homeLink:hover {
   color: orange;
-  text-shadow: 0 0 2px orange;
+  text-shadow: 0 0 5px orange;
 }

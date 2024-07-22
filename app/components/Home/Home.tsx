@@ -13,7 +13,6 @@ function Home() {
       <h1 className={styles.homeTitle}>
         Alexander Arasawa
       </h1>
-
       <nav className={styles.homeNav}>
         <span className={styles.homeNavUl}>
           {nav.map((item) => (
