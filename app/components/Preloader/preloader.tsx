@@ -175,7 +175,9 @@ function Preloader() {
   }, [count, delay, AddLog, CreateLog, strings.length]);
 
   return (
-    <div id="preloader" className="text-xl">
+    <div className="min-h-screen bg-black text-white">
+      <div id="preloader" className="text-xl">
+      </div>
     </div>
   );
 };
