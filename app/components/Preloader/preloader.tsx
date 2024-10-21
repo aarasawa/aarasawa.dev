@@ -1,5 +1,11 @@
 'use client'
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { getCookie, setCookie } from 'cookies-next';
+import { useRouter } from 'next/navigation';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
+
+interface PreloaderProps {
+  onComplete: () => void;
+}
 
 /*
 The following code has been referenced from this CTF template. I had an initial vision for how the preloader would look 
@@ -9,10 +15,11 @@ has been modified for TypeScript and Next.JS App Router.
 (https://github.com/ashawe/CTF-Website-Template-2020/blob/master/js/preloader.js
 */
 
-function Preloader() {
+const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
   const [count, setCount] = useState<number>(0);
   const [delay, setDelay] = useState<number>(1000);
   const [repeat, setRepeat] = useState<number>(0);
+  const router = useRouter();
   const strings = useMemo(() => [
     "Initialzing request",
     "Resolving internet address 127.0.0.1",
@@ -153,8 +160,9 @@ function Preloader() {
   useEffect(() => {
     const handleCount = () => {
       if (count === strings.length) {
+        setCookie('hasSeenPreloader', 'true', { maxAge: 60 * 60 * 24 * 7 }); // Cookie expires in 7 days
         setTimeout(() => {
-          window.location.href = '/home';
+          onComplete();
         }, 2000);
       }
       if (count < strings.length) {
@@ -172,11 +180,10 @@ function Preloader() {
     };
 
     handleCount();
-  }, [count, delay, AddLog, CreateLog, strings.length]);
+  }, [count, delay, AddLog, CreateLog, strings.length, onComplete]);
 
   return (
-    <div id="preloader" className="text-xl">
-    </div>
+    <div id="preloader" className="text-xl"></div>
   );
 };
 
