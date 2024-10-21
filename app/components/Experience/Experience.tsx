@@ -1,44 +1,41 @@
-'use client'
-import Navigation from "../Navigation/Navigation";
-import RolodexTimeline from '../Experience/RolodexTimeline/RolodexTimeline';
-import styles from './Experience.module.css';
+import ResumeTimeline from './Timeline/Timeline';
+import Navigation from '../Navigation/Navigation';
 
-const Experience: React.FC = () => {
-    const experiences = [
-        {
-          id: '1',
-          company: 'Tech Innovators Inc.',
-          role: 'Senior Software Engineer',
-          period: 'Jan 2020 - Present',
-          description: [
-            'Led development of cloud-based solutions',
-            'Implemented microservices architecture',
-            'Mentored junior developers'
-          ]
-        },
-        {
-          id: '2',
-          company: 'Data Dynamics LLC',
-          role: 'Full Stack Developer',
-          period: 'Mar 2017 - Dec 2019',
-          description: [
-            'Developed responsive web applications',
-            'Optimized database queries for improved performance',
-            'Collaborated with UX team to improve user interfaces'
-          ]
-        },
-        // Add more experiences as needed
-    ];
+const timelineItems = [
+  {
+    date: '2020 - Present',
+    title: 'Senior Developer',
+    description: 'Leading development teams and architecting complex systems.',
+  },
+  {
+    date: '2020 - Present',
+    title: 'Senior Developer',
+    description: 'Leading development teams and architecting complex systems.',
+  },
+  {
+    date: '2020 - Present',
+    title: 'Senior Developer',
+    description: 'Leading development teams and architecting complex systems.',
+  },
+  {
+    date: '2020 - Present',
+    title: 'Senior Developer',
+    description: 'Leading development teams and architecting complex systems.',
+  },
+  {
+    date: '2020 - Present',
+    title: 'Senior Developer',
+    description: 'Leading development teams and architecting complex systems.',
+  },
 
-    return (
-        <div>
-            <Navigation/>
-            <div className={styles.gemDesktop}>
-                <h1 className={styles.gemDesktopTitle}>Alexander's Workstation</h1>
-                <RolodexTimeline experiences={experiences} />
-            </div>
-        </div>
-    );
+];
+
+export default function Page() {
+  return (
+    <div>
+      <Navigation />
+      <h1>My Digital Resume</h1>
+      <ResumeTimeline items={timelineItems} />
+    </div>
+  );
 }
-
-export default Experience;
