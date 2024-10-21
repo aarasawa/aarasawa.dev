@@ -1,0 +1,45 @@
+.container {
+  position: relative;
+  min-height: 100vh;
+}
+
+.stickyContainer {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  max-width: 32rem;
+  width: 100%;
+  padding: 2rem;
+}
+
+.title {
+  font-size: 1.875rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.date {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.description {
+  font-size: 1.125rem;
+}
+
+.timelineTrack {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.timelineItem {
+  height: 100vh;
+}
