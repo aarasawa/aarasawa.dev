@@ -1,0 +1,231 @@
+@keyframes scanline {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+/* Main container adjusted to fill viewport */
+.container {
+  @apply w-full min-h-screen;
+  padding-top: 65px; /* Height of navigation */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+}
+
+.frame {
+  @apply flex-1 mx-8 my-4;
+  height: calc(100vh - 65px - 2rem); /* Viewport height minus navigation and margin */
+}
+
+.screen {
+  @apply relative bg-black rounded-md overflow-hidden;
+  height: 100%;
+  animation: flicker 0.15s infinite;
+}
+
+.scanlines {
+  @apply absolute inset-0 pointer-events-none;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 191, 0, 0.05) 50%,
+    transparent 100%
+  );
+  background-size: 100% 4px;
+}
+
+.scanline {
+  @apply absolute inset-0 pointer-events-none;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(255, 191, 0, 0.1) 10%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  animation: scanline 8s linear infinite;
+}
+
+.overlay {
+  @apply absolute inset-0 pointer-events-none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.1) 0px,
+    rgba(0, 0, 0, 0.1) 1px,
+    rgba(255, 191, 0, 0.05) 1px,
+    rgba(255, 191, 0, 0.05) 2px
+  );
+  background-size: 100% 4px;
+}
+
+.noise::before {
+  @apply absolute inset-0 pointer-events-none;
+  content: "";
+  opacity: 0.05;
+  background: repeating-radial-gradient(#000 0%, transparent 0.5%);
+}
+
+/* Content container */
+.content {
+  @apply relative z-10 h-full;
+  padding: 1rem;
+}
+
+/* Window styles */
+.window {
+  @apply fixed transition-[width,height] duration-200 ease-in-out border border-amber-500 bg-black;
+  z-index: 15;
+  max-width: calc(100vw - 2rem);
+  max-height: calc(100vh - 65px - 3rem); /* Account for navigation and taskbar */
+}
+
+.window.dragging {
+  @apply transition-none select-none;
+  pointer-events: none;
+}
+
+.window.active {
+  @apply border-amber-400;
+  z-index: 16;
+}
+
+.windowHeader {
+  @apply flex justify-between items-center p-2 bg-amber-500 text-black cursor-move select-none;
+}
+
+.windowTitle {
+  @apply flex items-center gap-2 font-mono;
+}
+
+.windowControls {
+  @apply flex gap-1;
+}
+
+.windowButton {
+  @apply p-1 hover:bg-amber-600 transition-colors cursor-pointer;
+}
+
+.windowContent {
+  @apply p-4 font-mono text-amber-500 overflow-auto;
+  height: calc(100% - 40px); /* Account for header height */
+}
+
+.maximized {
+  @apply fixed top-[65px] left-0 right-0 bottom-10 w-full;
+  height: calc(100vh - 65px - 40px) !important; /* Account for navigation and taskbar */
+}
+
+/* Desktop styles */
+.desktop {
+  @apply h-full pb-10;
+}
+
+.iconGrid {
+  @apply grid grid-cols-3 gap-4 p-4;
+}
+
+.icon {
+  @apply flex flex-col items-center w-32 p-2 cursor-pointer hover:bg-amber-500/20 rounded;
+}
+
+.iconSymbol {
+  @apply text-amber-500 text-2xl font-mono h-12 w-12 flex items-center justify-center border border-amber-500;
+}
+
+.iconText {
+  @apply mt-2 text-amber-500 text-center font-mono text-sm;
+}
+
+/* Taskbar */
+.taskbar {
+  @apply fixed bottom-0 left-0 right-0 h-10 bg-amber-950/90 border-t border-amber-500;
+  @apply flex items-center px-4 gap-2 font-mono text-sm;
+  z-index: 10;
+}
+
+.startButton {
+  @apply px-4 py-1 bg-amber-500 text-black hover:bg-amber-400 transition-colors cursor-pointer;
+}
+
+.taskbarItem {
+  @apply px-3 py-1 bg-amber-500/20 text-amber-500 hover:bg-amber-500/30 transition-colors;
+  @apply border border-amber-500/50 cursor-pointer flex items-center gap-2 min-w-[120px];
+}
+
+.taskbarItem.active {
+  @apply bg-amber-500 text-black;
+}
+
+.taskbarItem.minimized {
+  @apply opacity-70;
+}
+
+.systemInfo {
+  @apply ml-auto text-amber-500/70 flex items-center gap-4;
+}
+
+.clock {
+  @apply border-l border-amber-500/30 pl-4;
+}
+
+/* Startup sequence */
+.startup {
+  @apply text-amber-500 font-mono space-y-4 h-full flex items-center justify-center;
+}
+
+.startupBox {
+  @apply border border-amber-500 p-4 max-w-md w-full;
+}
+
+.memoryText {
+  @apply mt-4;
+}
+
+.startSection {
+  @apply mt-8 space-y-4;
+}
+
+.button {
+  @apply bg-amber-500 hover:bg-amber-600 text-black font-mono px-4 py-2 w-full transition-colors;
+}
+
+.skipButton {
+  @apply bg-amber-500/70 text-sm;
+}
+
+.loading {
+  @apply text-center p-4 animate-pulse;
+}
+
+.divider {
+  @apply h-6 w-px bg-amber-500/30 mx-2;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding-top: 48px; /* Mobile navigation height */
+  }
+
+  .frame {
+    height: calc(100vh - 48px - 1rem);
+    margin: 0.5rem;
+  }
+
+  .iconGrid {
+    @apply grid-cols-2;
+  }
+
+  .window {
+    width: 95% !important;
+    max-height: calc(100vh - 48px - 3rem);
+  }
+
+  .maximized {
+    top: 48px;
+  }
+}

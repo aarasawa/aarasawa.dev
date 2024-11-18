@@ -1,9 +1,9 @@
 'use client'
-import Experience from "../components/Experience/Experience";
+import DosConsole from "../components/Experience/CRTDisplay";
 
 const ExperiencePage: React.FC = () => {
   return (
-    <Experience/>
+    <DosConsole/>
   );
 };
 
