@@ -1,5 +1,5 @@
 import React, { useState, } from 'react';
-import { OpenLib, AgriGuard, PhotoFilm, AgriTag, PesticideNOI, ProjectSwampfish } from '../ProjectDescriptions/ProjectDescriptions';
+import { OpenLib, AgriGuard, AgriTag, PesticideNOI, ProjectSwampfish } from '../ProjectDescriptions/ProjectDescriptions';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import styles from './MobileDosTabs.module.css';
 
@@ -33,9 +33,6 @@ const MobileDosTabs: React.FC = () => {
         <div className={`${styles.tabContent} ${activeTab === 'AgriGuard Insight' ? styles.active : ''}`}>
           <AgriGuard />
         </div>
-        <div className={`${styles.tabContent} ${activeTab === 'Wix Studio Challenge' ? styles.active : ''}`}>
-          <PhotoFilm />
-        </div>
         <div className={`${styles.tabContent} ${activeTab === 'AgriTag' ? styles.active : ''}`}>
           <AgriTag />
         </div>
@@ -53,7 +50,6 @@ const MobileDosTabs: React.FC = () => {
         <div className={styles.menu}>
           <button className={styles.menuItem} onClick={() => openTab('Open Library')}>Open Library</button>
           <button className={styles.menuItem} onClick={() => openTab('AgriGuard Insight')}>AgriGuard Insight</button>
-          <button className={styles.menuItem} onClick={() => openTab('Wix Studio Challenge')}>Wix Studio Challenge</button>
           <button className={styles.menuItem} onClick={() => openTab('AgriTag')}>AgriTag</button>
           <button className={styles.menuItem} onClick={() => openTab('Pesticide Notification System')}>Pesticide Notification System</button>
           <button className={styles.menuItem} onClick={() => openTab('Project SwampFish')}>Project SwampFish</button>

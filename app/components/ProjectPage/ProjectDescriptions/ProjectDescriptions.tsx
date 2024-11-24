@@ -29,20 +29,6 @@ export const AgriGuard: React.FC = () => {
   );
 };
 
-export const PhotoFilm: React.FC = () => {
-  return (
-    <ProjectSection
-      title="PhotoFilm.dev"
-      descriptionSubtitle="Purpose"
-      contributionSubtitle="Project Description"
-      description="The Wix Studio contest tasked developers with creating a concept e-commerce platform catering to users highlighting accessibility, ingenuity, and utilizing Wix APIs and components."
-      contribution="PhotoFilm.dev is an innovative concept e-commerce platform, aimed at enthusiasts of all things photography with a special emphasis on film photography. This platform seeks to create a vibrant online community, an integrated user ecosystem for promoting interaction between users, and live events. Photography aficionados can explore, purchase, and discuss a wide range of products and services related to both digital and film products. Alongside a curated selection of cameras, film rolls, development kits, and accessories, users can browse educational resources and forums to share tips, techniques, and photos. PhotoFilm.dev aspires to be a one-stop shop for photographers."
-      projectLink="https://aarasawa7.wixstudio.io/photofilm"
-      repoLink="https://github.com/aarasawa/wix-studio-challenge"
-    />
-  );
-};
-
 export const AgriTag: React.FC = () => {
   return (
     <ProjectSection

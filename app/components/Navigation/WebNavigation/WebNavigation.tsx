@@ -5,6 +5,7 @@ import styles from './WebNavigation.module.css';
 const WebNavigation: React.FC = () => {
   const navigation = [
     { name: 'PROJECTS', href: '/projects' },
+    { name: 'EXPERIENCE', href: '/experience'},
     { name: 'CONTACT', href: '/contact' },
   ];
 

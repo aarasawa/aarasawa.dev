@@ -1,13 +1,33 @@
-import React from 'react';
+'use client'
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import styles from './Home.module.css';
+import Preloader from '../Preloader/preloader';
+import { getCookie } from 'cookies-next';
 
 const nav = [
   { name: "Projects", href: "/projects" },
   { name: "Contact", href: "/contact" },
 ];
 
-function Home() {
+const Home: React.FC = () => {
+  const [showPreloader, setShowPreloader] = useState<boolean>(true);
+
+  useEffect(() => {
+    const hasSeenPreloader = getCookie('hasSeenPreloader');
+    if (hasSeenPreloader) {
+      setShowPreloader(false);
+    }
+  }, []);
+
+  const handlePreloaderComplete = (): void => {
+    setShowPreloader(false);
+  };
+
+  if (showPreloader) {
+    return <Preloader onComplete={handlePreloaderComplete} />;
+  }
+
   return (
     <div className={styles.homeDiv}>
       <h1 className={styles.homeTitle}>
