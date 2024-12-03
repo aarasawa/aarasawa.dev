@@ -3,8 +3,8 @@ import Link from 'next/link';
 import styles from './Home.module.css';
 
 const nav = [
-  { name: "Projects", href: "/projects" },
-  { name: "Contact", href: "/contact" },
+  { name: "PROJECTS", href: "/projects" },
+  { name: "CONTACT", href: "/contact" },
 ];
 
 function Home() {
@@ -13,9 +13,8 @@ function Home() {
       <h1 className={styles.homeTitle}>
         Alexander Arasawa
       </h1>
-
       <nav className={styles.homeNav}>
-        <ul className={styles.homeNavUl}>
+        <span className={styles.homeNavUl}>
           {nav.map((item) => (
             <Link
               key={item.href}
@@ -25,7 +24,7 @@ function Home() {
               {item.name}
             </Link>
           ))}
-        </ul>
+        </span>
       </nav>
     </div>
   );

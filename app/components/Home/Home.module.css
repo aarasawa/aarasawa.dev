@@ -1,21 +1,91 @@
-/* Home.module.css */
 
 .homeDiv {
-  @apply flex flex-col justify-center w-screen h-screen overflow-hidden;
+  display: flex;
+  flex-direction: column;
+  background: black;
+  color: white;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  text-shadow: 0 0 5px white;
 }
 
 .homeTitle {
-  @apply text-center mt-5 bg-white cursor-default text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl bg-clip-text;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 1rem;
+  font-size: 2rem;
+  line-height: 2rem;
+  cursor: default;
+  overflow: hidden;
+  border-right: 1rem solid white;
+  white-space: nowrap;
+  margin: 0 auto;
+  animation: typing 2.5s steps(10, end), blink-caret 1s step-end infinite;
+  text-shadow: 0 0 5px white;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 60%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: white; }
+}
+
+@media (min-width: 1024px) {
+  .homeTitle {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 40%; }
+  }
+}
+
+@media (min-width: 1280px) {
+  .homeTitle {
+    font-size: 4rem;
+    line-height: 1;
+  }
+
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 35%; }
+  }
 }
 
 .homeNav {
-  @apply my-3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  text-shadow: 0 0 5px white;
 }
 
 .homeNavUl {
-  @apply flex items-center justify-center gap-4 text-2xl;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  list-style: none;
+  gap: 1rem;
+  font-size: 1.5rem;
+  padding: 0;
+  margin: 0;
 }
 
 .homeLink {
-  @apply text-xl text-zinc-500 hover:text-white;
+  font-size: 1.25rem;
+  color: white;
+  text-shadow: 0 0 5px white;
+}
+
+.homeLink:hover {
+  color: orange;
+  text-shadow: 0 0 5px orange;
 }
