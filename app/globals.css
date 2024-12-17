@@ -4,27 +4,44 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    background-color: black;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
 .lucide {
-  /* Change this! */
   color: white;
   width: 56px;
   height: 56px;
   stroke-width: 1px;
-  ;
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #333;
+  border-radius: 6px;
+  border: 3px solid #0a0a0a;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thick;
+  scrollbar-color: #333 #0a0a0a;
+}
+
+/* For IE and Edge */
+body {
+  scrollbar-face-color: #999;
+  scrollbar-track-color: #0a0a0a;
+}
+
+body {
+  color: white;
 }

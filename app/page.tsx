@@ -1,8 +1,8 @@
-import Preloader from "./components/Preloader/preloader";
+import Home from "./components/Home/Home";
 
 function Startup() {
   return (
-		<Preloader/>
+		<Home />
 	);
 }
 

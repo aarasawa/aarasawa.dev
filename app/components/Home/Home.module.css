@@ -1,11 +1,11 @@
 /* Home.module.css */
 
 .homeDiv {
-  @apply flex flex-col justify-center w-screen h-screen overflow-hidden;
+  @apply flex flex-col justify-center w-screen h-screen overflow-hidden bg-black;
 }
 
 .homeTitle {
-  @apply text-center mt-5 bg-white cursor-default text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl bg-clip-text;
+  @apply text-center mt-5 text-white cursor-default text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl bg-clip-text;
 }
 
 .homeNav {
