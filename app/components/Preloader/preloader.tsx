@@ -183,7 +183,7 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
   }, [count, delay, AddLog, CreateLog, strings.length, onComplete]);
 
   return (
-    <div id="preloader" className="text-xl"></div>
+    <div id="preloader" className="text-xl bg-black"></div>
   );
 };
 
