@@ -97,7 +97,6 @@ const NowPage: React.FC = () => {
 
       <div className={styles["now__desc"]}>
         A snapshot of what I'm focused on right now. Updated when something meaningfully changes.
-        Not a resume — just an honest account of what's in front of me.
       </div>
 
       <div className={styles["now__sections"]}>
@@ -166,19 +165,6 @@ const NowPage: React.FC = () => {
           </motion.div>
         ))}
       </div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        className={styles["now__footer"]}
-      >
-        <span className={styles["now__prompt"]}>$</span>
-        <span className={styles["now__footer-text"]}>
-          This is a <a href="https://nownownow.com/about" target="_blank" rel="noreferrer" className={styles["now__link"]}>/now page</a>.
-          An idea by <a href="https://sive.rs/now" target="_blank" rel="noreferrer" className={styles["now__link"]}>Derek Sivers</a>.
-        </span>
-      </motion.div>
     </section>
   );
 };

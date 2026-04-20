@@ -8,6 +8,7 @@
     background-color: rgba($color-terminal-bg, 0.85);
     backdrop-filter: blur(4px);
     border-bottom: 1px solid rgba($color-amber-base, 0.1);
+    overflow: visible;
   }
 
   &__nav-container {
@@ -17,6 +18,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    overflow: visible;
   }
 
   &__logo {
@@ -69,6 +71,7 @@
       display: flex;
       align-items: center;
       gap: 2rem;
+      overflow: visible;
     }
   }
 
@@ -129,28 +132,40 @@
 
   &__nav-dropdown-content {
     position: absolute;
-    top: calc(100% + 1rem);
-    right: 0;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 0.6rem;
     min-width: 12rem;
     background-color: $color-terminal-panel;
     border: 1px solid rgba($color-amber-base, 0.3);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
     padding: 0.5rem 0;
-    z-index: 1000;
-    @include terminal-card;
+    z-index: 200;
     pointer-events: auto;
 
+    // invisible bridge so mouse moving from trigger to menu doesn't close it
+    &::before {
+      content: '';
+      position: absolute;
+      top: -0.6rem;
+      left: 0;
+      right: 0;
+      height: 0.6rem;
+    }
+
+    // caret arrow pointing up toward Logs
     &::after {
       content: '';
       position: absolute;
-      top: -6px;
-      right: 1.5rem;
-      width: 10px;
-      height: 10px;
+      top: -5px;
+      left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+      width: 8px;
+      height: 8px;
       background-color: $color-terminal-panel;
-      border-left: 1px solid rgba($color-amber-base, 0.2);
-      border-top: 1px solid rgba($color-amber-base, 0.2);
-      transform: rotate(45deg);
+      border-left: 1px solid rgba($color-amber-base, 0.3);
+      border-top: 1px solid rgba($color-amber-base, 0.3);
     }
   }
 
@@ -563,7 +578,7 @@
 
   &__title {
     font-family: $font-mono;
-    font-size: 0.625rem;
+    font-size: 0.90rem;
     letter-spacing: 0.2em;
     color: $color-amber-base;
     text-transform: uppercase;
@@ -580,7 +595,7 @@
   }
 
   &__item {
-    font-size: 0.8125rem;
+    font-size: 0.90rem;
     color: rgba($color-amber-base, 0.5);
     display: flex;
     align-items: center;
@@ -798,7 +813,7 @@
 
   &__label {
     font-family: $font-mono;
-    font-size: 0.625rem;
+    font-size: 0.70rem;
     color: $color-amber-dim;
     letter-spacing: 0.2em;
   }
@@ -807,7 +822,7 @@
     background: none;
     border: none;
     font-family: $font-mono;
-    font-size: 0.5625rem;
+    font-size: 0.70rem;
     color: $color-amber-bright;
     cursor: pointer;
     text-decoration: underline;

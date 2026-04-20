@@ -82,7 +82,7 @@ export default function App() {
             className={styles['app__logo']}
             aria-label="Alex Arasawa - Return to Homepage"
           >
-            ALEX<span className={`${styles['app__cursor']} cursor-blink`} aria-hidden="true" />
+            ALEXANDER<span className={`${styles['app__cursor']} cursor-blink`} aria-hidden="true" />
           </Link>
 
           <button 
