@@ -1,0 +1,40 @@
+// Variables
+$color-amber-base: #FFB347;
+$color-amber-bright: #FFD580;
+$color-amber-dim: #D18D30; // Brightened slightly for better contrast on dark bg
+$color-terminal-bg: #0A0700;
+$color-terminal-panel: #0F0B02;
+
+$font-mono: "Share Tech Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font-display: "VT323", monospace;
+$font-body: "Outfit", sans-serif;
+
+$spacing-scanline: 2px;
+
+// Mixins
+@mixin terminal-glow {
+  transition: all 0.3s ease;
+  text-shadow: 0 0 16px $color-amber-base, 0 0 32px rgba($color-amber-base, 0.5);
+}
+
+@mixin terminal-card {
+  background: $color-terminal-panel;
+  border: 1px solid rgba($color-amber-base, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 18px rgba($color-amber-base, 0.02);
+
+  &:hover {
+    border-color: rgba($color-amber-base, 0.5);
+    box-shadow: 0 0 18px rgba($color-amber-base, 0.07), inset 0 0 18px rgba($color-amber-base, 0.07);
+  }
+}
+
+@mixin clip-path-hex {
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+
+@mixin clip-path-notch {
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}

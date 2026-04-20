@@ -1,0 +1,94 @@
+@use "../styles/variables" as *;
+
+.consent-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba($color-terminal-panel, 0.95);
+  border-top: 1px solid rgba($color-amber-base, 0.2);
+  padding: 1.5rem;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 3rem;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: 1.25rem;
+    color: $color-amber-bright;
+    letter-spacing: 0.1em;
+    @include terminal-glow;
+  }
+
+  &__text {
+    font-size: 0.8125rem;
+    color: rgba($color-amber-base, 0.6);
+    line-height: 1.5;
+    max-width: 50rem;
+    
+    a {
+      color: $color-amber-bright;
+      text-decoration: underline;
+      text-decoration-color: rgba($color-amber-base, 0.2);
+      text-underline-offset: 4px;
+      
+      &:hover {
+        @include terminal-glow;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 1rem;
+    flex-shrink: 0;
+  }
+
+  &__btn {
+    font-family: $font-mono;
+    font-size: 0.6875rem;
+    padding: 0.5rem 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &--accept {
+      background-color: $color-amber-base;
+      color: $color-terminal-bg;
+      border: none;
+      @include clip-path-hex;
+      
+      &:hover {
+        box-shadow: 0 0 15px rgba($color-amber-base, 0.4);
+        transform: translateY(-1px);
+      }
+    }
+
+    &--decline {
+      background-color: transparent;
+      border: 1px solid rgba($color-amber-base, 0.3);
+      color: $color-amber-base;
+
+      &:hover {
+        background-color: rgba($color-amber-base, 0.05);
+      }
+    }
+  }
+}

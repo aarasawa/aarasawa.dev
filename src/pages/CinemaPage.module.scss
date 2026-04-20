@@ -1,0 +1,11 @@
+@use "../styles/variables" as *;
+
+.section {
+  padding-bottom: 8rem;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}

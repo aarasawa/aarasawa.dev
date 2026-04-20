@@ -1,0 +1,183 @@
+@use "../styles/variables" as *;
+
+.now {
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+  max-width: 680px;
+
+  // ── TIMESTAMP ─────────────────────────────────────
+  &__timestamp {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: $font-mono;
+    font-size: 0.68rem;
+    margin-bottom: 1rem;
+  }
+
+  &__timestamp-prompt {
+    color: $color-amber-base;
+  }
+
+  &__timestamp-cmd {
+    color: rgba($color-amber-base, 0.4);
+    letter-spacing: 0.04em;
+  }
+
+  &__timestamp-val {
+    color: $color-amber-dim;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+
+    &::before {
+      content: '→ ';
+      opacity: 0.4;
+    }
+  }
+
+  // ── DESCRIPTION ───────────────────────────────────
+  &__desc {
+    font-size: 0.85rem;
+    color: rgba($color-amber-base, 0.5);
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+    padding-left: 1rem;
+    border-left: 2px solid rgba($color-amber-base, 0.1);
+    font-style: italic;
+  }
+
+  // ── SECTIONS ──────────────────────────────────────
+  &__sections {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  // ── SHELL PANEL ───────────────────────────────────
+  &__shell {
+    background: $color-terminal-panel;
+    border: 1px solid rgba($color-amber-base, 0.18);
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+
+    &:hover {
+      border-color: rgba($color-amber-base, 0.38);
+      box-shadow: 0 0 20px rgba($color-amber-base, 0.04),
+                  inset 0 0 20px rgba($color-amber-base, 0.03);
+    }
+  }
+
+  &__shell-bar {
+    background: rgba($color-amber-base, 0.04);
+    border-bottom: 1px solid rgba($color-amber-base, 0.1);
+    padding: 0.45rem 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  &__shell-dots {
+    display: flex;
+    gap: 5px;
+
+    span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba($color-amber-base, 0.2);
+      border: 1px solid rgba($color-amber-base, 0.15);
+    }
+  }
+
+  &__shell-title {
+    font-family: $font-mono;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: rgba($color-amber-base, 0.45);
+    text-transform: uppercase;
+    margin-left: 0.3rem;
+  }
+
+  &__shell-body {
+    padding: 1rem 1.2rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  &__shell-cmd-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.2rem;
+  }
+
+  &__prompt {
+    color: $color-amber-base;
+    font-family: $font-mono;
+    font-size: 0.72rem;
+    flex-shrink: 0;
+  }
+
+  &__cmd {
+    font-family: $font-mono;
+    font-size: 0.68rem;
+    color: rgba($color-amber-base, 0.38);
+    letter-spacing: 0.04em;
+  }
+
+  // ── CONTENT LINES ─────────────────────────────────
+  &__lines {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    padding-left: 0.2rem;
+  }
+
+  &__line {
+    font-size: 0.85rem;
+    color: rgba($color-amber-base, 0.68);
+    line-height: 1.75;
+    margin: 0;
+    display: flex;
+    gap: 0.5rem;
+    align-items: baseline;
+  }
+
+  &__entry-marker {
+    color: rgba($color-amber-base, 0.35);
+    font-size: 0.6rem;
+    flex-shrink: 0;
+    margin-top: 0.3rem;
+  }
+
+  // ── LINKS ─────────────────────────────────────────
+  &__link {
+    color: $color-amber-bright;
+    text-decoration: none;
+    transition: color 0.15s, text-shadow 0.15s;
+
+    &:hover {
+      color: $color-amber-bright;
+      text-shadow: 0 0 10px rgba($color-amber-base, 0.5);
+    }
+  }
+
+  // ── FOOTER ────────────────────────────────────────
+  &__footer {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    margin-top: 2.5rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba($color-amber-base, 0.08);
+  }
+
+  &__footer-text {
+    font-family: $font-mono;
+    font-size: 0.65rem;
+    color: rgba($color-amber-base, 0.35);
+    letter-spacing: 0.04em;
+    line-height: 1.6;
+  }
+}

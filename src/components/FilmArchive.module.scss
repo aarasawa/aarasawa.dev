@@ -1,0 +1,351 @@
+@use "../styles/variables" as *;
+
+.archive {
+  position: relative;
+  margin-bottom: 4rem;
+  width: 100%;
+
+  &__label-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 0 0.5rem;
+  }
+
+  &__label {
+    font-family: $font-mono;
+    font-size: 0.72rem;
+    letter-spacing: 4px;
+    color: $color-amber-base;
+    @include terminal-glow;
+    white-space: nowrap;
+  }
+
+  &__label-line {
+    flex: 1;
+    height: 1px;
+    background: rgba($color-amber-base, 0.2);
+  }
+
+  &__rack {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba($color-amber-base, 0.1);
+    background-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+    background-size: 100% 3px, 3px 100%;
+    padding: 3rem 2rem;
+    position: relative;
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: flex;
+    gap: 2rem;
+    scrollbar-width: none;
+    &::-webkit-scrollbar { display: none; }
+  }
+}
+
+.item {
+  position: relative;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    transform: translateY(-5px);
+    
+    .item__canister {
+      box-shadow: 0 0 30px rgba($color-amber-base, 0.15);
+      border-color: rgba($color-amber-base, 0.4);
+    }
+    
+    .item__label-tag {
+      background: $color-amber-base;
+      color: $color-terminal-bg;
+    }
+  }
+
+  &__canister {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: #111;
+    border: 3px solid #222;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    transition: all 0.3s;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 10px;
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 50%;
+      background: radial-gradient(circle at center, transparent 40%, rgba(0,0,0,0.3) 100%);
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: #1a1a1a;
+      border: 2px solid #333;
+      border-radius: 50%;
+      z-index: 2;
+    }
+  }
+
+  &__art-frame {
+    position: absolute;
+    inset: 4px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    background: #000;
+    opacity: 0.8;
+  }
+
+  &__reel-holes {
+    position: absolute;
+    inset: 0;
+    
+    span {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background: #000;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      margin-top: -9px;
+      margin-left: -9px;
+      box-shadow: inset 0 2px 4px rgba(255,255,255,0.05);
+      
+      @for $i from 1 through 6 {
+        &:nth-child(#{$i}) {
+          transform: rotate(($i - 1) * 60deg) translateY(-36px);
+        }
+      }
+    }
+  }
+
+  &__label-tag {
+    font-family: $font-mono;
+    font-size: 0.65rem;
+    background: rgba($color-amber-base, 0.1);
+    color: $color-amber-dim;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid rgba($color-amber-base, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    max-width: 160px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: all 0.2s;
+  }
+
+  .canvas-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    canvas {
+      image-rendering: pixelated;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+}
+
+.modal {
+  &__overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 5000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  &__window {
+    background: $color-terminal-panel;
+    border: 1px solid rgba($color-amber-base, 0.2);
+    width: 100%;
+    max-width: 900px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: zoomIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  &__titlebar {
+    background: rgba($color-amber-base, 0.05);
+    border-bottom: 1px solid rgba($color-amber-base, 0.1);
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__titlebar-text {
+    font-family: $font-mono;
+    font-size: 0.7rem;
+    color: $color-amber-dim;
+    letter-spacing: 2px;
+  }
+
+  &__close {
+    background: transparent;
+    border: none;
+    color: $color-amber-dim;
+    font-family: $font-mono;
+    font-size: 0.8rem;
+    cursor: pointer;
+    &:hover { color: $color-amber-bright; }
+  }
+
+  &__body {
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 3rem;
+    overflow-y: auto;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__reel-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  &__reel-large {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 4px solid #333;
+    position: relative;
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+    
+    &::after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background: #1a1a1a;
+      border: 3px solid #444;
+      border-radius: 50%;
+    }
+    
+    .item__reel-holes span {
+      width: 24px;
+      height: 24px;
+      margin-top: -12px;
+      margin-left: -12px;
+      @for $i from 1 through 6 {
+        &:nth-child(#{$i}) {
+          transform: rotate(($i - 1) * 60deg) translateY(-54px);
+        }
+      }
+    }
+  }
+
+  &__art-frame-large {
+    position: absolute;
+    inset: 10px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    background: #000;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  &__film-title {
+    font-family: $font-display;
+    font-size: 2.5rem;
+    color: $color-amber-bright;
+    margin: 0;
+  }
+
+  &__film-director {
+    font-family: $font-mono;
+    font-size: 1rem;
+    color: $color-amber-base;
+    margin-top: -0.5rem;
+    opacity: 0.8;
+  }
+
+  &__meta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  &__meta-chip {
+    font-family: $font-mono;
+    font-size: 0.7rem;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid rgba($color-amber-base, 0.2);
+    color: rgba($color-amber-base, 0.6);
+    text-transform: uppercase;
+  }
+
+  &__review-text {
+    font-size: 1.1rem;
+    color: rgba($color-amber-base, 0.8);
+    line-height: 1.7;
+    
+    strong {
+      color: $color-amber-bright;
+      font-weight: normal;
+      background: rgba($color-amber-base, 0.1);
+      padding: 0 4px;
+    }
+  }
+
+  &__rating {
+    display: flex;
+    gap: 0.5rem;
+    color: $color-amber-base;
+    font-size: 1.2rem;
+  }
+}
+
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}

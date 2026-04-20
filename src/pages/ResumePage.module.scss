@@ -1,0 +1,270 @@
+@use "../styles/variables" as *;
+
+.resume {
+  max-width: 50rem;
+  margin: 0 auto;
+  padding: 2rem 0;
+
+  &__header {
+    margin-bottom: 4rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba($color-amber-base, 0.1);
+  }
+
+  &__name {
+    font-family: $font-display;
+    font-size: 4rem;
+    color: $color-amber-bright;
+    margin-bottom: 0.5rem;
+    @include terminal-glow;
+  }
+
+  &__summary {
+    font-style: italic;
+    color: rgba($color-amber-base, 0.6);
+    line-height: 1.6;
+    margin-top: 1.5rem;
+    max-width: 40rem;
+  }
+
+  &__section {
+    margin-bottom: 4rem;
+  }
+
+  &__section-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+
+    &::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba($color-amber-base, 0.2), transparent);
+    }
+  }
+
+  &__section-label {
+    font-family: $font-mono;
+    font-size: 0.75rem;
+    color: $color-amber-dim;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+  }
+
+  &__item {
+    margin-bottom: 2.5rem;
+    position: relative;
+    padding-left: 1.5rem;
+
+    &::before {
+      content: '>';
+      position: absolute;
+      left: 0;
+      top: 0.125rem;
+      color: $color-amber-dim;
+      font-family: $font-mono;
+      font-size: 0.8125rem;
+      opacity: 0.5;
+    }
+  }
+
+  &__item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  &__role {
+    font-size: 1.125rem;
+    color: $color-amber-base;
+    font-weight: 500;
+  }
+
+  &__date {
+    font-family: $font-mono;
+    font-size: 0.75rem;
+    color: rgba($color-amber-base, 0.4);
+    text-transform: uppercase;
+  }
+
+  &__company {
+    font-family: $font-mono;
+    font-size: 0.8125rem;
+    color: $color-amber-dim;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__list-item {
+    font-size: 0.875rem;
+    color: rgba($color-amber-base, 0.6);
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+    display: flex;
+    gap: 0.75rem;
+
+    &::before {
+      content: '•';
+      color: $color-amber-dim;
+      opacity: 0.5;
+    }
+  }
+
+  &__project-title {
+    font-size: 1rem;
+    color: $color-amber-base;
+    margin-bottom: 0.5rem;
+    display: block;
+    font-weight: 500;
+  }
+
+  &__education-item {
+    margin-bottom: 2rem;
+  }
+
+  &__degree {
+    font-size: 1rem;
+    color: $color-amber-base;
+    margin-bottom: 0.25rem;
+  }
+
+  &__school {
+    font-family: $font-mono;
+    font-size: 0.75rem;
+    color: $color-amber-dim;
+    text-transform: uppercase;
+  }
+
+  &__coursework {
+    margin-top: 0.5rem;
+    font-size: 0.8125rem;
+    color: rgba($color-amber-base, 0.4);
+    font-style: italic;
+
+    strong {
+      color: rgba($color-amber-base, 0.6);
+      font-style: normal;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2rem;
+  }
+
+  &__export-btn {
+    background: none;
+    border: 1px solid rgba($color-amber-base, 0.3);
+    color: $color-amber-base;
+    font-family: $font-mono;
+    font-size: 0.75rem;
+    padding: 0.625rem 1.25rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+
+    &:hover {
+      background-color: rgba($color-amber-base, 0.05);
+      border-color: $color-amber-base;
+      @include terminal-glow;
+    }
+
+    svg {
+      opacity: 0.7;
+    }
+  }
+}
+
+@media print {
+  .resume {
+    max-width: 100%;
+    padding: 0;
+    
+    &__actions {
+      display: none !important;
+    }
+
+    &__header {
+      margin-bottom: 2rem;
+      border-bottom-color: #eee !important;
+    }
+
+    &__name {
+      color: #000 !important;
+      text-shadow: none !important;
+      font-size: 2.5rem !important;
+    }
+
+    &__summary {
+      color: #333 !important;
+      max-width: 100%;
+    }
+
+    &__section-label {
+      color: #666 !important;
+    }
+
+    &__section-header::after {
+      background: #eee !important;
+    }
+
+    &__item::before {
+      color: #999 !important;
+    }
+
+    &__role {
+      color: #000 !important;
+    }
+
+    &__date {
+      color: #666 !important;
+    }
+
+    &__company {
+      color: #333 !important;
+    }
+
+    &__list-item {
+      color: #333 !important;
+      &::before {
+        color: #999 !important;
+      }
+    }
+
+    &__project-title {
+      color: #000 !important;
+    }
+
+    &__degree {
+      color: #000 !important;
+    }
+
+    &__school {
+      color: #333 !important;
+    }
+
+    &__coursework {
+      color: #666 !important;
+      strong {
+        color: #333 !important;
+      }
+    }
+  }
+}

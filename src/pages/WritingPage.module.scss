@@ -1,0 +1,403 @@
+@use "../styles/variables" as *;
+
+.writing {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 3rem;
+  padding-top: 2rem;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+
+  &__section {
+    @include terminal-card;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__profile {
+    align-items: center;
+    text-align: center;
+  }
+
+  &__avatar {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba($color-amber-base, 0.2);
+    padding: 4px;
+    background: $color-terminal-bg;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: sepia(0.35) contrast(1.1);
+    }
+  }
+
+  &__name {
+    font-family: $font-display;
+    font-size: 1.8rem;
+    color: $color-amber-base;
+    margin-bottom: 0.5rem;
+  }
+
+  &__bio {
+    font-size: 0.85rem;
+    color: rgba($color-amber-base, 0.6);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  &__socials {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  &__social-link {
+    color: $color-amber-dim;
+    transition: all 0.2s;
+    
+    &:hover {
+      color: $color-amber-bright;
+      transform: scale(1.1);
+    }
+  }
+
+  &__header_row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+  }
+
+  &__header {
+    font-family: $font-mono;
+    font-size: 0.75rem;
+    color: $color-amber-base;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &::before {
+      content: '';
+      width: 3px;
+      height: 12px;
+      background: $color-amber-base;
+    }
+  }
+
+  &__expander {
+    background: transparent;
+    border: none;
+    color: $color-amber-dim;
+    font-family: $font-mono;
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    padding: 2px 4px;
+    transition: color 0.2s;
+
+    &:hover {
+      color: $color-amber-bright;
+    }
+  }
+
+  &__clear {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    background: rgba($color-amber-base, 0.1);
+    border: 1px dashed rgba($color-amber-base, 0.3);
+    color: $color-amber-base;
+    font-family: $font-mono;
+    font-size: 0.7rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+
+    &:hover {
+      background: rgba($color-amber-base, 0.15);
+      border-style: solid;
+      border-color: $color-amber-base;
+      transform: translateY(-1px);
+    }
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  &__list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: rgba($color-amber-base, 0.7);
+    cursor: pointer;
+    transition: all 0.2s;
+    padding: 2px 0;
+
+    &:hover {
+      color: $color-amber-bright;
+      transform: translateX(2px);
+    }
+
+    &--active {
+      color: $color-amber-bright;
+      font-weight: 600;
+      
+      .sidebar__count {
+        background: $color-amber-base;
+        color: $color-terminal-bg;
+      }
+    }
+  }
+
+  &__count {
+    background: rgba($color-amber-base, 0.1);
+    color: $color-amber-base;
+    font-family: $font-mono;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    transition: all 0.2s;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  &__tag {
+    font-family: $font-mono;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+    background: rgba($color-amber-base, 0.05);
+    border: 1px solid rgba($color-amber-base, 0.1);
+    color: $color-amber-dim;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      background: rgba($color-amber-base, 0.1);
+      border-color: rgba($color-amber-base, 0.4);
+      color: $color-amber-bright;
+    }
+
+    &--active {
+      background: $color-amber-base !important;
+      color: $color-terminal-bg !important;
+      border-color: $color-amber-bright;
+    }
+  }
+}
+
+.empty_state {
+  @include terminal-card;
+  padding: 4rem;
+  text-align: center;
+  color: $color-amber-dim;
+  font-family: $font-mono;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  border: 1px dashed rgba($color-amber-base, 0.2);
+
+  p {
+    margin: 0;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.post_card {
+  @include terminal_card;
+  display: grid;
+  grid_template_columns: 1fr 60px;
+  cursor: pointer;
+  border: 1px solid rgba($color-amber-base, 0.15);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: $color-amber-base;
+    opacity: 0.8;
+  }
+
+  &:hover {
+    border-color: rgba($color-amber-base, 0.4);
+    box-shadow: 0 0 20px rgba($color-amber-base, 0.05);
+    background: rgba($color-amber-base, 0.02);
+  }
+
+  &__main {
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  &__status_row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: $font-mono;
+    font-size: 0.65rem;
+    color: $color-amber-dim;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  &__status_dot {
+    width: 6px;
+    height: 6px;
+    background: $color-amber-base;
+    border-radius: 50%;
+    box-shadow: 0 0 8px $color-amber-base;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: 1.75rem;
+    color: $color-amber-bright;
+    margin: 0;
+    letter-spacing: 0.02em;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 0.25rem 0;
+  }
+
+  &__meta_item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: $font-mono;
+    font-size: 0.75rem;
+    color: rgba($color-amber-base, 0.5);
+
+    svg {
+      width: 14px;
+      height: 14px;
+      color: rgba($color-amber-base, 0.4);
+    }
+  }
+
+  &__excerpt {
+    font-size: 0.9rem;
+    color: rgba($color-amber-base, 0.7);
+    line-height: 1.6;
+    margin: 0.5rem 0;
+  }
+
+  &__stats {
+    font-family: $font-mono;
+    font-size: 0.7rem;
+    color: rgba($color-amber-base, 0.3);
+    display: flex;
+    gap: 1rem;
+    text-transform: uppercase;
+  }
+
+  &__side {
+    background: rgba($color-amber-base, 0.05);
+    border-left: 1px solid rgba($color-amber-base, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-amber-dim;
+    transition: all 0.3s;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.3s;
+    }
+  }
+
+  &:hover &__side {
+    background: rgba($color-amber-base, 0.15);
+    color: $color-amber-bright;
+    svg { transform: translateX(4px); }
+  }
+}
+
+.maximized {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: $color-terminal-bg;
+  overflow-y: auto;
+  padding: 4rem 2rem;
+  animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &__close {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 2001;
+    background: $color-terminal-panel;
+    border: 1px solid rgba($color-amber-base, 0.2);
+    color: $color-amber-dim;
+    font-family: $font-mono;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      color: $color-amber-bright;
+      border-color: rgba($color-amber-base, 0.6);
+      transform: translateY(-2px);
+    }
+  }
+
+  &__container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
