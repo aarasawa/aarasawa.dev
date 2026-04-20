@@ -33,7 +33,7 @@ const HomePage: React.FC = () => {
             <span className={styles['hero__badge-sep']}>/</span>
             <span>Full-Stack Developer</span>
           </div>
-          <h1 className={styles['hero__title']}>ALEX<br/>ARASAWA</h1>
+          <h1 className={styles['hero__title']}>ALEXANDER<br/>ARASAWA</h1>
           <div className={styles['hero__sub']}>
             <span className={styles['hero__sub-indicator']}>$</span> building tools with purpose
           </div>

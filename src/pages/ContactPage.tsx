@@ -39,7 +39,7 @@ const ContactPage: React.FC = () => {
               <span className={styles['contact__shell-cmd']}>echo $EMAIL</span>
             </div>
             <div className={styles['contact__shell-output']}>
-              <a href="mailto:alex@deepphosphor.studio" className={styles['contact__shell-link']}>alex@deepphosphor.studio</a>
+              <a href="mailto:aarasawa@gmail.com" className={styles['contact__shell-link']}>aarasawa@gmail.com</a>
             </div>
           </div>
           <div className={styles['contact__shell-line']}>
