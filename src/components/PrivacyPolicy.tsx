@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './MarkdownPost.module.scss';
-import { Terminal, Shield, Lock, Eye } from 'lucide-react';
+import styles from '../styles/MarkdownPost.module.scss';
+import { Terminal, Shield, Lock } from 'lucide-react';
 
 interface PrivacyPolicyProps {
   onClose: () => void;

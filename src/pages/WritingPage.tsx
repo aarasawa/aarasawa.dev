@@ -13,7 +13,7 @@ import {
 import { motion, AnimatePresence } from "motion/react";
 import MarkdownPost from "../components/MarkdownPost";
 import { getPosts, Post } from "../lib/posts";
-import styles from "./WritingPage.module.scss";
+import styles from "../styles/WritingPage.module.scss";
 
 const WritingPage: React.FC = () => {
   const [activePost, setActivePost] = useState<Post | null>(null);

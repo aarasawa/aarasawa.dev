@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
-import styles from "./NowPage.module.scss";
+import styles from "../styles/NowPage.module.scss";
 import appStyles from "../App.module.scss";
 
 const SectionHeader = ({ label, title, id }: { label: string; title: string; id?: string }) => (
@@ -31,7 +31,7 @@ const NOW_SECTIONS: NowEntry[] = [
         text: "AgriGuard Foresight — pesticide application predictor",
         linkTo: "/projects",
       },
-      "Conceptual stage. Researching what goes into building a seasonal regression model using historical CDPR data and weather patterns. Still drafting the approach before writing any code.",
+      "Built the base application with map visualization and added pesticide markers for the year of 2023. Looking to add more years, thinking of ways to constrain the data loaded.",
       {
         text: "aarasawa.dev — personal site + Amber Echo blog consolidation",
         linkTo: "/projects",

@@ -27,7 +27,6 @@ export const getPosts = (): Post[] => {
     const { data, content } = matter(module.default);
     const slug = path.split("/").pop()?.replace(".md", "") || "";
     
-    // Estimate word count and reading time
     const wordCount = content.split(/\s+/).length;
     const readingTime = Math.ceil(wordCount / 200);
 
