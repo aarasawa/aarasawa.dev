@@ -45,7 +45,29 @@ const ProjectsPage: React.FC = () => {
   return (
     <section id="projects" className={styles['section']} aria-labelledby="projects-heading" role="region">
       <SectionHeader label="Files" title="PROJECT ARCHIVE" id="projects-heading" />
-      
+
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={JSON.stringify(selectedTags)}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.3 }}
+        >
+          {filteredProjects.length > 0 ? (
+            <ProjectorCarousel projects={filteredProjects} />
+          ) : (
+            <div className={styles['empty_state']}>
+              <div className={styles['empty_state__box']}>
+                <span className={styles['empty_state__code']}>ERROR 404: NO_MATCHES_FOUND</span>
+                <p className={styles['empty_state__text']}>The requested archival filter yielded zero results. Please broaden your search parameters.</p>
+                <button onClick={() => setSelectedTags([])} className={styles['hero__cta']}>RESET FILTERS</button>
+              </div>
+            </div>
+          )}
+        </motion.div>
+      </AnimatePresence>
+
       <div className={styles['filter-bar']}>
         <div className={styles['filter-bar__header']}>
           <span className={styles['filter-bar__label']}>SELECT_TECH_STACK_FILTERS:</span>
@@ -70,28 +92,6 @@ const ProjectsPage: React.FC = () => {
           ))}
         </div>
       </div>
-
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={JSON.stringify(selectedTags)}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.3 }}
-        >
-          {filteredProjects.length > 0 ? (
-            <ProjectorCarousel projects={filteredProjects} />
-          ) : (
-            <div className={styles['empty_state']}>
-              <div className={styles['empty_state__box']}>
-                <span className={styles['empty_state__code']}>ERROR 404: NO_MATCHES_FOUND</span>
-                <p className={styles['empty_state__text']}>The requested archival filter yielded zero results. Please broaden your search parameters.</p>
-                <button onClick={() => setSelectedTags([])} className={styles['hero__cta']}>RESET FILTERS</button>
-              </div>
-            </div>
-          )}
-        </motion.div>
-      </AnimatePresence>
     </section>
   );
 };

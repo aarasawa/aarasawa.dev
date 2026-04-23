@@ -133,8 +133,9 @@
   &__nav-dropdown-content {
     position: absolute;
     top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
+    right: 0;
+    left: auto;
+    transform: none;
     margin-top: 0.6rem;
     min-width: 12rem;
     background-color: $color-terminal-panel;

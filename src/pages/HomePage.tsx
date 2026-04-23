@@ -35,10 +35,10 @@ const HomePage: React.FC = () => {
           </div>
           <h1 className={styles['hero__title']}>ALEXANDER<br/>ARASAWA</h1>
           <div className={styles['hero__sub']}>
-            <span className={styles['hero__sub-indicator']}>$</span> building tools with purpose
+            <span className={styles['hero__sub-indicator']}>$</span> Software Engineer & IT Specialist
           </div>
           <p className={styles['hero__desc']}>
-            Specializing in <span className={styles['hero__desc-highlight']}>civic tech, nonprofit infrastructure,</span> and <span className={styles['hero__desc-highlight']}>geospatial applications</span>. Operating under Deep Phosphor Studios.
+            Specializing in <span className={styles['hero__desc-highlight']}>applications development, IT infrastructure</span> and <span className={styles['hero__desc-highlight']}>geospatial applications</span>. Operating under Deep Phosphor Studios.
           </p>
         </motion.div>
       </section>
@@ -66,7 +66,7 @@ const HomePage: React.FC = () => {
             {[
               { label: 'Primary Focus', val: 'Full-Stack & ML Engineering' },
               { label: 'Agency', val: 'Deep Phosphor Studios' },
-              { label: 'Location', val: 'San Gabriel Valley, CA' },
+              { label: 'Location', val: 'Los Angeles, CA' },
               { label: 'Salesforce', val: 'Innovator 2025 · 81 Badges' },
             ].map(stat => (
               <motion.div 
