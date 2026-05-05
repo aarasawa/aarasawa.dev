@@ -8,9 +8,8 @@ import { motion } from 'motion/react';
 import { useEffect } from 'react';
 import ReactGA from "react-ga4";
 import { Terminal, Calendar, User, Tag } from 'lucide-react';
-import styles from './MarkdownPost.module.scss';
-
-import 'katex/dist/katex.min.css';
+import styles from '../styles/MarkdownPost.module.scss';
+import 'katex/dist/katex.mjs';
 
 interface AstroPostProps {
   content: string;

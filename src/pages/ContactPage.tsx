@@ -39,7 +39,7 @@ const ContactPage: React.FC = () => {
               <span className={styles['contact__shell-cmd']}>echo $EMAIL</span>
             </div>
             <div className={styles['contact__shell-output']}>
-              <a href="mailto:alex@deepphosphor.com" className={styles['contact__shell-link']}>alex@deepphosphor.com</a>
+              <a href="mailto:aarasawa@gmail.com" className={styles['contact__shell-link']}>aarasawa@gmail.com</a>
             </div>
           </div>
           <div className={styles['contact__shell-line']}>
@@ -48,7 +48,7 @@ const ContactPage: React.FC = () => {
               <span className={styles['contact__shell-cmd']}>echo $GITHUB</span>
             </div>
             <div className={styles['contact__shell-output']}>
-              <a href="#" className={styles['contact__shell-link']}>github.com/alexarasawa</a>
+              <a href="https://www.github.com/aarasawa" target="_blank" className={styles['contact__shell-link']}>github.com/aarasawa</a>
             </div>
           </div>
           <div className={styles['contact__shell-line']}>
@@ -57,7 +57,7 @@ const ContactPage: React.FC = () => {
               <span className={styles['contact__shell-cmd']}>echo $LINKEDIN</span>
             </div>
             <div className={styles['contact__shell-output']}>
-              <a href="#" className={styles['contact__shell-link']}>linkedin.com/in/alexarasawa</a>
+              <a href="https://www.linkedin.com/in/alexarasawa" target="_blank" className={styles['contact__shell-link']}>linkedin.com/in/alexarasawa</a>
             </div>
           </div>
           <div className={styles['contact__shell-location']}>

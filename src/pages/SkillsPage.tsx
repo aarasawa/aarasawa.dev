@@ -1,10 +1,10 @@
 import React from "react";
 import { motion } from "motion/react";
-import { 
-  Terminal, 
-  Database, 
+import {
   Cloud,
-  Layers
+  Layers,
+  ToolCase,
+  Database,
 } from "lucide-react";
 import styles from "../App.module.scss";
 
@@ -50,27 +50,27 @@ const SkillGroup = ({ title, skills, icon: Icon }: { title: string; skills: stri
 const SkillsPage: React.FC = () => {
   return (
     <section id="skills" className={styles['section']} aria-labelledby="skills-heading" role="region">
-      <SectionHeader label="Kernel" title="CORE STACK" id="skills-heading" />
+      <SectionHeader label="SKILLS" title="CORE STACK" id="skills-heading" />
       <div className={styles['skill-grid']}>
         <SkillGroup 
-          title="Languages" 
-          icon={Terminal}
-          skills={['Python', 'TypeScript', 'SQL', 'Bash', 'HTML/CSS']} 
-        />
-        <SkillGroup 
-          title="Backend" 
-          icon={Database}
-          skills={['FastAPI', 'PostgreSQL', 'Power Automate', 'REST APIs']} 
-        />
-        <SkillGroup 
-          title="Frontend" 
+          title="FRONTEND" 
           icon={Layers}
-          skills={['React / Vite', 'Leaflet.js', 'Power Apps', 'Tailwind']} 
+          skills={['React / Vite', 'TypeScript', 'HTML/CSS']} 
         />
         <SkillGroup 
-          title="DevOps" 
+          title="BACKEND" 
+          icon={Database}
+          skills={['Python', 'SQL', 'FastAPI', 'PostgreSQL', 'API Integration']} 
+        />
+        <SkillGroup 
+          title="IT ADMIN" 
           icon={Cloud}
-          skills={['GCP', 'AWS', 'SCCM', 'PXE Imaging', 'Salesforce']} 
+          skills={['Google Cloud', 'AWS', 'Entra ID', 'Active Directory', 'SCCM']} 
+        />
+        <SkillGroup 
+          title="SOFTWARE" 
+          icon={ToolCase}
+          skills={['Shopify', 'SquareSpace', 'WordPress', 'Salesforce']} 
         />
       </div>
     </section>

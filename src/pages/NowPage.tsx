@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
-import styles from "./NowPage.module.scss";
+import styles from "../styles/NowPage.module.scss";
 import appStyles from "../App.module.scss";
 
 const SectionHeader = ({ label, title, id }: { label: string; title: string; id?: string }) => (
@@ -28,10 +28,10 @@ const NOW_SECTIONS: NowEntry[] = [
     prompt: "currently_building",
     lines: [
       {
-        text: "AgriGuard Foresight — pesticide application predictor",
+        text: "AgriGuard — pesticide application predictor",
         linkTo: "/projects",
       },
-      "Conceptual stage. Researching what goes into building a seasonal regression model using historical CDPR data and weather patterns. Still drafting the approach before writing any code.",
+      "Built the base application with map visualization and added pesticide markers for the year of 2023. Looking to add more years, thinking of ways to improve the visualization to handle larger time ranges.",
       {
         text: "aarasawa.dev — personal site + Amber Echo blog consolidation",
         linkTo: "/projects",
@@ -60,14 +60,14 @@ const NOW_SECTIONS: NowEntry[] = [
   {
     prompt: "currently_watching",
     lines: [
-      { text: "Beef S1 — Netflix", href: "https://www.netflix.com/title/81447461" },
-      "Rewatching before Season 2. Still holds up. The slow-burn rage and the way it depicts immigrant family pressure without making it a punchline.",
+      { text: "Unchosen", href: "https://www.imdb.com/title/tt31631142/" },
+      "Finished Season 2 of Beef and this was recommended as a next watch. Interesting premise but in my opinion seems to be going off the rails a bit in terms of plot. Will see how it develops.",
     ],
   },
   {
     prompt: "career_and_focus",
     lines: [
-      "Heads down on skill-building and the business right now. Not actively job hunting — focused on making the work speak for itself.",
+      "Heads down on hobbies, skill-building and the business right now. Not actively job hunting — focused on making the work speak for itself.",
       "Deep Phosphor Studios targeting nonprofit and small business clients in the LA area. Building out the portfolio and documentation to support that.",
       "Based in Arcadia, CA — San Gabriel Valley / LA Metro. Open to remote or local work.",
     ],
@@ -94,11 +94,6 @@ const NowPage: React.FC = () => {
         <span className={styles["now__timestamp-cmd"]}>last_updated</span>
         <span className={styles["now__timestamp-val"]}>April 2026</span>
       </motion.div>
-
-      <div className={styles["now__desc"]}>
-        A snapshot of what I'm focused on right now. Updated when something meaningfully changes.
-        Not a resume — just an honest account of what's in front of me.
-      </div>
 
       <div className={styles["now__sections"]}>
         {NOW_SECTIONS.map((section, i) => (
@@ -166,19 +161,6 @@ const NowPage: React.FC = () => {
           </motion.div>
         ))}
       </div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        className={styles["now__footer"]}
-      >
-        <span className={styles["now__prompt"]}>$</span>
-        <span className={styles["now__footer-text"]}>
-          This is a <a href="https://nownownow.com/about" target="_blank" rel="noreferrer" className={styles["now__link"]}>/now page</a>.
-          An idea by <a href="https://sive.rs/now" target="_blank" rel="noreferrer" className={styles["now__link"]}>Derek Sivers</a>.
-        </span>
-      </motion.div>
     </section>
   );
 };

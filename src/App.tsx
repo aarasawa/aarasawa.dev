@@ -12,7 +12,6 @@ import { Menu, X } from "lucide-react";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import CookieConsent from "./components/CookieConsent";
 
-// Pages
 import HomePage from "./pages/HomePage";
 import NowPage from "./pages/NowPage";
 import ProjectsPage from "./pages/ProjectsPage";
@@ -34,7 +33,7 @@ export default function App() {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const PRIMARY_LINKS = [
-    { label: 'About', path: '/' },
+    { label: 'Home', path: '/' },
     { label: 'Projects', path: '/projects' },
     { label: 'Resume', path: '/resume' },
     { label: 'Contact', path: '/contact' }
@@ -82,7 +81,7 @@ export default function App() {
             className={styles['app__logo']}
             aria-label="Alex Arasawa - Return to Homepage"
           >
-            ALEX<span className={`${styles['app__cursor']} cursor-blink`} aria-hidden="true" />
+            ALEXANDER<span className={`${styles['app__cursor']} cursor-blink`} aria-hidden="true" />
           </Link>
 
           <button 
@@ -229,7 +228,7 @@ export default function App() {
             </button>
           </div>
           <div className={styles['app__footer-sig']}>
-            DEEP PHOSPHOR
+            ARASAWA.DEV
           </div>
         </div>
       </footer>

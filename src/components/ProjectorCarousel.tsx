@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import styles from "./ProjectorCarousel.module.scss";
+import { AnimatePresence } from "motion/react";
+import styles from "../styles/ProjectorCarousel.module.scss";
 
 interface ProjectLink {
   label: string;

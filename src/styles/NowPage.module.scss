@@ -20,7 +20,7 @@
   }
 
   &__timestamp-cmd {
-    color: rgba($color-amber-base, 0.4);
+    color: rgba($color-amber-base, 0.85);
     letter-spacing: 0.04em;
   }
 
@@ -31,14 +31,14 @@
 
     &::before {
       content: '→ ';
-      opacity: 0.4;
+      opacity: 0.5;
     }
   }
 
   // ── DESCRIPTION ───────────────────────────────────
   &__desc {
     font-size: 0.85rem;
-    color: rgba($color-amber-base, 0.5);
+    color: rgba($color-amber-base, 0.75);
     line-height: 1.75;
     margin-bottom: 2.5rem;
     padding-left: 1rem;
@@ -56,7 +56,7 @@
   // ── SHELL PANEL ───────────────────────────────────
   &__shell {
     background: $color-terminal-panel;
-    border: 1px solid rgba($color-amber-base, 0.18);
+    border: 1px solid rgba($color-amber-base, 0.25);
     overflow: hidden;
     transition: border-color 0.2s, box-shadow 0.2s;
 

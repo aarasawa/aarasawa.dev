@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styles from './CookieConsent.module.scss';
+import styles from '../styles/CookieConsent.module.scss';
 import ReactGA from "react-ga4";
 
 interface CookieConsentProps {

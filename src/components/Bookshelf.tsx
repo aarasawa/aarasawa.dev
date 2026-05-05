@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { AnimatePresence } from "motion/react";
-import styles from "./Bookshelf.module.scss";
+import styles from "../styles/Bookshelf.module.scss";
 
 interface Book {
   title: string;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import styles from "./FilmArchive.module.scss";
+import styles from "../styles/FilmArchive.module.scss";
 
 interface Film {
   title: string;
