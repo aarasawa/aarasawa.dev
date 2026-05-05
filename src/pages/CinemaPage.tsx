@@ -22,21 +22,20 @@ const SectionHeader = ({ label, title, id }: { label: string; title: string; id?
 );
 
 const CinemaPage: React.FC = () => {
-  // Categorize films for different archives
-  const masterpieces = FILM_DATA.filter(f => f.status === 'Masterpiece');
-  const classics = FILM_DATA.filter(f => f.status === 'Classic');
+  const films = FILM_DATA.filter((f: { status?: string }) => f.status === 'Films');
+  const shows = FILM_DATA.filter((f: { status?: string }) => f.status === 'Shows');
   
   return (
     <section id="cinema" className={styles['section']} aria-labelledby="cinema-heading" role="region">
       <SectionHeader 
         label="Archives" 
-        title="CINEMATHEQUE" 
+        title="Media Archives" 
         id="cinema-heading" 
       />
       
       <div className={styles['layout']}>
-        <FilmArchive category="Masterpieces" films={masterpieces} />
-        <FilmArchive category="Essential Classics" films={classics} />
+        <FilmArchive category="Films" films={films} />
+        <FilmArchive category="Shows" films={shows} />
       </div>
     </section>
   );

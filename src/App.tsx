@@ -15,7 +15,6 @@ import CookieConsent from "./components/CookieConsent";
 import HomePage from "./pages/HomePage";
 import NowPage from "./pages/NowPage";
 import ProjectsPage from "./pages/ProjectsPage";
-import SkillsPage from "./pages/SkillsPage";
 import ReadingPage from "./pages/ReadingPage";
 import CinemaPage from "./pages/CinemaPage";
 import WritingPage from "./pages/WritingPage";
@@ -44,7 +43,6 @@ export default function App() {
     { label: 'Reading', path: '/reading' },
     { label: 'Cinema', path: '/cinema' },
     { label: 'Now', path: '/now' },
-    { label: 'Skills', path: '/skills' }
   ];
 
   useEffect(() => {
@@ -202,7 +200,6 @@ export default function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/now" element={<NowPage />} />
             <Route path="/projects" element={<ProjectsPage />} />
-            <Route path="/skills" element={<SkillsPage />} />
             <Route path="/reading" element={<ReadingPage />} />
             <Route path="/cinema" element={<CinemaPage />} />
             <Route path="/writing" element={<WritingPage />} />
