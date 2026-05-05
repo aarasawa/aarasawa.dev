@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "motion/react";
-import { Printer } from "lucide-react";
-import styles from "./ResumePage.module.scss";
+import styles from "../styles/ResumePage.module.scss";
 
 const SectionHeader: React.FC<{ label: string }> = ({ label }) => (
   <div className={styles['resume__section-header']}>
@@ -16,17 +15,6 @@ const ResumePage: React.FC = () => {
       animate={{ opacity: 1, y: 0 }}
       className={styles['resume']}
     >
-      <div className={styles['resume__actions']}>
-        <button 
-          onClick={() => window.print()}
-          className={styles['resume__export-btn']}
-          title="Print or Save as PDF"
-        >
-          <Printer size={14} />
-          EXPORT_PDF
-        </button>
-      </div>
-
       <header className={styles['resume__header']}>
         <h1 className={styles['resume__name']}>ALEXANDER ARASAWA</h1>
         <div className={styles['resume__summary']}>

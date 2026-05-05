@@ -11,6 +11,7 @@
     "lint": "tsc --noEmit"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.9",
     "@astrojs/vercel": "^10.0.5",
     "@google/genai": "^1.29.0",
     "@tailwindcss/vite": "^4.1.14",
