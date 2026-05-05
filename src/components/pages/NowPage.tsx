@@ -1,8 +1,8 @@
 import React from "react";
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
-import styles from "../styles/NowPage.module.scss";
-import appStyles from "../App.module.scss";
+import styles from "../../styles/NowPage.module.scss";
+import appStyles from "../../App.module.scss";
 
 const SectionHeader = ({ label, title, id }: { label: string; title: string; id?: string }) => (
   <motion.div

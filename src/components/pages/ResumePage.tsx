@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "motion/react";
-import styles from "../styles/ResumePage.module.scss";
+import styles from "../../styles/ResumePage.module.scss";
 
 const SectionHeader: React.FC<{ label: string }> = ({ label }) => (
   <div className={styles['resume__section-header']}>

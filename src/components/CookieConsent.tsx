@@ -3,10 +3,12 @@ import styles from '../styles/CookieConsent.module.scss';
 import ReactGA from "react-ga4";
 
 interface CookieConsentProps {
-  onOpenPrivacy: () => void;
+  onOpenPrivacy?: () => void;
 }
 
-const CookieConsent: React.FC<CookieConsentProps> = ({ onOpenPrivacy }) => {
+const CookieConsent: React.FC<CookieConsentProps> = ({ 
+  onOpenPrivacy = () => { window.location.href = '/privacy'; }
+}) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {

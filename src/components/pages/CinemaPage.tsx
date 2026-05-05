@@ -1,9 +1,9 @@
 import React from "react";
 import { motion } from "motion/react";
-import FilmArchive from "../components/FilmArchive";
-import { FILM_DATA } from "../lib/data";
-import styles from "../styles/CinemaPage.module.scss";
-import appStyles from "../App.module.scss";
+import FilmArchive from "../FilmArchive";
+import { FILM_DATA } from "../../lib/data";
+import styles from "../../styles/CinemaPage.module.scss";
+import appStyles from "../../App.module.scss";
 
 const SectionHeader = ({ label, title, id }: { label: string; title: string; id?: string }) => (
   <motion.div 

@@ -1,8 +1,8 @@
 import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import ProjectorCarousel from "../components/ProjectorCarousel";
-import { PROJECT_DATA } from "../lib/data";
-import styles from "../App.module.scss";
+import ProjectorCarousel from "../ProjectorCarousel";
+import { PROJECT_DATA } from "../../lib/data";
+import styles from "../../App.module.scss";
 
 const SectionHeader = ({ label, title, id }: { label: string; title: string; id?: string }) => (
   <motion.div 

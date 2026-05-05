@@ -3,6 +3,7 @@ import matter from "gray-matter";
 export interface PostFrontmatter {
   title: string;
   date: string;
+  slug: string;
   category?: string;
   tags?: string[];
   description?: string;

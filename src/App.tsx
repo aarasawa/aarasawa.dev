@@ -12,14 +12,14 @@ import { Menu, X } from "lucide-react";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import CookieConsent from "./components/CookieConsent";
 
-import HomePage from "./pages/HomePage";
-import NowPage from "./pages/NowPage";
-import ProjectsPage from "./pages/ProjectsPage";
-import ReadingPage from "./pages/ReadingPage";
-import CinemaPage from "./pages/CinemaPage";
-import WritingPage from "./pages/WritingPage";
-import ResumePage from "./pages/ResumePage";
-import ContactPage from "./pages/ContactPage";
+import HomePage from "./components/pages/HomePage";
+import NowPage from "./components/pages/NowPage";
+import ProjectsPage from "./components/pages/ProjectsPage";
+import ReadingPage from "./components/pages/ReadingPage";
+import CinemaPage from "./components/pages/CinemaPage";
+import WritingPage from "./components/pages/WritingPage";
+import ResumePage from "./components/pages/ResumePage";
+import ContactPage from "./components/pages/ContactPage";
 
 import styles from "./App.module.scss";
 
@@ -47,7 +47,6 @@ export default function App() {
 
   useEffect(() => {
     setMounted(true);
-    // Track page views with GA4
     ReactGA.send({ hitType: "pageview", page: location.pathname + location.search });
     
     setIsMenuOpen(false);
@@ -202,7 +201,7 @@ export default function App() {
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/reading" element={<ReadingPage />} />
             <Route path="/cinema" element={<CinemaPage />} />
-            <Route path="/writing" element={<WritingPage />} />
+            <Route path="/writing" element={<WritingPage posts={[]} />} />
             <Route path="/resume" element={<ResumePage />} />
             <Route path="/contact" element={<ContactPage />} />
           </Routes>

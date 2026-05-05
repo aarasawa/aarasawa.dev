@@ -1,8 +1,8 @@
 import React from "react";
 import { motion } from "motion/react";
-import Bookshelf from "../components/Bookshelf";
-import { SHELF_DATA } from "../lib/data";
-import styles from "../App.module.scss";
+import Bookshelf from "../Bookshelf";
+import { SHELF_DATA } from "../../lib/data";
+import styles from "../../App.module.scss";
 
 const SectionHeader = ({ label, title, id }: { label: string; title: string; id?: string }) => (
   <motion.div 

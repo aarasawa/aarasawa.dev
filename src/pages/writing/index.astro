@@ -1,0 +1,54 @@
+---
+export const prerender = false;
+
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import WritingPage from '../../components/pages/WritingPage.tsx';
+
+// ── slug helper ──────────────────────────────────────────
+function deriveSlug(title: string, frontmatterSlug?: string): string {
+  if (frontmatterSlug) return frontmatterSlug;
+  return title
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/(^-|-$)/g, '');
+}
+
+// ── fetch posts ──────────────────────────────────────────
+const allPosts = await getCollection('posts', ({ data }) => data.draft !== true);
+
+const posts = allPosts
+  .sort((a, b) => b.data.published.valueOf() - a.data.published.valueOf())
+  .map(post => {
+    const words = post.body.split(/\s+/).length;
+    return {
+      slug:        deriveSlug(post.data.title, post.data.slug),
+      id:          post.id,
+      title:       post.data.title,
+      published:   post.data.published.toISOString(),
+      description: post.data.description ?? '',
+      tags:        post.data.tags ?? [],
+      category:    post.data.category ?? '',
+      wordCount:   words,
+      readingTime: Math.max(1, Math.ceil(words / 200)),
+    };
+  });
+
+// ── dev: warn on slug collisions ─────────────────────────
+if (import.meta.env.DEV) {
+  const seen = new Set<string>();
+  for (const p of posts) {
+    if (seen.has(p.slug)) {
+      console.warn(`[/writing] duplicate slug: "${p.slug}" — add explicit slug field to one post's frontmatter`);
+    }
+    seen.add(p.slug);
+  }
+}
+---
+
+<Layout title="Writing — Alex Arasawa">
+  <WritingPage posts={posts} client:load />
+</Layout>

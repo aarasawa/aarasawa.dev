@@ -1,69 +1,83 @@
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
-import remarkFrontmatter from 'remark-frontmatter';
-import remarkMath from 'remark-math';
-import rehypeKatex from 'rehype-katex';
-import matter from 'gray-matter';
+import React, { useEffect } from 'react';
 import { motion } from 'motion/react';
-import { useEffect } from 'react';
-import ReactGA from "react-ga4";
-import { Terminal, Calendar, User, Tag } from 'lucide-react';
+import ReactGA from 'react-ga4';
+import { Terminal, Calendar, Tag, ChevronLeft, ChevronRight } from 'lucide-react';
 import styles from '../styles/MarkdownPost.module.scss';
-import 'katex/dist/katex.mjs';
 
-interface AstroPostProps {
-  content: string;
+// ── Post data shape ──────────────────────────────────────
+// All fields pre-parsed by Astro — no gray-matter needed here.
+export interface MarkdownPostData {
+  slug:        string;
+  title:       string;
+  published:   string;   // ISO string
+  description: string;
+  tags:        string[];
+  category:    string;
+  wordCount:   number;
+  readingTime: number;
+  prevTitle:   string;
+  prevSlug:    string;
+  nextTitle:   string;
+  nextSlug:    string;
 }
 
-const AstroPost: React.FC<AstroPostProps> = ({ content }) => {
-  const { data: frontmatter, content: markdownContent } = matter(content);
+interface MarkdownPostProps {
+  post: MarkdownPostData;
+  // Astro's <Content /> component is passed as children
+  children?: React.ReactNode;
+}
+
+const MarkdownPost: React.FC<MarkdownPostProps> = ({ post, children }) => {
+  const formatDate = (iso: string) =>
+    new Date(iso).toLocaleDateString('en-US', {
+      year:  'numeric',
+      month: 'long',
+      day:   'numeric',
+    });
 
   useEffect(() => {
-    if (frontmatter.title) {
+    if (post.title) {
       ReactGA.event({
-        category: "Blog",
-        action: "View Post",
-        label: frontmatter.title,
+        category: 'Blog',
+        action:   'View Post',
+        label:    post.title,
       });
     }
-  }, [frontmatter.title]);
+  }, [post.title]);
 
   return (
-    <motion.article 
+    <motion.article
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       className={styles['markdown-post']}
     >
-      {/* Post Header / "Astro" style frontmatter view */}
+      {/* Header */}
       <header className={styles['markdown-post__header']}>
         <div className={styles['markdown-post__meta']}>
-          {frontmatter.date && (
+          <div className={styles['markdown-post__meta-item']}>
+            <Calendar className={styles['markdown-post__meta-icon']} />
+            {formatDate(post.published)}
+          </div>
+          {post.category && (
             <div className={styles['markdown-post__meta-item']}>
-              <Calendar className={styles['markdown-post__meta-icon']} />
-              {frontmatter.date}
+              <Terminal className={styles['markdown-post__meta-icon']} />
+              {post.category}
             </div>
           )}
-          {frontmatter.author && (
-            <div className={styles['markdown-post__meta-item']}>
-              <User className={styles['markdown-post__meta-icon']} />
-              {frontmatter.author}
-            </div>
-          )}
+          <div className={styles['markdown-post__meta-item']}>
+            {post.wordCount} words · {post.readingTime} min read
+          </div>
         </div>
-        
-        <h1 className={styles['markdown-post__title']}>
-          {frontmatter.title || 'Untitled Post'}
-        </h1>
 
-        {frontmatter.description && (
-          <p className={styles['markdown-post__description']}>
-            {frontmatter.description}
-          </p>
+        <h1 className={styles['markdown-post__title']}>{post.title}</h1>
+
+        {post.description && (
+          <p className={styles['markdown-post__description']}>{post.description}</p>
         )}
 
-        {frontmatter.tags && Array.isArray(frontmatter.tags) && (
+        {post.tags.length > 0 && (
           <div className={styles['markdown-post__tags']}>
-            {frontmatter.tags.map((tag: string) => (
+            {post.tags.map(tag => (
               <span key={tag} className={styles['markdown-post__tag']}>
                 <Tag className={styles['markdown-post__tag-icon']} />
                 {tag}
@@ -73,51 +87,49 @@ const AstroPost: React.FC<AstroPostProps> = ({ content }) => {
         )}
       </header>
 
-      {/* Markdown Content */}
+      {/* Content — rendered by Astro's <Content /> passed as children */}
       <div className={styles['markdown-post__content']}>
-        <ReactMarkdown 
-          remarkPlugins={[remarkGfm, remarkFrontmatter, remarkMath]}
-          rehypePlugins={[rehypeKatex]}
-          components={{
-            h1: ({node, ...props}) => <h2 {...props} />,
-            h2: ({node, ...props}) => <h3 {...props} />,
-            code: ({node, inline, className, children, ...props}: any) => {
-              if (inline) {
-                return <code className={styles['markdown-post__code-inline']} {...props}>{children}</code>;
-              }
-              return (
-                <div className={styles['markdown-post__code-container']}>
-                  <div className={styles['markdown-post__code-header']}>
-                    <Terminal className={styles['markdown-post__code-icon']} />
-                    <span className={styles['markdown-post__code-label']}>Code Block</span>
-                  </div>
-                  <pre className={styles['markdown-post__code-pre']}>
-                    <code className={styles['markdown-post__code-block']} {...props}>
-                      {children}
-                    </code>
-                  </pre>
-                </div>
-              );
-            },
-          }}
-        >
-          {markdownContent}
-        </ReactMarkdown>
+        {children}
       </div>
-      
-      {/* Post Footer */}
+
+      {/* Footer */}
       <footer className={styles['markdown-post__footer']}>
-        <button 
-          onClick={() => window.history.back()}
-          className={styles['markdown-post__back-btn']}
-          aria-label="Go back to previous page"
-        >
-          <span aria-hidden="true">{'<'}</span> Back to Files
-        </button>
-        <span className={styles['markdown-post__footer-label']}>End of Transmission</span>
+        <div className={styles['markdown-post__nav']}>
+          {post.prevSlug ? (
+            <a
+              href={`/writing/${post.prevSlug}`}
+              className={styles['markdown-post__nav-link']}
+            >
+              <ChevronLeft size={14} />
+              <span>{post.prevTitle}</span>
+            </a>
+          ) : (
+            <span />
+          )}
+          {post.nextSlug ? (
+            <a
+              href={`/writing/${post.nextSlug}`}
+              className={`${styles['markdown-post__nav-link']} ${styles['markdown-post__nav-link--next']}`}
+            >
+              <span>{post.nextTitle}</span>
+              <ChevronRight size={14} />
+            </a>
+          ) : (
+            <span />
+          )}
+        </div>
+
+        <div className={styles['markdown-post__footer-bottom']}>
+          <a href="/writing" className={styles['markdown-post__back-btn']}>
+            {'<'} Back to Files
+          </a>
+          <span className={styles['markdown-post__footer-label']}>
+            End of Transmission
+          </span>
+        </div>
       </footer>
     </motion.article>
   );
 };
 
-export default AstroPost;
+export default MarkdownPost;
