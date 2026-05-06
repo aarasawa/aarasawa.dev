@@ -145,12 +145,6 @@ const ProjectorCarousel: React.FC<ProjectorCarouselProps> = ({ projects }) => {
         ))}
       </div>
 
-      <div className={styles['filmstrip']}>
-        {Array.from({ length: 12 }).map((_, i) => (
-          <div key={i} className={styles['filmstrip__hole']} />
-        ))}
-      </div>
-
       {/* Projector Screen Reveal Overlay */}
       <AnimatePresence>
         {isScreenOpen && (
