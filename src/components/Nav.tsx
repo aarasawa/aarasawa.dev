@@ -23,13 +23,12 @@ const SECONDARY_LINKS = [
 ];
 
 export default function Nav({ currentPath }: NavProps) {
-  const [isMenuOpen, setIsMenuOpen]   = useState(false);
-  const [isLogsOpen, setIsLogsOpen]   = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLogsOpen, setIsLogsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Init GA once on mount
   useEffect(() => {
-    ReactGA.initialize("G-XXXXXXXXXX"); // replace with your GA measurement ID
+    ReactGA.initialize("G-XXXXXXXXXX");
     ReactGA.send({ hitType: "pageview", page: currentPath });
   }, [currentPath]);
 
@@ -44,93 +43,109 @@ export default function Nav({ currentPath }: NavProps) {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [isMenuOpen]);
+
   const isSecondaryActive = SECONDARY_LINKS.some(l => l.path === currentPath);
 
-  // In Astro, navigation is real browser navigation — use <a> not <Link>
   return (
-    <nav
-      className={styles["app__nav"]}
-      role="navigation"
-      aria-label="Main Navigation"
-    >
-      <div className={styles["app__nav-container"]}>
-        {/* Logo */}
-        <a
-          href="/"
-          className={styles["app__logo"]}
-          aria-label="Alex Arasawa - Return to Homepage"
-        >
-          ALEXANDER
-          <span
-            className={`${styles["app__cursor"]} cursor-blink`}
-            aria-hidden="true"
-          />
-        </a>
+    <>
+      <nav
+        className={styles["app__nav"]}
+        role="navigation"
+        aria-label="Main Navigation"
+      >
+        <div className={styles["app__nav-container"]}>
+          {/* Logo */}
+          <a
+            href="/"
+            className={styles["app__logo"]}
+            aria-label="Alex Arasawa - Return to Homepage"
+          >
+            ALEXANDER
+            <span
+              className={`${styles["app__cursor"]} cursor-blink`}
+              aria-hidden="true"
+            />
+          </a>
 
-        {/* Mobile toggle */}
-        <button
-          className={styles["app__nav-mobile-toggle"]}
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+          {/* Mobile toggle */}
+          <button
+            className={styles["app__nav-mobile-toggle"]}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMenuOpen}
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
 
-        {/* Desktop links */}
-        <div className={styles["app__nav-links"]}>
-          {PRIMARY_LINKS.map(link => (
-            <a
-              key={link.label}
-              href={link.path}
-              className={`${styles["app__nav-link"]} ${
-                currentPath === link.path ? styles["app__nav-link--active"] : ""
-              }`}
-            >
-              {link.label}
-            </a>
-          ))}
+          {/* Desktop links */}
+          <div className={styles["app__nav-links"]}>
+            {PRIMARY_LINKS.map(link => (
+              <a
+                key={link.label}
+                href={link.path}
+                className={`${styles["app__nav-link"]} ${
+                  currentPath === link.path ? styles["app__nav-link--active"] : ""
+                }`}
+              >
+                {link.label}
+              </a>
+            ))}
 
-          {/* Logs dropdown */}
-          <div className={styles["app__nav-dropdown"]} ref={dropdownRef}>
-            <button
-              className={`${styles["app__nav-link"]} ${styles["app__nav-dropdown-trigger"]} ${
-                isSecondaryActive ? styles["app__nav-link--active"] : ""
-              }`}
-              onClick={() => setIsLogsOpen(!isLogsOpen)}
-              aria-expanded={isLogsOpen}
-            >
-              Logs
-            </button>
-            <AnimatePresence>
-              {isLogsOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  className={styles["app__nav-dropdown-content"]}
-                >
-                  {SECONDARY_LINKS.map(link => (
-                    <a
-                      key={link.label}
-                      href={link.path}
-                      className={`${styles["app__nav-dropdown-item"]} ${
-                        currentPath === link.path
-                          ? styles["app__nav-dropdown-item--active"]
-                          : ""
-                      }`}
-                      onClick={() => setIsLogsOpen(false)}
-                    >
-                      {link.label}
-                    </a>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
+            {/* Logs dropdown */}
+            <div className={styles["app__nav-dropdown"]} ref={dropdownRef}>
+              <button
+                className={`${styles["app__nav-link"]} ${styles["app__nav-dropdown-trigger"]} ${
+                  isSecondaryActive ? styles["app__nav-link--active"] : ""
+                }`}
+                onClick={() => setIsLogsOpen(!isLogsOpen)}
+                aria-expanded={isLogsOpen}
+              >
+                Logs
+              </button>
+              <AnimatePresence>
+                {isLogsOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    className={styles["app__nav-dropdown-content"]}
+                  >
+                    {SECONDARY_LINKS.map(link => (
+                      <a
+                        key={link.label}
+                        href={link.path}
+                        className={`${styles["app__nav-dropdown-item"]} ${
+                          currentPath === link.path
+                            ? styles["app__nav-dropdown-item--active"]
+                            : ""
+                        }`}
+                        onClick={() => setIsLogsOpen(false)}
+                      >
+                        {link.label}
+                      </a>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
         </div>
-      </div>
+      </nav>
 
-      {/* Mobile menu overlay */}
+      {/*
+        Mobile menu rendered as a sibling to <nav>, not inside it.
+        This prevents the nav's stacking context from clipping the overlay.
+        position: fixed + z-index: 1000 ensures it covers everything.
+      */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -141,13 +156,18 @@ export default function Nav({ currentPath }: NavProps) {
             className={styles["app__mobile-menu"]}
           >
             <div className={styles["app__mobile-menu-header"]}>
-              <a href="/" className={styles["app__logo"]} onClick={() => setIsMenuOpen(false)}>
+              <a
+                href="/"
+                className={styles["app__logo"]}
+                onClick={() => setIsMenuOpen(false)}
+              >
                 ALEX
                 <span className={`${styles["app__cursor"]} cursor-blink`} />
               </a>
               <button
                 className={styles["app__nav-mobile-toggle"]}
                 onClick={() => setIsMenuOpen(false)}
+                aria-label="Close menu"
               >
                 <X size={24} />
               </button>
@@ -195,6 +215,6 @@ export default function Nav({ currentPath }: NavProps) {
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </>
   );
 }

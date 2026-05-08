@@ -30,7 +30,7 @@ interface ProjectorCarouselProps {
 const ProjectorCarousel: React.FC<ProjectorCarouselProps> = ({ projects }) => {
   const [current, setCurrent] = useState(0);
   const [isScreenOpen, setIsScreenOpen] = useState(false);
-  const [isCurtainOpen, setIsCurtainOpen] = useState(false);
+  const [isViewerActive, setIsViewerActive] = useState(false);
   const [isContentVisible, setIsContentVisible] = useState(false);
   const [activeProject, setActiveProject] = useState<Project | null>(null);
   
@@ -52,32 +52,31 @@ const ProjectorCarousel: React.FC<ProjectorCarouselProps> = ({ projects }) => {
   const openScreen = (idx: number) => {
     lastActiveElement.current = document.activeElement as HTMLElement;
     const proj = projects[idx];
+
     setActiveProject(proj);
     setIsScreenOpen(true);
     document.body.style.overflow = 'hidden';
 
-    // Sequence: 1. Show curtain (full height) 2. Wait 3. Animate curtain up + show content
     setTimeout(() => {
-      setIsCurtainOpen(true);
+      setIsViewerActive(true);
+
       setTimeout(() => {
         setIsContentVisible(true);
-        // Focus close button for accessibility
         setTimeout(() => closeButtonRef.current?.focus(), 100);
-      }, 550);
-    }, 50);
+      }, 420);
+    }, 40);
   };
 
   const closeScreen = () => {
     setIsContentVisible(false);
-    setIsCurtainOpen(false);
+    setIsViewerActive(false);
     
     setTimeout(() => {
       setIsScreenOpen(false);
       setActiveProject(null);
       document.body.style.overflow = '';
-      // Return focus to triggering card
       lastActiveElement.current?.focus();
-    }, 550);
+    }, 420);
   };
 
   // Keyboard navigation
@@ -155,14 +154,17 @@ const ProjectorCarousel: React.FC<ProjectorCarouselProps> = ({ projects }) => {
             aria-labelledby="screen-project-title"
           >
             <div 
-              className={`${styles['screen__overlay']} ${isCurtainOpen ? styles['screen__overlay--open'] : ''}`}
+              className={`${styles['screen__overlay']} ${isViewerActive ? styles['screen__overlay--open'] : ''}`}
               onClick={closeScreen}
               aria-hidden="true"
             />
             
-            <div className={`${styles['screen__curtain']} ${isCurtainOpen ? '' : styles['screen__curtain--open']}`} aria-hidden="true" />
-            
-            <div className={`${styles['screen__content']} ${isContentVisible ? styles['screen__content--visible'] : ''}`}>
+            <div className={`${styles['screen__content']} ${isViewerActive ? styles['screen__content--active'] : ''} ${isContentVisible ? styles['screen__content--visible'] : ''}`}>
+              <div className={styles['screen__activation']} aria-hidden="true">
+                <span>ARCHIVE VIEWER ACTIVE</span>
+                <span>SIGNAL LOCKED</span>
+              </div>
+
               <div className={styles['screen__bar']}>
                 <span className={styles['screen__bar-title']}>
                   {(activeProject?.title || '').toLowerCase().replace(/\s+/g,'_')}.md

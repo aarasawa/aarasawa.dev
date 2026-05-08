@@ -1,8 +1,20 @@
 @use "variables" as *;
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&family=Outfit:wght@300;400;500&display=swap');
 
 body {
+  width: 100%;
   margin: 0;
   padding: 0;
   background-color: $color-terminal-bg;

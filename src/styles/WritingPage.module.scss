@@ -2,12 +2,22 @@
 
 .writing {
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: 280px minmax(0, 1fr);
   gap: 3rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: hidden;
   padding-top: 2rem;
 
   @media (max-width: 1024px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1.25rem;
+    padding-top: 1rem;
   }
 }
 
@@ -15,6 +25,8 @@
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
+  min-width: 0;
+  max-width: 100%;
 
   &__section {
     @include terminal-card;
@@ -238,16 +250,22 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .post_card {
   @include terminal_card;
   display: grid;
-  grid_template_columns: 1fr 60px;
+  grid-template-columns: minmax(0, 1fr) 60px;
+  width: 100%;
+  max-width: 100%;
   cursor: pointer;
   border: 1px solid rgba($color-amber-base, 0.15);
   transition: all 0.3s ease;
   position: relative;
+  min-width: 0;
   overflow: hidden;
 
   &::before {
@@ -268,6 +286,7 @@
   }
 
   &__main {
+    min-width: 0;
     padding: 1.5rem 2rem;
     display: flex;
     flex-direction: column;
@@ -295,16 +314,19 @@
 
   &__title {
     font-family: $font-display;
-    font-size: 1.75rem;
+    font-size: clamp(1.25rem, 7vw, 1.75rem);
     color: $color-amber-bright;
     margin: 0;
     letter-spacing: 0.02em;
+    overflow-wrap: anywhere;
   }
 
   &__meta {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+    min-width: 0;
     margin: 0.25rem 0;
   }
 
@@ -312,6 +334,7 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    min-width: 0;
     font-family: $font-mono;
     font-size: 0.75rem;
     color: rgba($color-amber-base, 0.5);
@@ -325,6 +348,7 @@
 
   &__excerpt {
     font-size: 0.9rem;
+    overflow-wrap: anywhere;
     color: rgba($color-amber-base, 0.7);
     line-height: 1.6;
     margin: 0.5rem 0;
@@ -332,6 +356,7 @@
 
   &__stats {
     font-family: $font-mono;
+    flex-wrap: wrap;
     font-size: 0.7rem;
     color: rgba($color-amber-base, 0.3);
     display: flex;
@@ -400,4 +425,30 @@
 @keyframes slideUp {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 640px) {
+  .sidebar {
+    gap: 1.25rem;
+
+    &__section {
+      padding: 1rem;
+    }
+  }
+
+  .post_card {
+    grid-template-columns: minmax(0, 1fr);
+
+    &__main {
+      padding: 1.1rem 1rem;
+    }
+
+    &__side {
+      display: none;
+    }
+  }
+
+  .empty_state {
+    padding: 2rem 1rem;
+  }
 }

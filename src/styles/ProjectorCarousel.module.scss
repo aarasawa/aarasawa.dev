@@ -10,6 +10,12 @@
   justify-content: center;
   margin: 2rem auto;
 
+  @media (max-width: 640px) {
+    height: auto;
+    min-height: 330px;
+    margin-block: 1rem 0.75rem;
+  }
+
   &__rig {
     position: relative;
     width: 100%;
@@ -17,6 +23,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 640px) {
+      padding-bottom: 3.5rem;
+    }
   }
 
   &__track {
@@ -26,8 +36,19 @@
     perspective: 1200px;
 
     @media (max-width: 768px) {
-      width: 100%;
+      width: min(100%, calc(100vw - 3rem));
       height: 260px;
+      perspective: none; // disable 3D on mobile — side cards are hidden anyway
+    }
+
+    @media (max-width: 640px) {
+      width: min(100%, calc(100vw - 2rem));
+      height: 250px;
+    }
+
+    @media (max-width: 400px) {
+      width: min(100%, calc(100vw - 2rem));
+      height: 240px;
     }
   }
 
@@ -50,6 +71,16 @@
     transition: all 0.15s ease;
     padding-bottom: 4px;
 
+    @media (max-width: 640px) {
+      top: auto;
+      bottom: 0;
+      transform: none;
+      width: 42px;
+      height: 38px;
+      font-size: 1.2rem;
+      padding-bottom: 0;
+    }
+
     &:hover {
       color: $color-amber-bright;
       border-color: rgba($color-amber-base, 0.6);
@@ -58,16 +89,22 @@
 
     &:active {
       transform: translateY(-50%) scale(0.94);
+
+      @media (max-width: 640px) {
+        transform: scale(0.94);
+      }
     }
 
     &--left {
       left: -60px;
       @media (max-width: 1024px) { left: 0; }
+      @media (max-width: 640px)  { left: calc(50% - 56px); }
     }
 
     &--right {
       right: -60px;
       @media (max-width: 1024px) { right: 0; }
+      @media (max-width: 640px)  { right: calc(50% - 56px); }
     }
   }
 
@@ -76,6 +113,8 @@
     gap: 8px;
     justify-content: center;
     margin-top: 1.6rem;
+    flex-wrap: wrap;
+    padding: 0 1rem;
   }
 
   &__dot {
@@ -108,7 +147,9 @@
   padding: 0;
   font-family: inherit;
   color: inherit;
-  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.45s ease, filter 0.45s ease;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.45s ease,
+              filter 0.45s ease;
   will-change: transform, opacity, filter;
   overflow: hidden;
   user-select: none;
@@ -122,10 +163,18 @@
     box-shadow: 0 0 40px rgba($color-amber-base, 0.15);
   }
 
-  &--left1 { transform: translateX(-52%) scale(0.82) translateZ(-120px); opacity: 0.55; filter: brightness(0.45) blur(1.2px); z-index: 5; }
-  &--left2 { transform: translateX(-68%) scale(0.68) translateZ(-220px); opacity: 0.28; filter: brightness(0.28) blur(2px); z-index: 4; }
-  &--right1 { transform: translateX(52%) scale(0.82) translateZ(-120px); opacity: 0.55; filter: brightness(0.45) blur(1.2px); z-index: 5; }
-  &--right2 { transform: translateX(68%) scale(0.68) translateZ(-220px); opacity: 0.28; filter: brightness(0.28) blur(2px); z-index: 4; }
+  // On mobile: hide all non-center slides entirely
+  &--left1, &--left2, &--right1, &--right2 {
+    @media (max-width: 640px) {
+      opacity: 0 !important;
+      pointer-events: none;
+    }
+  }
+
+  &--left1  { transform: translateX(-52%) scale(0.82) translateZ(-120px); opacity: 0.55; filter: brightness(0.45) blur(1.2px); z-index: 5; }
+  &--left2  { transform: translateX(-68%) scale(0.68) translateZ(-220px); opacity: 0.28; filter: brightness(0.28) blur(2px);   z-index: 4; }
+  &--right1 { transform: translateX(52%)  scale(0.82) translateZ(-120px); opacity: 0.55; filter: brightness(0.45) blur(1.2px); z-index: 5; }
+  &--right2 { transform: translateX(68%)  scale(0.68) translateZ(-220px); opacity: 0.28; filter: brightness(0.28) blur(2px);   z-index: 4; }
   &--hidden { transform: translateX(0) scale(0.5) translateZ(-300px); opacity: 0; z-index: 1; pointer-events: none; }
 
   &__art {
@@ -134,7 +183,7 @@
     position: relative;
     overflow: hidden;
     border-right: 1px solid rgba($color-amber-base, 0.2);
-    
+
     canvas {
       width: 100%;
       height: 100%;
@@ -143,7 +192,7 @@
     }
 
     @media (max-width: 640px) {
-      display: none;
+      display: none; // hide pixel art panel on mobile — too narrow
     }
   }
 
@@ -154,6 +203,10 @@
     flex-direction: column;
     justify-content: space-between;
     overflow: hidden;
+
+    @media (max-width: 640px) {
+      padding: 1rem;
+    }
   }
 
   &__num {
@@ -172,6 +225,10 @@
     line-height: 1.05;
     @include terminal-glow;
     margin-bottom: 0.5rem;
+
+    @media (max-width: 640px) {
+      font-size: 1.3rem;
+    }
   }
 
   &__desc {
@@ -183,6 +240,11 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+
+    @media (max-width: 640px) {
+      font-size: 0.75rem;
+      -webkit-line-clamp: 4;
+    }
   }
 
   &__tags {
@@ -232,44 +294,25 @@
   &__overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.4);
-    backdrop-filter: blur(2px);
+    background:
+      radial-gradient(
+        circle at center,
+        rgba(0, 0, 0, 0.18) 0%,
+        rgba(0, 0, 0, 0.72) 100%
+      );
+    backdrop-filter: blur(3px);
     z-index: 4999;
     opacity: 0;
-    transition: opacity 0.4s ease;
+    transition:
+      opacity 0.35s ease,
+      backdrop-filter 0.35s ease;
     pointer-events: none;
 
-    &--open {
+    // Keep --open for your current TSX, add --active for the new viewer state.
+    &--open,
+    &--active {
       opacity: 1;
       pointer-events: all;
-    }
-  }
-
-  &__curtain {
-    width: 100%;
-    background: #0c0800;
-    border-bottom: 3px solid $color-amber-dim;
-    box-shadow: 0 4px 30px rgba($color-amber-base, 0.15);
-    flex-shrink: 0;
-    transition: height 0.55s cubic-bezier(0.4, 0, 0.2, 1);
-    height: 0;
-    position: relative;
-    z-index: 5001;
-
-    &--open {
-      height: 100vh;
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -6px; left: 0; right: 0;
-      height: 3px;
-      background: repeating-linear-gradient(
-        90deg,
-        $color-amber-dim 0px, $color-amber-dim 8px,
-        transparent 8px, transparent 14px
-      );
     }
   }
 
@@ -278,15 +321,128 @@
     inset: 0;
     z-index: 5002;
     background: $color-terminal-panel;
+    background-image:
+      repeating-linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.015) 0px,
+        rgba(255, 255, 255, 0.015) 1px,
+        transparent 1px,
+        transparent 3px
+      );
     overflow-y: auto;
+    overflow-x: hidden;
     pointer-events: none;
     opacity: 0;
-    transition: opacity 0.25s ease 0.45s;
+    transform: scale(0.88) translateY(18px);
+    transform-origin: center center;
+    transition:
+      transform 480ms cubic-bezier(.16, 1, .3, 1),
+      opacity 280ms ease;
+    max-width: 100vw;
+    box-shadow: 0 0 80px rgba($color-amber-base, 0.12);
 
+    // --active is the new expansion state. --visible remains compatible with your current TSX.
+    &--active,
     &--visible {
-      pointer-events: all;
+      transform: scale(1) translateY(0);
       opacity: 1;
+      pointer-events: all;
     }
+
+    &--active {
+      animation: viewer-stabilize 420ms steps(2, end);
+    }
+
+    @media (max-width: 640px) {
+      transform: scale(0.94) translateY(14px);
+    }
+  }
+
+  &__content::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(255, 179, 71, 0.08) 48%,
+        transparent 100%
+      );
+    transform: translateY(-100%);
+    opacity: 0;
+    z-index: 5;
+  }
+
+  &__content--active::before,
+  &__content--visible::before {
+    animation: archive-scan 700ms ease-out 120ms both;
+  }
+
+  &__activation {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.45rem 1rem;
+    border-bottom: 1px solid rgba($color-amber-base, 0.08);
+    font-family: $font-mono;
+    font-size: 0.55rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba($color-amber-base, 0.5);
+    background: rgba($color-terminal-bg, 0.55);
+    backdrop-filter: blur(4px);
+
+    span {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 640px) {
+      font-size: 0.5rem;
+      padding: 0.35rem 0.75rem;
+      letter-spacing: 1.5px;
+    }
+  }
+
+  &__bar,
+  &__art-frame,
+  &__info > * {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  &__content--active,
+  &__content--visible {
+    .screen__bar,
+    .screen__art-frame,
+    .screen__info > * {
+      opacity: 1;
+      transform: translateY(0);
+      transition:
+        opacity 320ms ease,
+        transform 320ms ease;
+    }
+
+    .screen__bar {
+      transition-delay: 40ms;
+    }
+
+    .screen__art-frame {
+      transition-delay: 70ms;
+    }
+
+    .screen__info > *:nth-child(1) { transition-delay: 120ms; }
+    .screen__info > *:nth-child(2) { transition-delay: 170ms; }
+    .screen__info > *:nth-child(3) { transition-delay: 220ms; }
+    .screen__info > *:nth-child(4) { transition-delay: 270ms; }
+    .screen__info > *:nth-child(5) { transition-delay: 320ms; }
+    .screen__info > *:nth-child(6) { transition-delay: 370ms; }
+    .screen__info > *:nth-child(7) { transition-delay: 420ms; }
+    .screen__info > *:nth-child(8) { transition-delay: 470ms; }
   }
 
   &__bar {
@@ -298,12 +454,22 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    z-index: 2;
+    gap: 0.75rem;
+    min-width: 0;
+    z-index: 6;
+
+    @media (max-width: 480px) {
+      padding: 0.55rem 0.85rem;
+    }
   }
 
   &__bar-title {
     font-family: $font-mono;
     font-size: 0.65rem;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: $color-amber-dim;
@@ -319,6 +485,7 @@
     cursor: pointer;
     transition: all 0.15s;
     letter-spacing: 1px;
+    flex: 0 0 auto;
 
     &:hover {
       color: $color-amber-bright;
@@ -327,53 +494,91 @@
   }
 
   &__body {
+    width: 100%;
     max-width: 860px;
+    min-width: 0;
     margin: 0 auto;
     padding: 2.5rem 2rem 4rem;
     display: grid;
-    grid-template-columns: 320px 1fr;
+    grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
     gap: 2.5rem;
     align-items: start;
 
     @media (max-width: 768px) {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1.25rem;
+      padding: 1.25rem 1rem 3rem;
+    }
+
+    @media (max-width: 480px) {
+      padding: 0.85rem 0.75rem 2.5rem;
     }
   }
 
   &__art-frame {
+    min-width: 0;
+    max-width: 100%;
     border: 1px solid rgba($color-amber-base, 0.2);
     overflow: hidden;
     image-rendering: pixelated;
     box-shadow: 0 0 30px rgba($color-amber-base, 0.06);
-    
+
     canvas {
       width: 100%;
+      max-width: 100%;
       height: auto;
       display: block;
     }
+
+    @media (max-width: 640px) {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      max-height: 180px;
+
+      canvas {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  &__info {
+    min-width: 0;
+    max-width: 100%;
   }
 
   &__project-title {
     font-family: $font-display;
-    font-size: 2.8rem;
+    font-size: clamp(1.8rem, 10vw, 2.8rem);
     color: $color-amber-base;
     letter-spacing: 3px;
     @include terminal-glow;
     line-height: 1;
     margin-bottom: 0.3rem;
+    overflow-wrap: anywhere;
 
     @media (max-width: 640px) {
-      font-size: 2rem;
+      font-size: clamp(1.55rem, 9vw, 2rem);
+      letter-spacing: 2px;
     }
   }
 
   &__project-sub {
     font-family: $font-mono;
+    overflow-wrap: anywhere;
     font-size: 0.68rem;
     color: $color-amber-dim;
     letter-spacing: 2px;
     text-transform: uppercase;
     margin-bottom: 1.4rem;
+
+    @media (max-width: 640px) {
+      font-size: 0.58rem;
+      line-height: 1.6;
+      letter-spacing: 1.6px;
+      margin-bottom: 1rem;
+    }
   }
 
   &__section-label {
@@ -390,6 +595,8 @@
 
   &__text {
     font-size: 0.88rem;
+    min-width: 0;
+    overflow-wrap: anywhere;
     color: rgba($color-amber-base, 0.6);
     line-height: 1.85;
 
@@ -427,10 +634,16 @@
     gap: 0.8rem;
     margin-top: 1.5rem;
     flex-wrap: wrap;
+
+    @media (max-width: 480px) {
+      gap: 0.6rem;
+    }
   }
 
   &__link {
     font-family: $font-mono;
+    max-width: 100%;
+    text-align: center;
     font-size: 0.68rem;
     letter-spacing: 2px;
     text-transform: uppercase;
