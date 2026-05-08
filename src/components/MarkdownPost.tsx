@@ -3,13 +3,10 @@ import { motion } from 'motion/react';
 import ReactGA from 'react-ga4';
 import { Terminal, Calendar, Tag, ChevronLeft, ChevronRight } from 'lucide-react';
 import styles from '../styles/MarkdownPost.module.scss';
-
-// ── Post data shape ──────────────────────────────────────
-// All fields pre-parsed by Astro — no gray-matter needed here.
 export interface MarkdownPostData {
   slug:        string;
   title:       string;
-  published:   string;   // ISO string
+  published:   string;   
   description: string;
   tags:        string[];
   category:    string;
@@ -23,7 +20,6 @@ export interface MarkdownPostData {
 
 interface MarkdownPostProps {
   post: MarkdownPostData;
-  // Astro's <Content /> component is passed as children
   children?: React.ReactNode;
 }
 
@@ -87,13 +83,15 @@ const MarkdownPost: React.FC<MarkdownPostProps> = ({ post, children }) => {
         )}
       </header>
 
-      {/* Content — rendered by Astro's <Content /> passed as children */}
+      {/* Content */}
       <div className={styles['markdown-post__content']}>
         {children}
       </div>
 
       {/* Footer */}
       <footer className={styles['markdown-post__footer']}>
+
+        {/* Row 1: prev / next navigation */}
         <div className={styles['markdown-post__nav']}>
           {post.prevSlug ? (
             <a
@@ -104,7 +102,7 @@ const MarkdownPost: React.FC<MarkdownPostProps> = ({ post, children }) => {
               <span>{post.prevTitle}</span>
             </a>
           ) : (
-            <span />
+            <span className={styles['markdown-post__nav-placeholder']} />
           )}
           {post.nextSlug ? (
             <a
@@ -115,10 +113,11 @@ const MarkdownPost: React.FC<MarkdownPostProps> = ({ post, children }) => {
               <ChevronRight size={14} />
             </a>
           ) : (
-            <span />
+            <span className={styles['markdown-post__nav-placeholder']} />
           )}
         </div>
 
+        {/* Row 2: back + label */}
         <div className={styles['markdown-post__footer-bottom']}>
           <a href="/writing" className={styles['markdown-post__back-btn']}>
             {'<'} Back to Files
@@ -127,6 +126,7 @@ const MarkdownPost: React.FC<MarkdownPostProps> = ({ post, children }) => {
             End of Transmission
           </span>
         </div>
+
       </footer>
     </motion.article>
   );

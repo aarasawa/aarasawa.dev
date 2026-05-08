@@ -11,15 +11,11 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import styles from "../../styles/WritingPage.module.scss";
-
-// ── Post shape passed in from Astro ─────────────────────
-// Astro parses frontmatter server-side and passes clean data as props.
-// We no longer call getPosts() or parse gray-matter here.
 export interface PostData {
-  slug: string;       // clean URL slug derived from title
-  id: string;         // real collection id — used as React key
+  slug: string;      
+  id: string;        
   title: string;
-  published: string;  // ISO string
+  published: string;  
   description: string;
   tags: string[];
   category: string;
@@ -29,7 +25,6 @@ export interface PostData {
 
 interface WritingPageProps {
   posts: PostData[];
-  // onPostClick is called with the slug so the parent page can navigate
   onPostClick?: (slug: string) => void;
 }
 
@@ -87,7 +82,6 @@ const WritingPage: React.FC<WritingPageProps> = ({ posts, onPostClick }) => {
     if (onPostClick) {
       onPostClick(post.slug);
     } else {
-      // default: navigate to /writing/slug
       window.location.href = `/writing/${post.slug}`;
     }
   };

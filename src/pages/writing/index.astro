@@ -5,7 +5,6 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import WritingPage from '../../components/pages/WritingPage.tsx';
 
-// ── slug helper ──────────────────────────────────────────
 function deriveSlug(title: string, frontmatterSlug?: string): string {
   if (frontmatterSlug) return frontmatterSlug;
   return title
@@ -17,12 +16,13 @@ function deriveSlug(title: string, frontmatterSlug?: string): string {
     .replace(/(^-|-$)/g, '');
 }
 
-// ── fetch posts ──────────────────────────────────────────
-const allPosts = await getCollection('posts', ({ data }) => data.draft !== true);
+const allPosts = await getCollection('posts', ({ data }: { data: { draft?: boolean } }) => data.draft !== true);
+
+type PostEntry = (typeof allPosts)[number];
 
 const posts = allPosts
-  .sort((a, b) => b.data.published.valueOf() - a.data.published.valueOf())
-  .map(post => {
+  .sort((a: PostEntry, b: PostEntry) => b.data.published.valueOf() - a.data.published.valueOf())
+  .map((post: PostEntry) => {
     const words = post.body.split(/\s+/).length;
     return {
       slug:        deriveSlug(post.data.title, post.data.slug),
@@ -37,7 +37,6 @@ const posts = allPosts
     };
   });
 
-// ── dev: warn on slug collisions ─────────────────────────
 if (import.meta.env.DEV) {
   const seen = new Set<string>();
   for (const p of posts) {

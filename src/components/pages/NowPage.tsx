@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "motion/react";
-import { Link } from "react-router-dom";
 import styles from "../../styles/NowPage.module.scss";
 import appStyles from "../../App.module.scss";
 
@@ -129,9 +128,9 @@ const NowPage: React.FC = () => {
                     return (
                       <p key={j} className={styles["now__line"]}>
                         <span className={styles["now__entry-marker"]}>▸</span>
-                        <Link to={line.linkTo} className={styles["now__link"]}>
+                        <a href={line.linkTo} className={styles["now__link"]}>
                           {line.text}
-                        </Link>
+                        </a>
                       </p>
                     );
                   }

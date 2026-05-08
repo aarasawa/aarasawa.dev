@@ -1,11 +1,11 @@
 ---
 export const prerender = false;
 
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import MarkdownPost from '../../components/MarkdownPost.tsx';
 
-// ── slug helper — must match index.astro exactly ─────────
 function deriveSlug(title: string, frontmatterSlug?: string): string {
   if (frontmatterSlug) return frontmatterSlug;
   return title
@@ -17,19 +17,17 @@ function deriveSlug(title: string, frontmatterSlug?: string): string {
     .replace(/(^-|-$)/g, '');
 }
 
-// ── resolve post from URL param ──────────────────────────
 const { slug } = Astro.params;
 if (!slug) return Astro.redirect('/writing');
 
-const allPosts = await getCollection('posts', ({ data }) => data.draft !== true);
+const allPosts = await getCollection('posts', ({ data }: { data: { draft?: boolean } }) => data.draft !== true) as CollectionEntry<'posts'>[];
 
-const post = allPosts.find(p =>
+const post = allPosts.find((p: CollectionEntry<'posts'>) =>
   deriveSlug(p.data.title, p.data.slug) === slug
 );
 
 if (!post) return Astro.redirect('/writing');
 
-// ── prev / next computed dynamically ────────────────────
 const sorted = [...allPosts].sort(
   (a, b) => b.data.published.valueOf() - a.data.published.valueOf()
 );
@@ -37,14 +35,11 @@ const idx      = sorted.findIndex(p => p.id === post.id);
 const prevPost = sorted[idx + 1] ?? null;
 const nextPost = sorted[idx - 1] ?? null;
 
-// ── word count + reading time ────────────────────────────
 const words       = post.body.split(/\s+/).length;
 const readingTime = Math.max(1, Math.ceil(words / 200));
 
-// ── render markdown ──────────────────────────────────────
-const { Content } = await post.render();
+const { Content } = await render(post);
 
-// ── shape data for MarkdownPost component ────────────────
 const postData = {
   slug:        deriveSlug(post.data.title, post.data.slug),
   title:       post.data.title,

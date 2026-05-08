@@ -23,15 +23,14 @@ Depending on the needs of `y`, you can pick an activation function:
 # Multiclass Classification
 For the purposes of classifying for more than 2 possible values, softmax regression is being used. This is a more generalized regression, where logistic regression is softmax where N = 2. The generalized <b>softmax function</b> is below:
 
-``` math
-Z_j = \vec{W}_j \cdot \vec{X} + b_j \text{  for  } j = 1,\cdots,N \\
-a_j = \frac{e^{Z_j}}{\sum^{N}_{k=1}{e^{Z_k}}} = P(y = j | \vec{X}) \\
+![Z_j formula](https://latex.codecogs.com/svg.image?Z_j=\vec{W}_j\cdot\vec{X}+b_j)
 
-loss(a_1,...,a_N,y) =
-    \begin{cases}
-        -log(a_1) \text{  if y = 1} \\
-        -log(a_2) \text{  if y = 2} \\
-        \vdots \\
-        -log(a_N) \text{  if y = N} \\
-    \end{cases}
+![a_j formula](https://latex.codecogs.com/svg.image?a_j=\frac{e^{Z_j}}{\sum_{k=1}^{N}e^{Z_k}}=P(y=j|\vec{X}))
+
+```
+loss(a_1,...,a_N, y) =
+  -log(a_1)  if y = 1
+  -log(a_2)  if y = 2
+  ⋮
+  -log(a_N)  if y = N
 ```
