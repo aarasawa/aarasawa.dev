@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <pattern id="scan" x="0" y="0" width="64" height="2" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="64" height="1" fill="rgba(0,0,0,0.30)"/>
+    </pattern>
+  </defs>
+  <!-- background -->
+  <rect width="64" height="64" fill="#060d18"/>
+  <!-- >_ in Share Tech Mono style, drawn as paths for font-independence -->
+  <!-- > chevron: two lines meeting at right point -->
+  <polyline points="8,16 24,32 8,48" fill="none" stroke="#FFB347" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- _ underscore -->
+  <line x1="30" y1="50" x2="56" y2="50" stroke="#FFD580" stroke-width="5" stroke-linecap="round"/>
+  <!-- scanline overlay -->
+  <rect width="64" height="64" fill="url(#scan)"/>
+</svg>
